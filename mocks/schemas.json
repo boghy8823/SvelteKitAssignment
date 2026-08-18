@@ -1,0 +1,48 @@
+{
+  "Post": {
+    "id": "string",
+    "slug": "string",
+    "translations": {
+      "<locale>": {
+        "title": "string",
+        "excerpt": "string",
+        "body": "string (markdown)"
+      }
+    },
+    "tags": "string[]",
+    "author": {
+      "id": "string",
+      "name": "string",
+      "avatarColor": "string (hex)"
+    },
+    "publishedAt": "string (ISO 8601)",
+    "readingTimeMinutes": "number",
+    "coverColor": "string (hex)"
+  },
+  "Item": {
+    "id": "string",
+    "name": "string",
+    "status": "enum: draft|scheduled|active|paused|completed|archived",
+    "channel": "enum: email|sms|web|social|push",
+    "owner": {
+      "id": "string",
+      "name": "string"
+    },
+    "budget": "number (USD)",
+    "spent": "number (USD)",
+    "impressions": "number",
+    "clicks": "number",
+    "ctr": "number (0-1)",
+    "startDate": "string (YYYY-MM-DD)",
+    "endDate": "string (YYYY-MM-DD)",
+    "updatedAt": "string (ISO 8601)",
+    "tags": "string[]"
+  },
+  "User": {
+    "id": "string",
+    "email": "string (email)",
+    "password": "string (plaintext — demo only)",
+    "name": "string",
+    "role": "enum: admin|editor|viewer"
+  }
+}

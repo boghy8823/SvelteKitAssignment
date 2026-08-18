@@ -1,0 +1,4687 @@
+[
+  {
+    "id": "cmp_0001",
+    "name": "Upgrade — GA release #001",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 2500,
+    "spent": 2332.02,
+    "impressions": 325282,
+    "clicks": 17467,
+    "ctr": 0.0537,
+    "startDate": "2026-04-03",
+    "endDate": "2026-05-16",
+    "updatedAt": "2026-04-09T22:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0002",
+    "name": "Summer — Beta program #002",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 2500,
+    "spent": 2437.79,
+    "impressions": 187264,
+    "clicks": 3094,
+    "ctr": 0.0165,
+    "startDate": "2026-03-10",
+    "endDate": "2026-04-30",
+    "updatedAt": "2026-04-08T21:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0003",
+    "name": "New Year — Beta program #003",
+    "status": "scheduled",
+    "channel": "social",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 7500,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-01-09",
+    "endDate": "2026-03-08",
+    "updatedAt": "2026-01-19T12:00:00Z",
+    "tags": [
+      "design",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0004",
+    "name": "Trial — Feature launch #004",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 50000,
+    "spent": 48087.42,
+    "impressions": 392650,
+    "clicks": 14587,
+    "ctr": 0.0372,
+    "startDate": "2026-05-30",
+    "endDate": "2026-07-01",
+    "updatedAt": "2026-06-10T07:00:00Z",
+    "tags": [
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0005",
+    "name": "Autumn — APAC rollout #005",
+    "status": "completed",
+    "channel": "sms",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 5000,
+    "spent": 4297.65,
+    "impressions": 246392,
+    "clicks": 8402,
+    "ctr": 0.0341,
+    "startDate": "2026-05-22",
+    "endDate": "2026-05-29",
+    "updatedAt": "2026-06-12T23:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0006",
+    "name": "Announcement — GA release #006",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 10000,
+    "spent": 9930.72,
+    "impressions": 139091,
+    "clicks": 8130,
+    "ctr": 0.0585,
+    "startDate": "2026-02-15",
+    "endDate": "2026-03-26",
+    "updatedAt": "2026-03-16T03:00:00Z",
+    "tags": [
+      "performance",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0007",
+    "name": "Upgrade — Pricing change #007",
+    "status": "paused",
+    "channel": "push",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 15000,
+    "spent": 5171.21,
+    "impressions": 423982,
+    "clicks": 9290,
+    "ctr": 0.0219,
+    "startDate": "2026-01-15",
+    "endDate": "2026-02-06",
+    "updatedAt": "2026-02-12T18:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0008",
+    "name": "Autumn — Lifecycle nudge #008",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 5000,
+    "spent": 4373.85,
+    "impressions": 319029,
+    "clicks": 9019,
+    "ctr": 0.0283,
+    "startDate": "2026-02-24",
+    "endDate": "2026-04-06",
+    "updatedAt": "2026-03-20T23:00:00Z",
+    "tags": [
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0009",
+    "name": "Referral — Whitepaper #009",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 2500,
+    "spent": 871.86,
+    "impressions": 309512,
+    "clicks": 5296,
+    "ctr": 0.0171,
+    "startDate": "2026-01-19",
+    "endDate": "2026-03-12",
+    "updatedAt": "2026-02-08T01:00:00Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0010",
+    "name": "Summer — Case study drop #010",
+    "status": "draft",
+    "channel": "sms",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 50000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-02",
+    "endDate": "2026-05-24",
+    "updatedAt": "2026-05-27T15:00:00Z",
+    "tags": [
+      "performance",
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0011",
+    "name": "Cross-sell — Whitepaper #011",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 1000,
+    "spent": 604.02,
+    "impressions": 178892,
+    "clicks": 8771,
+    "ctr": 0.049,
+    "startDate": "2026-01-28",
+    "endDate": "2026-02-19",
+    "updatedAt": "2026-02-03T06:00:00Z",
+    "tags": [
+      "product",
+      "performance",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0012",
+    "name": "Win-back — NPS push #012",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 2500,
+    "spent": 575.88,
+    "impressions": 486683,
+    "clicks": 22604,
+    "ctr": 0.0464,
+    "startDate": "2026-03-02",
+    "endDate": "2026-03-19",
+    "updatedAt": "2026-03-15T15:00:00Z",
+    "tags": [
+      "performance",
+      "culture",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0013",
+    "name": "Summer — Pricing change #013",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 50000,
+    "spent": 18557.48,
+    "impressions": 348011,
+    "clicks": 15490,
+    "ctr": 0.0445,
+    "startDate": "2026-02-09",
+    "endDate": "2026-02-28",
+    "updatedAt": "2026-02-18T06:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0014",
+    "name": "Announcement — APAC rollout #014",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 50000,
+    "spent": 43680.75,
+    "impressions": 43001,
+    "clicks": 2228,
+    "ctr": 0.0518,
+    "startDate": "2026-01-18",
+    "endDate": "2026-03-04",
+    "updatedAt": "2026-01-20T21:00:00Z",
+    "tags": [
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0015",
+    "name": "Winter — Beta program #015",
+    "status": "paused",
+    "channel": "email",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 2500,
+    "spent": 1333.67,
+    "impressions": 108090,
+    "clicks": 4521,
+    "ctr": 0.0418,
+    "startDate": "2026-03-22",
+    "endDate": "2026-04-13",
+    "updatedAt": "2026-03-30T12:00:00Z",
+    "tags": [
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0016",
+    "name": "Upsell — Case study drop #016",
+    "status": "archived",
+    "channel": "email",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 50000,
+    "spent": 45376.34,
+    "impressions": 266229,
+    "clicks": 5214,
+    "ctr": 0.0196,
+    "startDate": "2026-03-31",
+    "endDate": "2026-04-11",
+    "updatedAt": "2026-04-28T07:00:00Z",
+    "tags": [
+      "accessibility",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0017",
+    "name": "Upsell — Webinar series #017",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 10000,
+    "spent": 9817.19,
+    "impressions": 467465,
+    "clicks": 5089,
+    "ctr": 0.0109,
+    "startDate": "2026-05-22",
+    "endDate": "2026-06-07",
+    "updatedAt": "2026-05-30T09:00:00Z",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0018",
+    "name": "Launch — GA release #018",
+    "status": "paused",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 2500,
+    "spent": 1579.35,
+    "impressions": 69587,
+    "clicks": 2786,
+    "ctr": 0.04,
+    "startDate": "2026-03-09",
+    "endDate": "2026-03-26",
+    "updatedAt": "2026-04-01T14:00:00Z",
+    "tags": [
+      "engineering",
+      "tutorials",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0019",
+    "name": "Holiday — APAC rollout #019",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 5000,
+    "spent": 4523.49,
+    "impressions": 452256,
+    "clicks": 3253,
+    "ctr": 0.0072,
+    "startDate": "2026-04-02",
+    "endDate": "2026-04-22",
+    "updatedAt": "2026-04-23T07:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0020",
+    "name": "Upgrade — Customer survey #020",
+    "status": "archived",
+    "channel": "sms",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 5000,
+    "spent": 4024.79,
+    "impressions": 387171,
+    "clicks": 21622,
+    "ctr": 0.0558,
+    "startDate": "2026-04-16",
+    "endDate": "2026-06-13",
+    "updatedAt": "2026-05-07T23:00:00Z",
+    "tags": [
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0021",
+    "name": "New Year — Enterprise tier #021",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 7500,
+    "spent": 2398.08,
+    "impressions": 457824,
+    "clicks": 8020,
+    "ctr": 0.0175,
+    "startDate": "2026-01-07",
+    "endDate": "2026-02-25",
+    "updatedAt": "2026-01-13T12:00:00Z",
+    "tags": [
+      "accessibility",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0022",
+    "name": "Autumn — GA release #022",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 15000,
+    "spent": 11453.13,
+    "impressions": 140180,
+    "clicks": 995,
+    "ctr": 0.0071,
+    "startDate": "2026-04-22",
+    "endDate": "2026-05-21",
+    "updatedAt": "2026-05-15T10:00:00Z",
+    "tags": [
+      "design",
+      "performance",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0023",
+    "name": "Launch — GA release #023",
+    "status": "draft",
+    "channel": "social",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 7500,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-03-22",
+    "endDate": "2026-05-10",
+    "updatedAt": "2026-04-18T03:00:00Z",
+    "tags": [
+      "accessibility",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0024",
+    "name": "Cross-sell — Case study drop #024",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 5000,
+    "spent": 1575.52,
+    "impressions": 92240,
+    "clicks": 3583,
+    "ctr": 0.0388,
+    "startDate": "2026-03-19",
+    "endDate": "2026-04-20",
+    "updatedAt": "2026-04-05T00:00:00Z",
+    "tags": [
+      "accessibility",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0025",
+    "name": "Cross-sell — Case study drop #025",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 7500,
+    "spent": 3800.28,
+    "impressions": 346427,
+    "clicks": 3347,
+    "ctr": 0.0097,
+    "startDate": "2026-05-12",
+    "endDate": "2026-06-30",
+    "updatedAt": "2026-06-01T19:00:00Z",
+    "tags": [
+      "design",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0026",
+    "name": "Re-engagement — Webinar series #026",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 1000,
+    "spent": 227.73,
+    "impressions": 239769,
+    "clicks": 6664,
+    "ctr": 0.0278,
+    "startDate": "2026-05-28",
+    "endDate": "2026-06-16",
+    "updatedAt": "2026-06-19T22:00:00Z",
+    "tags": [
+      "tutorials",
+      "performance",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0027",
+    "name": "Holiday — EU rollout #027",
+    "status": "archived",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 7500,
+    "spent": 6075.33,
+    "impressions": 131651,
+    "clicks": 7301,
+    "ctr": 0.0555,
+    "startDate": "2026-02-01",
+    "endDate": "2026-03-09",
+    "updatedAt": "2026-02-05T14:00:00Z",
+    "tags": [
+      "tutorials",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0028",
+    "name": "Retention — Customer survey #028",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 5000,
+    "spent": 4444.39,
+    "impressions": 335318,
+    "clicks": 6790,
+    "ctr": 0.0202,
+    "startDate": "2026-05-14",
+    "endDate": "2026-06-21",
+    "updatedAt": "2026-06-03T07:00:00Z",
+    "tags": [
+      "tutorials",
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0029",
+    "name": "Onboarding — Beta program #029",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 2500,
+    "spent": 707.56,
+    "impressions": 34674,
+    "clicks": 964,
+    "ctr": 0.0278,
+    "startDate": "2026-03-26",
+    "endDate": "2026-05-06",
+    "updatedAt": "2026-04-09T13:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0030",
+    "name": "Launch — Customer survey #030",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 1000,
+    "spent": 714.04,
+    "impressions": 185422,
+    "clicks": 3972,
+    "ctr": 0.0214,
+    "startDate": "2026-04-10",
+    "endDate": "2026-06-09",
+    "updatedAt": "2026-04-23T17:00:00Z",
+    "tags": [
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0031",
+    "name": "Re-engagement — GA release #031",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 15000,
+    "spent": 9019.86,
+    "impressions": 483104,
+    "clicks": 5806,
+    "ctr": 0.012,
+    "startDate": "2026-05-17",
+    "endDate": "2026-05-25",
+    "updatedAt": "2026-06-15T12:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0032",
+    "name": "Autumn — Customer survey #032",
+    "status": "scheduled",
+    "channel": "social",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 1000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-04-08",
+    "endDate": "2026-05-02",
+    "updatedAt": "2026-05-02T13:00:00Z",
+    "tags": [
+      "design",
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0033",
+    "name": "Spring — APAC rollout #033",
+    "status": "archived",
+    "channel": "web",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 2500,
+    "spent": 2474.81,
+    "impressions": 105522,
+    "clicks": 5398,
+    "ctr": 0.0512,
+    "startDate": "2026-02-09",
+    "endDate": "2026-03-03",
+    "updatedAt": "2026-02-13T15:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0034",
+    "name": "Launch — NPS push #034",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 2500,
+    "spent": 2241.64,
+    "impressions": 488004,
+    "clicks": 10813,
+    "ctr": 0.0222,
+    "startDate": "2026-04-07",
+    "endDate": "2026-05-09",
+    "updatedAt": "2026-05-07T22:00:00Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0035",
+    "name": "Re-engagement — Enterprise tier #035",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 2500,
+    "spent": 2140.4,
+    "impressions": 347827,
+    "clicks": 8828,
+    "ctr": 0.0254,
+    "startDate": "2026-05-10",
+    "endDate": "2026-06-27",
+    "updatedAt": "2026-05-20T00:00:00Z",
+    "tags": [
+      "tutorials",
+      "engineering",
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0036",
+    "name": "Upgrade — NPS push #036",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 10000,
+    "spent": 9661.96,
+    "impressions": 433922,
+    "clicks": 19616,
+    "ctr": 0.0452,
+    "startDate": "2026-03-10",
+    "endDate": "2026-04-06",
+    "updatedAt": "2026-04-06T07:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0037",
+    "name": "Win-back — NPS push #037",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 25000,
+    "spent": 10045.95,
+    "impressions": 187030,
+    "clicks": 9142,
+    "ctr": 0.0489,
+    "startDate": "2026-03-29",
+    "endDate": "2026-04-22",
+    "updatedAt": "2026-04-26T19:00:00Z",
+    "tags": [
+      "engineering",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0038",
+    "name": "Launch — US rollout #038",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 7500,
+    "spent": 4607.74,
+    "impressions": 49786,
+    "clicks": 1054,
+    "ctr": 0.0212,
+    "startDate": "2026-04-14",
+    "endDate": "2026-06-04",
+    "updatedAt": "2026-04-21T09:00:00Z",
+    "tags": [
+      "tutorials",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0039",
+    "name": "Retention — Whitepaper #039",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 15000,
+    "spent": 9325.69,
+    "impressions": 101969,
+    "clicks": 2279,
+    "ctr": 0.0223,
+    "startDate": "2026-05-18",
+    "endDate": "2026-07-12",
+    "updatedAt": "2026-06-09T05:00:00Z",
+    "tags": [
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0040",
+    "name": "Reactivation — GA release #040",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 10000,
+    "spent": 8944.37,
+    "impressions": 159475,
+    "clicks": 921,
+    "ctr": 0.0058,
+    "startDate": "2026-05-17",
+    "endDate": "2026-06-01",
+    "updatedAt": "2026-05-25T01:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0041",
+    "name": "Announcement — Webinar series #041",
+    "status": "completed",
+    "channel": "sms",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 50000,
+    "spent": 44632.54,
+    "impressions": 179628,
+    "clicks": 2719,
+    "ctr": 0.0151,
+    "startDate": "2026-01-14",
+    "endDate": "2026-02-06",
+    "updatedAt": "2026-02-13T15:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0042",
+    "name": "Autumn — Product update #042",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 1000,
+    "spent": 291.04,
+    "impressions": 131123,
+    "clicks": 1509,
+    "ctr": 0.0115,
+    "startDate": "2026-04-17",
+    "endDate": "2026-06-01",
+    "updatedAt": "2026-05-06T19:00:00Z",
+    "tags": [
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0043",
+    "name": "Upsell — NPS push #043",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 10000,
+    "spent": 5411.78,
+    "impressions": 400893,
+    "clicks": 6586,
+    "ctr": 0.0164,
+    "startDate": "2026-02-24",
+    "endDate": "2026-03-19",
+    "updatedAt": "2026-03-17T02:00:00Z",
+    "tags": [
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0044",
+    "name": "New Year — US rollout #044",
+    "status": "scheduled",
+    "channel": "social",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 50000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-04-27",
+    "endDate": "2026-05-08",
+    "updatedAt": "2026-05-18T07:00:00Z",
+    "tags": [
+      "performance",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0045",
+    "name": "Winter — Beta program #045",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 2500,
+    "spent": 2348.14,
+    "impressions": 483970,
+    "clicks": 10102,
+    "ctr": 0.0209,
+    "startDate": "2026-02-01",
+    "endDate": "2026-03-09",
+    "updatedAt": "2026-02-23T09:00:00Z",
+    "tags": [
+      "accessibility",
+      "tutorials",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0046",
+    "name": "Reactivation — NPS push #046",
+    "status": "draft",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 15000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-28",
+    "endDate": "2026-07-11",
+    "updatedAt": "2026-06-27T00:00:00Z",
+    "tags": [
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0047",
+    "name": "New Year — Lifecycle nudge #047",
+    "status": "paused",
+    "channel": "social",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 5000,
+    "spent": 2371.77,
+    "impressions": 247420,
+    "clicks": 5972,
+    "ctr": 0.0241,
+    "startDate": "2026-03-27",
+    "endDate": "2026-04-23",
+    "updatedAt": "2026-04-17T03:00:00Z",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0048",
+    "name": "Cross-sell — Lifecycle nudge #048",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 1000,
+    "spent": 472.9,
+    "impressions": 212904,
+    "clicks": 11192,
+    "ctr": 0.0526,
+    "startDate": "2026-01-01",
+    "endDate": "2026-02-19",
+    "updatedAt": "2026-01-28T17:00:00Z",
+    "tags": [
+      "culture",
+      "engineering",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0049",
+    "name": "Retention — Whitepaper #049",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 50000,
+    "spent": 46619.15,
+    "impressions": 230699,
+    "clicks": 12330,
+    "ctr": 0.0534,
+    "startDate": "2026-05-05",
+    "endDate": "2026-05-19",
+    "updatedAt": "2026-05-05T20:00:00Z",
+    "tags": [
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0050",
+    "name": "Onboarding — EU rollout #050",
+    "status": "paused",
+    "channel": "email",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 2500,
+    "spent": 867.47,
+    "impressions": 376706,
+    "clicks": 7930,
+    "ctr": 0.0211,
+    "startDate": "2026-03-11",
+    "endDate": "2026-04-13",
+    "updatedAt": "2026-04-06T15:00:00Z",
+    "tags": [
+      "performance",
+      "tutorials",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0051",
+    "name": "Holiday — Product update #051",
+    "status": "scheduled",
+    "channel": "push",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 5000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-10",
+    "endDate": "2026-06-03",
+    "updatedAt": "2026-06-05T00:00:00Z",
+    "tags": [
+      "accessibility",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0052",
+    "name": "Reactivation — SMB tier #052",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 15000,
+    "spent": 7967.26,
+    "impressions": 99908,
+    "clicks": 5888,
+    "ctr": 0.0589,
+    "startDate": "2026-03-03",
+    "endDate": "2026-04-15",
+    "updatedAt": "2026-03-15T07:00:00Z",
+    "tags": [
+      "engineering",
+      "product",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0053",
+    "name": "Reactivation — Product update #053",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 1000,
+    "spent": 275.75,
+    "impressions": 444044,
+    "clicks": 12973,
+    "ctr": 0.0292,
+    "startDate": "2026-05-15",
+    "endDate": "2026-06-20",
+    "updatedAt": "2026-05-15T23:00:00Z",
+    "tags": [
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0054",
+    "name": "Holiday — US rollout #054",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 25000,
+    "spent": 14747.55,
+    "impressions": 200234,
+    "clicks": 11508,
+    "ctr": 0.0575,
+    "startDate": "2026-05-05",
+    "endDate": "2026-06-15",
+    "updatedAt": "2026-05-06T19:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0055",
+    "name": "Re-engagement — Webinar series #055",
+    "status": "archived",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 2500,
+    "spent": 2083.18,
+    "impressions": 158006,
+    "clicks": 8641,
+    "ctr": 0.0547,
+    "startDate": "2026-01-12",
+    "endDate": "2026-02-08",
+    "updatedAt": "2026-02-06T01:00:00Z",
+    "tags": [
+      "ai",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0056",
+    "name": "Cross-sell — SMB tier #056",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 5000,
+    "spent": 1509.95,
+    "impressions": 127264,
+    "clicks": 4119,
+    "ctr": 0.0324,
+    "startDate": "2026-05-30",
+    "endDate": "2026-06-15",
+    "updatedAt": "2026-06-06T14:00:00Z",
+    "tags": [
+      "tutorials",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0057",
+    "name": "Spring — NPS push #057",
+    "status": "archived",
+    "channel": "push",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 2500,
+    "spent": 2319.47,
+    "impressions": 223460,
+    "clicks": 9601,
+    "ctr": 0.043,
+    "startDate": "2026-04-27",
+    "endDate": "2026-05-23",
+    "updatedAt": "2026-05-03T12:00:00Z",
+    "tags": [
+      "design",
+      "tutorials",
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0058",
+    "name": "Upgrade — Webinar series #058",
+    "status": "archived",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 25000,
+    "spent": 23723.34,
+    "impressions": 26713,
+    "clicks": 1471,
+    "ctr": 0.0551,
+    "startDate": "2026-05-08",
+    "endDate": "2026-07-07",
+    "updatedAt": "2026-06-05T09:00:00Z",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0059",
+    "name": "Re-engagement — Feature launch #059",
+    "status": "completed",
+    "channel": "sms",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 2500,
+    "spent": 2240.85,
+    "impressions": 304863,
+    "clicks": 7642,
+    "ctr": 0.0251,
+    "startDate": "2026-02-03",
+    "endDate": "2026-02-15",
+    "updatedAt": "2026-03-04T09:00:00Z",
+    "tags": [
+      "culture",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0060",
+    "name": "Launch — SMB tier #060",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 10000,
+    "spent": 9737.03,
+    "impressions": 423832,
+    "clicks": 8999,
+    "ctr": 0.0212,
+    "startDate": "2026-03-28",
+    "endDate": "2026-05-25",
+    "updatedAt": "2026-03-31T14:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0061",
+    "name": "Holiday — Beta program #061",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 15000,
+    "spent": 13345.03,
+    "impressions": 194245,
+    "clicks": 8159,
+    "ctr": 0.042,
+    "startDate": "2026-03-09",
+    "endDate": "2026-04-22",
+    "updatedAt": "2026-03-21T20:00:00Z",
+    "tags": [
+      "design",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0062",
+    "name": "Re-engagement — Lifecycle nudge #062",
+    "status": "draft",
+    "channel": "push",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 7500,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-04-15",
+    "endDate": "2026-04-29",
+    "updatedAt": "2026-04-19T01:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0063",
+    "name": "Onboarding — Lifecycle nudge #063",
+    "status": "draft",
+    "channel": "sms",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 5000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-19",
+    "endDate": "2026-06-21",
+    "updatedAt": "2026-06-06T23:00:00Z",
+    "tags": [
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0064",
+    "name": "Winter — Lifecycle nudge #064",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 15000,
+    "spent": 13281.25,
+    "impressions": 360493,
+    "clicks": 9085,
+    "ctr": 0.0252,
+    "startDate": "2026-04-02",
+    "endDate": "2026-04-12",
+    "updatedAt": "2026-04-14T08:00:00Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0065",
+    "name": "Upsell — US rollout #065",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 1000,
+    "spent": 868.89,
+    "impressions": 36971,
+    "clicks": 1872,
+    "ctr": 0.0506,
+    "startDate": "2026-05-22",
+    "endDate": "2026-06-11",
+    "updatedAt": "2026-06-09T06:00:00Z",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0066",
+    "name": "Holiday — EU rollout #066",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 10000,
+    "spent": 6791.08,
+    "impressions": 188822,
+    "clicks": 9148,
+    "ctr": 0.0484,
+    "startDate": "2026-03-02",
+    "endDate": "2026-04-15",
+    "updatedAt": "2026-03-12T00:00:00Z",
+    "tags": [
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0067",
+    "name": "Summer — SMB tier #067",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 2500,
+    "spent": 2317.46,
+    "impressions": 265156,
+    "clicks": 4556,
+    "ctr": 0.0172,
+    "startDate": "2026-01-12",
+    "endDate": "2026-03-06",
+    "updatedAt": "2026-02-06T21:00:00Z",
+    "tags": [
+      "tutorials",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0068",
+    "name": "Spring — APAC rollout #068",
+    "status": "archived",
+    "channel": "social",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 2500,
+    "spent": 2040.4,
+    "impressions": 319923,
+    "clicks": 4209,
+    "ctr": 0.0132,
+    "startDate": "2026-02-02",
+    "endDate": "2026-02-26",
+    "updatedAt": "2026-02-21T20:00:00Z",
+    "tags": [
+      "culture",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0069",
+    "name": "Retention — Webinar series #069",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 2500,
+    "spent": 1689.64,
+    "impressions": 290058,
+    "clicks": 12949,
+    "ctr": 0.0446,
+    "startDate": "2026-02-25",
+    "endDate": "2026-03-31",
+    "updatedAt": "2026-03-11T07:00:00Z",
+    "tags": [
+      "ai",
+      "culture",
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0070",
+    "name": "Referral — Customer survey #070",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 15000,
+    "spent": 13093.44,
+    "impressions": 36197,
+    "clicks": 362,
+    "ctr": 0.01,
+    "startDate": "2026-01-22",
+    "endDate": "2026-02-03",
+    "updatedAt": "2026-02-04T03:00:00Z",
+    "tags": [
+      "product",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0071",
+    "name": "Summer — Case study drop #071",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 25000,
+    "spent": 24881.49,
+    "impressions": 185363,
+    "clicks": 1983,
+    "ctr": 0.0107,
+    "startDate": "2026-05-10",
+    "endDate": "2026-05-30",
+    "updatedAt": "2026-05-14T21:00:00Z",
+    "tags": [
+      "performance",
+      "culture",
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0072",
+    "name": "Upgrade — Whitepaper #072",
+    "status": "draft",
+    "channel": "web",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 7500,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-23",
+    "endDate": "2026-05-31",
+    "updatedAt": "2026-06-11T21:00:00Z",
+    "tags": [
+      "engineering",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0073",
+    "name": "Win-back — Webinar series #073",
+    "status": "archived",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 5000,
+    "spent": 4141.87,
+    "impressions": 332964,
+    "clicks": 19461,
+    "ctr": 0.0584,
+    "startDate": "2026-01-24",
+    "endDate": "2026-03-19",
+    "updatedAt": "2026-02-09T06:00:00Z",
+    "tags": [
+      "culture",
+      "performance",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0074",
+    "name": "New Year — Whitepaper #074",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 2500,
+    "spent": 1825.01,
+    "impressions": 43772,
+    "clicks": 873,
+    "ctr": 0.0199,
+    "startDate": "2026-04-19",
+    "endDate": "2026-05-27",
+    "updatedAt": "2026-05-08T14:00:00Z",
+    "tags": [
+      "accessibility",
+      "design",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0075",
+    "name": "Winter — Whitepaper #075",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 50000,
+    "spent": 25808.02,
+    "impressions": 29721,
+    "clicks": 161,
+    "ctr": 0.0054,
+    "startDate": "2026-03-19",
+    "endDate": "2026-04-08",
+    "updatedAt": "2026-04-12T04:00:00Z",
+    "tags": [
+      "accessibility",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0076",
+    "name": "Winter — EU rollout #076",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 5000,
+    "spent": 2140.62,
+    "impressions": 423681,
+    "clicks": 10371,
+    "ctr": 0.0245,
+    "startDate": "2026-04-12",
+    "endDate": "2026-06-05",
+    "updatedAt": "2026-04-13T13:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0077",
+    "name": "Upsell — US rollout #077",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 25000,
+    "spent": 21681.9,
+    "impressions": 171272,
+    "clicks": 2475,
+    "ctr": 0.0145,
+    "startDate": "2026-04-28",
+    "endDate": "2026-06-27",
+    "updatedAt": "2026-05-20T11:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0078",
+    "name": "Cross-sell — Enterprise tier #078",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 2500,
+    "spent": 1093.65,
+    "impressions": 89149,
+    "clicks": 820,
+    "ctr": 0.0092,
+    "startDate": "2026-01-30",
+    "endDate": "2026-03-11",
+    "updatedAt": "2026-02-15T06:00:00Z",
+    "tags": [
+      "ai",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0079",
+    "name": "Holiday — Beta program #079",
+    "status": "draft",
+    "channel": "web",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 5000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-07",
+    "endDate": "2026-06-12",
+    "updatedAt": "2026-05-31T18:00:00Z",
+    "tags": [
+      "ai",
+      "culture",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0080",
+    "name": "Trial — SMB tier #080",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 10000,
+    "spent": 6777.98,
+    "impressions": 243086,
+    "clicks": 7257,
+    "ctr": 0.0299,
+    "startDate": "2026-01-15",
+    "endDate": "2026-02-14",
+    "updatedAt": "2026-02-10T09:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0081",
+    "name": "Autumn — Cart abandonment #081",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 1000,
+    "spent": 469.84,
+    "impressions": 250366,
+    "clicks": 8155,
+    "ctr": 0.0326,
+    "startDate": "2026-01-16",
+    "endDate": "2026-02-20",
+    "updatedAt": "2026-01-19T10:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0082",
+    "name": "Retention — Pricing change #082",
+    "status": "draft",
+    "channel": "social",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 5000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-01-14",
+    "endDate": "2026-03-12",
+    "updatedAt": "2026-02-03T20:00:00Z",
+    "tags": [
+      "design",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0083",
+    "name": "Winter — Product update #083",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 15000,
+    "spent": 3733.52,
+    "impressions": 344961,
+    "clicks": 14976,
+    "ctr": 0.0434,
+    "startDate": "2026-04-11",
+    "endDate": "2026-04-26",
+    "updatedAt": "2026-04-30T22:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0084",
+    "name": "Onboarding — Product update #084",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 2500,
+    "spent": 2260.69,
+    "impressions": 95509,
+    "clicks": 5474,
+    "ctr": 0.0573,
+    "startDate": "2026-03-29",
+    "endDate": "2026-05-24",
+    "updatedAt": "2026-04-13T06:00:00Z",
+    "tags": [
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0085",
+    "name": "Holiday — US rollout #085",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 1000,
+    "spent": 597.16,
+    "impressions": 81872,
+    "clicks": 1139,
+    "ctr": 0.0139,
+    "startDate": "2026-02-12",
+    "endDate": "2026-04-06",
+    "updatedAt": "2026-02-26T01:00:00Z",
+    "tags": [
+      "ai",
+      "tutorials",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0086",
+    "name": "Re-engagement — NPS push #086",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 7500,
+    "spent": 6902.64,
+    "impressions": 193854,
+    "clicks": 8201,
+    "ctr": 0.0423,
+    "startDate": "2026-05-27",
+    "endDate": "2026-07-01",
+    "updatedAt": "2026-06-10T09:00:00Z",
+    "tags": [
+      "culture",
+      "design",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0087",
+    "name": "Holiday — GA release #087",
+    "status": "draft",
+    "channel": "social",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 2500,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-02-11",
+    "endDate": "2026-03-07",
+    "updatedAt": "2026-02-25T16:00:00Z",
+    "tags": [
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0088",
+    "name": "Autumn — Beta program #088",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 25000,
+    "spent": 22134.17,
+    "impressions": 197562,
+    "clicks": 3427,
+    "ctr": 0.0173,
+    "startDate": "2026-03-23",
+    "endDate": "2026-04-05",
+    "updatedAt": "2026-04-18T22:00:00Z",
+    "tags": [
+      "product",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0089",
+    "name": "Summer — Webinar series #089",
+    "status": "archived",
+    "channel": "social",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 5000,
+    "spent": 4905.86,
+    "impressions": 10963,
+    "clicks": 209,
+    "ctr": 0.0191,
+    "startDate": "2026-02-08",
+    "endDate": "2026-03-22",
+    "updatedAt": "2026-03-10T23:00:00Z",
+    "tags": [
+      "design",
+      "culture",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0090",
+    "name": "Re-engagement — Webinar series #090",
+    "status": "scheduled",
+    "channel": "sms",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 50000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-12",
+    "endDate": "2026-06-24",
+    "updatedAt": "2026-05-19T22:00:00Z",
+    "tags": [
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0091",
+    "name": "Cross-sell — EU rollout #091",
+    "status": "completed",
+    "channel": "sms",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 25000,
+    "spent": 23213.07,
+    "impressions": 276806,
+    "clicks": 9667,
+    "ctr": 0.0349,
+    "startDate": "2026-05-10",
+    "endDate": "2026-06-21",
+    "updatedAt": "2026-05-10T12:00:00Z",
+    "tags": [
+      "engineering",
+      "ai",
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0092",
+    "name": "Upgrade — GA release #092",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 15000,
+    "spent": 12983.24,
+    "impressions": 397717,
+    "clicks": 9262,
+    "ctr": 0.0233,
+    "startDate": "2026-01-12",
+    "endDate": "2026-02-10",
+    "updatedAt": "2026-01-29T10:00:00Z",
+    "tags": [
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0093",
+    "name": "Reactivation — Pricing change #093",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 50000,
+    "spent": 48433.32,
+    "impressions": 166463,
+    "clicks": 9377,
+    "ctr": 0.0563,
+    "startDate": "2026-05-12",
+    "endDate": "2026-06-13",
+    "updatedAt": "2026-06-07T17:00:00Z",
+    "tags": [
+      "accessibility",
+      "engineering",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0094",
+    "name": "Launch — Webinar series #094",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 15000,
+    "spent": 5458.95,
+    "impressions": 231548,
+    "clicks": 12551,
+    "ctr": 0.0542,
+    "startDate": "2026-04-09",
+    "endDate": "2026-05-07",
+    "updatedAt": "2026-04-14T15:00:00Z",
+    "tags": [
+      "ai",
+      "culture",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0095",
+    "name": "Win-back — US rollout #095",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 5000,
+    "spent": 4310.05,
+    "impressions": 161692,
+    "clicks": 4774,
+    "ctr": 0.0295,
+    "startDate": "2026-04-20",
+    "endDate": "2026-05-07",
+    "updatedAt": "2026-05-12T14:00:00Z",
+    "tags": [
+      "tutorials",
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0096",
+    "name": "Upgrade — Customer survey #096",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 25000,
+    "spent": 10449.67,
+    "impressions": 75857,
+    "clicks": 3920,
+    "ctr": 0.0517,
+    "startDate": "2026-04-23",
+    "endDate": "2026-05-02",
+    "updatedAt": "2026-04-27T02:00:00Z",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0097",
+    "name": "Upgrade — Product update #097",
+    "status": "archived",
+    "channel": "email",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 5000,
+    "spent": 4763.08,
+    "impressions": 301900,
+    "clicks": 3795,
+    "ctr": 0.0126,
+    "startDate": "2026-04-04",
+    "endDate": "2026-05-06",
+    "updatedAt": "2026-04-14T20:00:00Z",
+    "tags": [
+      "performance",
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0098",
+    "name": "Spring — Pricing change #098",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 2500,
+    "spent": 892.67,
+    "impressions": 150724,
+    "clicks": 6506,
+    "ctr": 0.0432,
+    "startDate": "2026-05-06",
+    "endDate": "2026-05-25",
+    "updatedAt": "2026-05-09T04:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0099",
+    "name": "Upsell — Pricing change #099",
+    "status": "archived",
+    "channel": "social",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 15000,
+    "spent": 12871.09,
+    "impressions": 158263,
+    "clicks": 8201,
+    "ctr": 0.0518,
+    "startDate": "2026-02-14",
+    "endDate": "2026-04-12",
+    "updatedAt": "2026-02-25T16:00:00Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0100",
+    "name": "Launch — SMB tier #100",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 15000,
+    "spent": 7986.19,
+    "impressions": 321837,
+    "clicks": 17261,
+    "ctr": 0.0536,
+    "startDate": "2026-01-17",
+    "endDate": "2026-02-12",
+    "updatedAt": "2026-01-29T22:00:00Z",
+    "tags": [
+      "culture",
+      "tutorials",
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0101",
+    "name": "Autumn — SMB tier #101",
+    "status": "archived",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 50000,
+    "spent": 47802.63,
+    "impressions": 336436,
+    "clicks": 12558,
+    "ctr": 0.0373,
+    "startDate": "2026-02-03",
+    "endDate": "2026-03-09",
+    "updatedAt": "2026-02-19T01:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0102",
+    "name": "Retention — SMB tier #102",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 7500,
+    "spent": 3057.1,
+    "impressions": 132389,
+    "clicks": 2091,
+    "ctr": 0.0158,
+    "startDate": "2026-05-22",
+    "endDate": "2026-06-15",
+    "updatedAt": "2026-05-26T20:00:00Z",
+    "tags": [
+      "design",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0103",
+    "name": "New Year — SMB tier #103",
+    "status": "scheduled",
+    "channel": "push",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 15000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-01-12",
+    "endDate": "2026-03-01",
+    "updatedAt": "2026-02-05T18:00:00Z",
+    "tags": [
+      "performance",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0104",
+    "name": "Cross-sell — EU rollout #104",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 10000,
+    "spent": 4897.67,
+    "impressions": 39258,
+    "clicks": 1683,
+    "ctr": 0.0429,
+    "startDate": "2026-02-10",
+    "endDate": "2026-03-17",
+    "updatedAt": "2026-02-23T15:00:00Z",
+    "tags": [
+      "performance",
+      "product",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0105",
+    "name": "Holiday — Case study drop #105",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 15000,
+    "spent": 13583.72,
+    "impressions": 168308,
+    "clicks": 3079,
+    "ctr": 0.0183,
+    "startDate": "2026-02-01",
+    "endDate": "2026-02-25",
+    "updatedAt": "2026-02-15T07:00:00Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0106",
+    "name": "Summer — Webinar series #106",
+    "status": "archived",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 7500,
+    "spent": 7400.63,
+    "impressions": 379078,
+    "clicks": 8415,
+    "ctr": 0.0222,
+    "startDate": "2026-02-10",
+    "endDate": "2026-03-20",
+    "updatedAt": "2026-02-26T14:00:00Z",
+    "tags": [
+      "accessibility",
+      "performance",
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0107",
+    "name": "Autumn — Product update #107",
+    "status": "paused",
+    "channel": "sms",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 15000,
+    "spent": 6188.14,
+    "impressions": 353594,
+    "clicks": 10919,
+    "ctr": 0.0309,
+    "startDate": "2026-05-18",
+    "endDate": "2026-05-25",
+    "updatedAt": "2026-06-14T03:00:00Z",
+    "tags": [
+      "product",
+      "tutorials",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0108",
+    "name": "Upgrade — Product update #108",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 7500,
+    "spent": 3131.36,
+    "impressions": 289283,
+    "clicks": 5896,
+    "ctr": 0.0204,
+    "startDate": "2026-01-31",
+    "endDate": "2026-02-15",
+    "updatedAt": "2026-02-03T12:00:00Z",
+    "tags": [
+      "ai",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0109",
+    "name": "Upgrade — SMB tier #109",
+    "status": "scheduled",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 1000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-04-27",
+    "endDate": "2026-05-13",
+    "updatedAt": "2026-05-16T16:00:00Z",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0110",
+    "name": "Trial — Pricing change #110",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 10000,
+    "spent": 5562.35,
+    "impressions": 296134,
+    "clicks": 6363,
+    "ctr": 0.0215,
+    "startDate": "2026-01-05",
+    "endDate": "2026-02-04",
+    "updatedAt": "2026-01-15T21:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0111",
+    "name": "Cross-sell — Webinar series #111",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 50000,
+    "spent": 49790.43,
+    "impressions": 120298,
+    "clicks": 5374,
+    "ctr": 0.0447,
+    "startDate": "2026-05-30",
+    "endDate": "2026-07-06",
+    "updatedAt": "2026-06-04T16:00:00Z",
+    "tags": [
+      "product",
+      "culture",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0112",
+    "name": "Re-engagement — APAC rollout #112",
+    "status": "paused",
+    "channel": "email",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 1000,
+    "spent": 467.51,
+    "impressions": 264097,
+    "clicks": 12577,
+    "ctr": 0.0476,
+    "startDate": "2026-05-01",
+    "endDate": "2026-06-24",
+    "updatedAt": "2026-05-24T01:00:00Z",
+    "tags": [
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0113",
+    "name": "Announcement — Case study drop #113",
+    "status": "archived",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 25000,
+    "spent": 21711.64,
+    "impressions": 186748,
+    "clicks": 7875,
+    "ctr": 0.0422,
+    "startDate": "2026-03-09",
+    "endDate": "2026-04-24",
+    "updatedAt": "2026-03-24T06:00:00Z",
+    "tags": [
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0114",
+    "name": "Announcement — Webinar series #114",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 7500,
+    "spent": 4606.08,
+    "impressions": 490939,
+    "clicks": 23931,
+    "ctr": 0.0487,
+    "startDate": "2026-03-12",
+    "endDate": "2026-04-06",
+    "updatedAt": "2026-03-15T18:00:00Z",
+    "tags": [
+      "culture",
+      "tutorials",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0115",
+    "name": "Holiday — Webinar series #115",
+    "status": "draft",
+    "channel": "email",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 50000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-03-11",
+    "endDate": "2026-04-22",
+    "updatedAt": "2026-04-02T08:00:00Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0116",
+    "name": "Re-engagement — Beta program #116",
+    "status": "draft",
+    "channel": "push",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 7500,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-02-05",
+    "endDate": "2026-02-12",
+    "updatedAt": "2026-03-07T17:00:00Z",
+    "tags": [
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0117",
+    "name": "Reactivation — Lifecycle nudge #117",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 10000,
+    "spent": 8634.19,
+    "impressions": 281573,
+    "clicks": 12847,
+    "ctr": 0.0456,
+    "startDate": "2026-01-10",
+    "endDate": "2026-01-28",
+    "updatedAt": "2026-01-23T05:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0118",
+    "name": "Referral — Lifecycle nudge #118",
+    "status": "scheduled",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 1000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-04-27",
+    "endDate": "2026-06-14",
+    "updatedAt": "2026-05-14T16:00:00Z",
+    "tags": [
+      "product",
+      "culture",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0119",
+    "name": "Upsell — GA release #119",
+    "status": "scheduled",
+    "channel": "email",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 5000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-03-28",
+    "endDate": "2026-05-24",
+    "updatedAt": "2026-04-06T18:00:00Z",
+    "tags": [
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0120",
+    "name": "Referral — Customer survey #120",
+    "status": "paused",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 2500,
+    "spent": 890.61,
+    "impressions": 137726,
+    "clicks": 3594,
+    "ctr": 0.0261,
+    "startDate": "2026-04-25",
+    "endDate": "2026-06-19",
+    "updatedAt": "2026-05-03T10:00:00Z",
+    "tags": [
+      "engineering",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0121",
+    "name": "Upgrade — Beta program #121",
+    "status": "draft",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 10000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-03-21",
+    "endDate": "2026-05-11",
+    "updatedAt": "2026-03-24T20:00:00Z",
+    "tags": [
+      "ai",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0122",
+    "name": "Re-engagement — Beta program #122",
+    "status": "archived",
+    "channel": "social",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 50000,
+    "spent": 45492.35,
+    "impressions": 247849,
+    "clicks": 11563,
+    "ctr": 0.0467,
+    "startDate": "2026-02-25",
+    "endDate": "2026-04-21",
+    "updatedAt": "2026-03-04T21:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0123",
+    "name": "Retention — NPS push #123",
+    "status": "paused",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 2500,
+    "spent": 1297.65,
+    "impressions": 79565,
+    "clicks": 1117,
+    "ctr": 0.014,
+    "startDate": "2026-05-14",
+    "endDate": "2026-06-18",
+    "updatedAt": "2026-05-17T21:00:00Z",
+    "tags": [
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0124",
+    "name": "Autumn — Cart abandonment #124",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 5000,
+    "spent": 2539.74,
+    "impressions": 424056,
+    "clicks": 9307,
+    "ctr": 0.0219,
+    "startDate": "2026-01-06",
+    "endDate": "2026-02-07",
+    "updatedAt": "2026-01-14T00:00:00Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0125",
+    "name": "Summer — Customer survey #125",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 1000,
+    "spent": 760.75,
+    "impressions": 215364,
+    "clicks": 3208,
+    "ctr": 0.0149,
+    "startDate": "2026-02-04",
+    "endDate": "2026-04-01",
+    "updatedAt": "2026-02-24T23:00:00Z",
+    "tags": [
+      "ai",
+      "performance",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0126",
+    "name": "Referral — Product update #126",
+    "status": "draft",
+    "channel": "push",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 15000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-02-27",
+    "endDate": "2026-04-28",
+    "updatedAt": "2026-02-27T00:00:00Z",
+    "tags": [
+      "tutorials",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0127",
+    "name": "Announcement — Customer survey #127",
+    "status": "paused",
+    "channel": "sms",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 50000,
+    "spent": 20512.99,
+    "impressions": 60163,
+    "clicks": 407,
+    "ctr": 0.0068,
+    "startDate": "2026-04-18",
+    "endDate": "2026-06-03",
+    "updatedAt": "2026-05-12T00:00:00Z",
+    "tags": [
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0128",
+    "name": "Autumn — Enterprise tier #128",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 1000,
+    "spent": 915.84,
+    "impressions": 396515,
+    "clicks": 20819,
+    "ctr": 0.0525,
+    "startDate": "2026-01-15",
+    "endDate": "2026-01-30",
+    "updatedAt": "2026-01-31T09:00:00Z",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0129",
+    "name": "Trial — Beta program #129",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 7500,
+    "spent": 3361.02,
+    "impressions": 386462,
+    "clicks": 21308,
+    "ctr": 0.0551,
+    "startDate": "2026-04-20",
+    "endDate": "2026-06-01",
+    "updatedAt": "2026-05-05T01:00:00Z",
+    "tags": [
+      "culture",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0130",
+    "name": "Retention — Case study drop #130",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 10000,
+    "spent": 9210.28,
+    "impressions": 158672,
+    "clicks": 8277,
+    "ctr": 0.0522,
+    "startDate": "2026-02-06",
+    "endDate": "2026-04-05",
+    "updatedAt": "2026-02-20T01:00:00Z",
+    "tags": [
+      "culture",
+      "accessibility",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0131",
+    "name": "Holiday — Product update #131",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 2500,
+    "spent": 1883.34,
+    "impressions": 100867,
+    "clicks": 790,
+    "ctr": 0.0078,
+    "startDate": "2026-04-07",
+    "endDate": "2026-05-27",
+    "updatedAt": "2026-04-26T19:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0132",
+    "name": "Autumn — Feature launch #132",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 7500,
+    "spent": 6749.58,
+    "impressions": 9039,
+    "clicks": 150,
+    "ctr": 0.0166,
+    "startDate": "2026-02-18",
+    "endDate": "2026-04-13",
+    "updatedAt": "2026-02-21T23:00:00Z",
+    "tags": [
+      "performance",
+      "ai",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0133",
+    "name": "Launch — Product update #133",
+    "status": "archived",
+    "channel": "push",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 10000,
+    "spent": 8523.12,
+    "impressions": 269863,
+    "clicks": 14452,
+    "ctr": 0.0536,
+    "startDate": "2026-04-30",
+    "endDate": "2026-05-13",
+    "updatedAt": "2026-05-25T23:00:00Z",
+    "tags": [
+      "ai",
+      "design",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0134",
+    "name": "Trial — Customer survey #134",
+    "status": "draft",
+    "channel": "sms",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 5000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-03-17",
+    "endDate": "2026-04-02",
+    "updatedAt": "2026-03-23T10:00:00Z",
+    "tags": [
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0135",
+    "name": "Re-engagement — Lifecycle nudge #135",
+    "status": "paused",
+    "channel": "web",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 50000,
+    "spent": 27833.89,
+    "impressions": 417796,
+    "clicks": 10181,
+    "ctr": 0.0244,
+    "startDate": "2026-02-05",
+    "endDate": "2026-03-30",
+    "updatedAt": "2026-02-22T15:00:00Z",
+    "tags": [
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0136",
+    "name": "Retention — APAC rollout #136",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 1000,
+    "spent": 976.38,
+    "impressions": 371760,
+    "clicks": 4946,
+    "ctr": 0.0133,
+    "startDate": "2026-02-25",
+    "endDate": "2026-04-05",
+    "updatedAt": "2026-03-11T11:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0137",
+    "name": "Reactivation — Lifecycle nudge #137",
+    "status": "draft",
+    "channel": "push",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 25000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-01-05",
+    "endDate": "2026-02-13",
+    "updatedAt": "2026-01-31T22:00:00Z",
+    "tags": [
+      "product",
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0138",
+    "name": "Retention — SMB tier #138",
+    "status": "active",
+    "channel": "push",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 10000,
+    "spent": 6891.29,
+    "impressions": 213875,
+    "clicks": 6468,
+    "ctr": 0.0302,
+    "startDate": "2026-03-04",
+    "endDate": "2026-04-24",
+    "updatedAt": "2026-03-11T09:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0139",
+    "name": "Summer — US rollout #139",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 50000,
+    "spent": 11683.45,
+    "impressions": 228493,
+    "clicks": 9247,
+    "ctr": 0.0405,
+    "startDate": "2026-03-26",
+    "endDate": "2026-05-08",
+    "updatedAt": "2026-04-22T03:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0140",
+    "name": "Re-engagement — Feature launch #140",
+    "status": "archived",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 10000,
+    "spent": 9798.62,
+    "impressions": 296441,
+    "clicks": 12212,
+    "ctr": 0.0412,
+    "startDate": "2026-02-15",
+    "endDate": "2026-03-14",
+    "updatedAt": "2026-02-15T06:00:00Z",
+    "tags": [
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0141",
+    "name": "Autumn — Webinar series #141",
+    "status": "scheduled",
+    "channel": "sms",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 25000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-01-21",
+    "endDate": "2026-03-01",
+    "updatedAt": "2026-02-13T11:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0142",
+    "name": "Winter — Customer survey #142",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 25000,
+    "spent": 19533.81,
+    "impressions": 237218,
+    "clicks": 7586,
+    "ctr": 0.032,
+    "startDate": "2026-04-02",
+    "endDate": "2026-05-14",
+    "updatedAt": "2026-05-02T12:00:00Z",
+    "tags": [
+      "product",
+      "ai",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0143",
+    "name": "Referral — US rollout #143",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 2500,
+    "spent": 2391.88,
+    "impressions": 388792,
+    "clicks": 10275,
+    "ctr": 0.0264,
+    "startDate": "2026-04-03",
+    "endDate": "2026-04-16",
+    "updatedAt": "2026-04-05T00:00:00Z",
+    "tags": [
+      "tutorials",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0144",
+    "name": "Win-back — Enterprise tier #144",
+    "status": "scheduled",
+    "channel": "sms",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 50000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-22",
+    "endDate": "2026-06-03",
+    "updatedAt": "2026-06-10T19:00:00Z",
+    "tags": [
+      "culture",
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0145",
+    "name": "Onboarding — Customer survey #145",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 7500,
+    "spent": 4073.82,
+    "impressions": 158879,
+    "clicks": 3139,
+    "ctr": 0.0198,
+    "startDate": "2026-02-07",
+    "endDate": "2026-02-18",
+    "updatedAt": "2026-02-12T13:00:00Z",
+    "tags": [
+      "culture",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0146",
+    "name": "Reactivation — US rollout #146",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 50000,
+    "spent": 27814.19,
+    "impressions": 498456,
+    "clicks": 13340,
+    "ctr": 0.0268,
+    "startDate": "2026-04-08",
+    "endDate": "2026-06-05",
+    "updatedAt": "2026-05-05T10:00:00Z",
+    "tags": [
+      "ai",
+      "performance",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0147",
+    "name": "Holiday — Webinar series #147",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 15000,
+    "spent": 4598.74,
+    "impressions": 332823,
+    "clicks": 10652,
+    "ctr": 0.032,
+    "startDate": "2026-05-28",
+    "endDate": "2026-07-24",
+    "updatedAt": "2026-06-04T10:00:00Z",
+    "tags": [
+      "accessibility",
+      "culture",
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0148",
+    "name": "Upgrade — Enterprise tier #148",
+    "status": "archived",
+    "channel": "sms",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 5000,
+    "spent": 4461.62,
+    "impressions": 372388,
+    "clicks": 6155,
+    "ctr": 0.0165,
+    "startDate": "2026-03-16",
+    "endDate": "2026-05-15",
+    "updatedAt": "2026-04-07T02:00:00Z",
+    "tags": [
+      "tutorials",
+      "design",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0149",
+    "name": "Onboarding — Beta program #149",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 25000,
+    "spent": 16836.15,
+    "impressions": 211137,
+    "clicks": 7261,
+    "ctr": 0.0344,
+    "startDate": "2026-04-18",
+    "endDate": "2026-05-29",
+    "updatedAt": "2026-04-19T11:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0150",
+    "name": "Winter — Beta program #150",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 1000,
+    "spent": 947.01,
+    "impressions": 174852,
+    "clicks": 10161,
+    "ctr": 0.0581,
+    "startDate": "2026-04-21",
+    "endDate": "2026-05-04",
+    "updatedAt": "2026-04-21T03:00:00Z",
+    "tags": [
+      "performance",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0151",
+    "name": "Retention — Beta program #151",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 5000,
+    "spent": 2034.9,
+    "impressions": 46012,
+    "clicks": 523,
+    "ctr": 0.0114,
+    "startDate": "2026-02-06",
+    "endDate": "2026-03-07",
+    "updatedAt": "2026-02-15T10:00:00Z",
+    "tags": [
+      "performance",
+      "accessibility",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0152",
+    "name": "Upgrade — Lifecycle nudge #152",
+    "status": "draft",
+    "channel": "social",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 2500,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-01-28",
+    "endDate": "2026-03-19",
+    "updatedAt": "2026-02-22T05:00:00Z",
+    "tags": [
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0153",
+    "name": "Announcement — Pricing change #153",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 7500,
+    "spent": 5089.9,
+    "impressions": 208399,
+    "clicks": 1376,
+    "ctr": 0.0066,
+    "startDate": "2026-02-20",
+    "endDate": "2026-03-27",
+    "updatedAt": "2026-03-10T13:00:00Z",
+    "tags": [
+      "engineering",
+      "ai",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0154",
+    "name": "Launch — GA release #154",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 2500,
+    "spent": 2262.17,
+    "impressions": 60745,
+    "clicks": 1180,
+    "ctr": 0.0194,
+    "startDate": "2026-05-06",
+    "endDate": "2026-06-15",
+    "updatedAt": "2026-06-05T20:00:00Z",
+    "tags": [
+      "culture",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0155",
+    "name": "Referral — Enterprise tier #155",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 5000,
+    "spent": 3441.21,
+    "impressions": 45434,
+    "clicks": 1906,
+    "ctr": 0.042,
+    "startDate": "2026-03-22",
+    "endDate": "2026-04-05",
+    "updatedAt": "2026-03-29T09:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0156",
+    "name": "New Year — Whitepaper #156",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 25000,
+    "spent": 22836.4,
+    "impressions": 282741,
+    "clicks": 12197,
+    "ctr": 0.0431,
+    "startDate": "2026-02-14",
+    "endDate": "2026-03-28",
+    "updatedAt": "2026-02-19T15:00:00Z",
+    "tags": [
+      "product",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0157",
+    "name": "Trial — NPS push #157",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 50000,
+    "spent": 49728.72,
+    "impressions": 260506,
+    "clicks": 7164,
+    "ctr": 0.0275,
+    "startDate": "2026-05-06",
+    "endDate": "2026-06-08",
+    "updatedAt": "2026-05-28T14:00:00Z",
+    "tags": [
+      "product",
+      "engineering",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0158",
+    "name": "Spring — Beta program #158",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 10000,
+    "spent": 3009.25,
+    "impressions": 289214,
+    "clicks": 9571,
+    "ctr": 0.0331,
+    "startDate": "2026-05-27",
+    "endDate": "2026-06-10",
+    "updatedAt": "2026-06-04T17:00:00Z",
+    "tags": [
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0159",
+    "name": "Upsell — Feature launch #159",
+    "status": "archived",
+    "channel": "email",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 7500,
+    "spent": 6522.87,
+    "impressions": 429200,
+    "clicks": 4199,
+    "ctr": 0.0098,
+    "startDate": "2026-01-31",
+    "endDate": "2026-03-28",
+    "updatedAt": "2026-02-25T07:00:00Z",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0160",
+    "name": "Cross-sell — Pricing change #160",
+    "status": "completed",
+    "channel": "sms",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 1000,
+    "spent": 939.53,
+    "impressions": 370126,
+    "clicks": 7807,
+    "ctr": 0.0211,
+    "startDate": "2026-05-27",
+    "endDate": "2026-06-20",
+    "updatedAt": "2026-06-26T16:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0161",
+    "name": "Holiday — Customer survey #161",
+    "status": "archived",
+    "channel": "web",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 5000,
+    "spent": 4322.1,
+    "impressions": 130789,
+    "clicks": 6131,
+    "ctr": 0.0469,
+    "startDate": "2026-04-11",
+    "endDate": "2026-05-19",
+    "updatedAt": "2026-04-15T18:00:00Z",
+    "tags": [
+      "culture",
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0162",
+    "name": "Upsell — US rollout #162",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 10000,
+    "spent": 9182.04,
+    "impressions": 306112,
+    "clicks": 1572,
+    "ctr": 0.0051,
+    "startDate": "2026-01-24",
+    "endDate": "2026-03-18",
+    "updatedAt": "2026-02-07T20:00:00Z",
+    "tags": [
+      "design",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0163",
+    "name": "Announcement — Product update #163",
+    "status": "scheduled",
+    "channel": "social",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 50000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-25",
+    "endDate": "2026-07-02",
+    "updatedAt": "2026-06-19T10:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0164",
+    "name": "Summer — Enterprise tier #164",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 2500,
+    "spent": 2296.19,
+    "impressions": 225290,
+    "clicks": 3633,
+    "ctr": 0.0161,
+    "startDate": "2026-02-03",
+    "endDate": "2026-03-23",
+    "updatedAt": "2026-02-12T05:00:00Z",
+    "tags": [
+      "design",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0165",
+    "name": "Upgrade — GA release #165",
+    "status": "draft",
+    "channel": "sms",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 25000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-01-24",
+    "endDate": "2026-03-17",
+    "updatedAt": "2026-01-27T00:00:00Z",
+    "tags": [
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0166",
+    "name": "Autumn — SMB tier #166",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 50000,
+    "spent": 48628.32,
+    "impressions": 222414,
+    "clicks": 9601,
+    "ctr": 0.0432,
+    "startDate": "2026-05-03",
+    "endDate": "2026-05-14",
+    "updatedAt": "2026-05-10T12:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0167",
+    "name": "Winter — Enterprise tier #167",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 25000,
+    "spent": 16601.91,
+    "impressions": 75896,
+    "clicks": 665,
+    "ctr": 0.0088,
+    "startDate": "2026-05-25",
+    "endDate": "2026-06-01",
+    "updatedAt": "2026-06-13T20:00:00Z",
+    "tags": [
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0168",
+    "name": "Upgrade — Feature launch #168",
+    "status": "completed",
+    "channel": "sms",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 50000,
+    "spent": 43253.49,
+    "impressions": 310106,
+    "clicks": 14001,
+    "ctr": 0.0451,
+    "startDate": "2026-03-31",
+    "endDate": "2026-05-04",
+    "updatedAt": "2026-04-10T04:00:00Z",
+    "tags": [
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0169",
+    "name": "Autumn — Beta program #169",
+    "status": "paused",
+    "channel": "push",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 10000,
+    "spent": 5761.9,
+    "impressions": 159151,
+    "clicks": 2594,
+    "ctr": 0.0163,
+    "startDate": "2026-05-11",
+    "endDate": "2026-05-30",
+    "updatedAt": "2026-06-03T12:00:00Z",
+    "tags": [
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0170",
+    "name": "Re-engagement — Lifecycle nudge #170",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 2500,
+    "spent": 1292.43,
+    "impressions": 70197,
+    "clicks": 1844,
+    "ctr": 0.0263,
+    "startDate": "2026-05-26",
+    "endDate": "2026-06-28",
+    "updatedAt": "2026-06-06T17:00:00Z",
+    "tags": [
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0171",
+    "name": "Autumn — EU rollout #171",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 7500,
+    "spent": 7262.95,
+    "impressions": 330552,
+    "clicks": 14608,
+    "ctr": 0.0442,
+    "startDate": "2026-04-17",
+    "endDate": "2026-05-21",
+    "updatedAt": "2026-05-09T12:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0172",
+    "name": "Announcement — SMB tier #172",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 7500,
+    "spent": 5884.41,
+    "impressions": 401149,
+    "clicks": 20418,
+    "ctr": 0.0509,
+    "startDate": "2026-01-17",
+    "endDate": "2026-02-12",
+    "updatedAt": "2026-02-08T13:00:00Z",
+    "tags": [
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0173",
+    "name": "Re-engagement — US rollout #173",
+    "status": "archived",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 1000,
+    "spent": 823.89,
+    "impressions": 372143,
+    "clicks": 4669,
+    "ctr": 0.0125,
+    "startDate": "2026-01-03",
+    "endDate": "2026-01-20",
+    "updatedAt": "2026-01-18T11:00:00Z",
+    "tags": [
+      "product",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0174",
+    "name": "Holiday — GA release #174",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 15000,
+    "spent": 12893.71,
+    "impressions": 303331,
+    "clicks": 11985,
+    "ctr": 0.0395,
+    "startDate": "2026-05-08",
+    "endDate": "2026-06-13",
+    "updatedAt": "2026-05-24T11:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0175",
+    "name": "Reactivation — Pricing change #175",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 2500,
+    "spent": 842.61,
+    "impressions": 129215,
+    "clicks": 972,
+    "ctr": 0.0075,
+    "startDate": "2026-04-04",
+    "endDate": "2026-05-05",
+    "updatedAt": "2026-05-03T04:00:00Z",
+    "tags": [
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0176",
+    "name": "Announcement — Customer survey #176",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 15000,
+    "spent": 5441.32,
+    "impressions": 473876,
+    "clicks": 3742,
+    "ctr": 0.0079,
+    "startDate": "2026-02-27",
+    "endDate": "2026-04-26",
+    "updatedAt": "2026-03-15T01:00:00Z",
+    "tags": [
+      "design",
+      "performance",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0177",
+    "name": "Onboarding — Case study drop #177",
+    "status": "draft",
+    "channel": "social",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 15000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-04-29",
+    "endDate": "2026-05-29",
+    "updatedAt": "2026-05-17T15:00:00Z",
+    "tags": [
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0178",
+    "name": "Holiday — EU rollout #178",
+    "status": "archived",
+    "channel": "email",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 15000,
+    "spent": 13005.05,
+    "impressions": 398897,
+    "clicks": 16415,
+    "ctr": 0.0412,
+    "startDate": "2026-03-20",
+    "endDate": "2026-04-02",
+    "updatedAt": "2026-03-26T16:00:00Z",
+    "tags": [
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0179",
+    "name": "Reactivation — APAC rollout #179",
+    "status": "archived",
+    "channel": "sms",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 10000,
+    "spent": 9039.52,
+    "impressions": 368445,
+    "clicks": 19990,
+    "ctr": 0.0543,
+    "startDate": "2026-04-28",
+    "endDate": "2026-06-21",
+    "updatedAt": "2026-04-30T18:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0180",
+    "name": "Retention — SMB tier #180",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 1000,
+    "spent": 885.52,
+    "impressions": 166155,
+    "clicks": 9293,
+    "ctr": 0.0559,
+    "startDate": "2026-04-11",
+    "endDate": "2026-06-01",
+    "updatedAt": "2026-05-07T23:00:00Z",
+    "tags": [
+      "ai",
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0181",
+    "name": "Win-back — Beta program #181",
+    "status": "draft",
+    "channel": "sms",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 2500,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-18",
+    "endDate": "2026-06-16",
+    "updatedAt": "2026-06-17T06:00:00Z",
+    "tags": [
+      "accessibility",
+      "performance",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0182",
+    "name": "Winter — US rollout #182",
+    "status": "scheduled",
+    "channel": "web",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 1000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-04-02",
+    "endDate": "2026-05-04",
+    "updatedAt": "2026-04-18T01:00:00Z",
+    "tags": [
+      "accessibility",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0183",
+    "name": "New Year — EU rollout #183",
+    "status": "archived",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 7500,
+    "spent": 6182.18,
+    "impressions": 33332,
+    "clicks": 1688,
+    "ctr": 0.0506,
+    "startDate": "2026-02-26",
+    "endDate": "2026-03-13",
+    "updatedAt": "2026-03-04T12:00:00Z",
+    "tags": [
+      "design",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0184",
+    "name": "Win-back — US rollout #184",
+    "status": "draft",
+    "channel": "email",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 50000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-02-01",
+    "endDate": "2026-02-10",
+    "updatedAt": "2026-03-03T14:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0185",
+    "name": "New Year — Customer survey #185",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 1000,
+    "spent": 903.09,
+    "impressions": 145169,
+    "clicks": 2960,
+    "ctr": 0.0204,
+    "startDate": "2026-02-08",
+    "endDate": "2026-02-17",
+    "updatedAt": "2026-02-27T19:00:00Z",
+    "tags": [
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0186",
+    "name": "Reactivation — Customer survey #186",
+    "status": "archived",
+    "channel": "social",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 2500,
+    "spent": 2442.33,
+    "impressions": 276678,
+    "clicks": 5174,
+    "ctr": 0.0187,
+    "startDate": "2026-05-20",
+    "endDate": "2026-07-16",
+    "updatedAt": "2026-05-20T12:00:00Z",
+    "tags": [
+      "tutorials",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0187",
+    "name": "Reactivation — Whitepaper #187",
+    "status": "archived",
+    "channel": "push",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 25000,
+    "spent": 20146.52,
+    "impressions": 426034,
+    "clicks": 20372,
+    "ctr": 0.0478,
+    "startDate": "2026-01-15",
+    "endDate": "2026-03-14",
+    "updatedAt": "2026-01-30T16:00:00Z",
+    "tags": [
+      "performance",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0188",
+    "name": "Winter — Beta program #188",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 1000,
+    "spent": 936.35,
+    "impressions": 204645,
+    "clicks": 5016,
+    "ctr": 0.0245,
+    "startDate": "2026-02-14",
+    "endDate": "2026-03-04",
+    "updatedAt": "2026-02-21T18:00:00Z",
+    "tags": [
+      "ai",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0189",
+    "name": "Spring — Whitepaper #189",
+    "status": "archived",
+    "channel": "push",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 7500,
+    "spent": 6813.19,
+    "impressions": 93042,
+    "clicks": 2974,
+    "ctr": 0.032,
+    "startDate": "2026-01-24",
+    "endDate": "2026-02-03",
+    "updatedAt": "2026-01-31T19:00:00Z",
+    "tags": [
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0190",
+    "name": "Retention — Lifecycle nudge #190",
+    "status": "draft",
+    "channel": "push",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 5000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-01-16",
+    "endDate": "2026-01-24",
+    "updatedAt": "2026-01-20T18:00:00Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0191",
+    "name": "Retention — Whitepaper #191",
+    "status": "archived",
+    "channel": "web",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 25000,
+    "spent": 24879.3,
+    "impressions": 384963,
+    "clicks": 22011,
+    "ctr": 0.0572,
+    "startDate": "2026-05-05",
+    "endDate": "2026-06-22",
+    "updatedAt": "2026-05-15T05:00:00Z",
+    "tags": [
+      "performance",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0192",
+    "name": "New Year — Product update #192",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 5000,
+    "spent": 3186.49,
+    "impressions": 405137,
+    "clicks": 23532,
+    "ctr": 0.0581,
+    "startDate": "2026-01-09",
+    "endDate": "2026-01-27",
+    "updatedAt": "2026-01-28T10:00:00Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0193",
+    "name": "Reactivation — SMB tier #193",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 15000,
+    "spent": 11841.42,
+    "impressions": 372702,
+    "clicks": 15598,
+    "ctr": 0.0419,
+    "startDate": "2026-03-27",
+    "endDate": "2026-05-01",
+    "updatedAt": "2026-03-27T08:00:00Z",
+    "tags": [
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0194",
+    "name": "Autumn — Whitepaper #194",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 1000,
+    "spent": 228.89,
+    "impressions": 218065,
+    "clicks": 7004,
+    "ctr": 0.0321,
+    "startDate": "2026-04-07",
+    "endDate": "2026-05-06",
+    "updatedAt": "2026-04-24T12:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0195",
+    "name": "Reactivation — Beta program #195",
+    "status": "scheduled",
+    "channel": "email",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 10000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-04-07",
+    "endDate": "2026-04-24",
+    "updatedAt": "2026-04-30T02:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0196",
+    "name": "Trial — Lifecycle nudge #196",
+    "status": "completed",
+    "channel": "social",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 5000,
+    "spent": 4290.17,
+    "impressions": 100606,
+    "clicks": 2767,
+    "ctr": 0.0275,
+    "startDate": "2026-05-22",
+    "endDate": "2026-07-14",
+    "updatedAt": "2026-06-20T23:00:00Z",
+    "tags": [
+      "accessibility",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0197",
+    "name": "Re-engagement — Enterprise tier #197",
+    "status": "draft",
+    "channel": "push",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 50000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-03",
+    "endDate": "2026-05-22",
+    "updatedAt": "2026-05-06T00:00:00Z",
+    "tags": [
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0198",
+    "name": "Onboarding — US rollout #198",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 25000,
+    "spent": 12064.17,
+    "impressions": 204175,
+    "clicks": 3097,
+    "ctr": 0.0152,
+    "startDate": "2026-04-08",
+    "endDate": "2026-05-08",
+    "updatedAt": "2026-04-13T14:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0199",
+    "name": "Win-back — NPS push #199",
+    "status": "active",
+    "channel": "sms",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 1000,
+    "spent": 290.68,
+    "impressions": 424719,
+    "clicks": 14771,
+    "ctr": 0.0348,
+    "startDate": "2026-05-31",
+    "endDate": "2026-06-21",
+    "updatedAt": "2026-06-17T01:00:00Z",
+    "tags": [
+      "culture",
+      "accessibility",
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0200",
+    "name": "Reactivation — Beta program #200",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 1000,
+    "spent": 501.26,
+    "impressions": 326201,
+    "clicks": 4276,
+    "ctr": 0.0131,
+    "startDate": "2026-04-25",
+    "endDate": "2026-05-13",
+    "updatedAt": "2026-05-25T05:00:00Z",
+    "tags": [
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0201",
+    "name": "Holiday — APAC rollout #201",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 5000,
+    "spent": 3502.32,
+    "impressions": 36133,
+    "clicks": 353,
+    "ctr": 0.0098,
+    "startDate": "2026-05-23",
+    "endDate": "2026-06-24",
+    "updatedAt": "2026-06-09T10:00:00Z",
+    "tags": [
+      "tutorials",
+      "culture"
+    ]
+  },
+  {
+    "id": "cmp_0202",
+    "name": "Spring — Cart abandonment #202",
+    "status": "completed",
+    "channel": "email",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 5000,
+    "spent": 4818.78,
+    "impressions": 485928,
+    "clicks": 5252,
+    "ctr": 0.0108,
+    "startDate": "2026-01-26",
+    "endDate": "2026-03-24",
+    "updatedAt": "2026-02-04T17:00:00Z",
+    "tags": [
+      "culture",
+      "product"
+    ]
+  },
+  {
+    "id": "cmp_0203",
+    "name": "Referral — Lifecycle nudge #203",
+    "status": "paused",
+    "channel": "social",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 5000,
+    "spent": 1787.71,
+    "impressions": 21333,
+    "clicks": 571,
+    "ctr": 0.0268,
+    "startDate": "2026-03-26",
+    "endDate": "2026-05-16",
+    "updatedAt": "2026-04-02T01:00:00Z",
+    "tags": [
+      "accessibility",
+      "product",
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0204",
+    "name": "Trial — Webinar series #204",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 2500,
+    "spent": 1958.74,
+    "impressions": 406815,
+    "clicks": 20511,
+    "ctr": 0.0504,
+    "startDate": "2026-03-10",
+    "endDate": "2026-05-02",
+    "updatedAt": "2026-03-23T19:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0205",
+    "name": "Launch — NPS push #205",
+    "status": "scheduled",
+    "channel": "social",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 50000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-02-10",
+    "endDate": "2026-02-21",
+    "updatedAt": "2026-02-19T22:00:00Z",
+    "tags": [
+      "product",
+      "culture",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "cmp_0206",
+    "name": "Spring — Pricing change #206",
+    "status": "scheduled",
+    "channel": "sms",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 7500,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-04-05",
+    "endDate": "2026-06-03",
+    "updatedAt": "2026-04-19T16:00:00Z",
+    "tags": [
+      "design",
+      "ai",
+      "engineering"
+    ]
+  },
+  {
+    "id": "cmp_0207",
+    "name": "Re-engagement — Whitepaper #207",
+    "status": "active",
+    "channel": "social",
+    "owner": {
+      "id": "u_marek",
+      "name": "Marek Dvořák"
+    },
+    "budget": 50000,
+    "spent": 27606.41,
+    "impressions": 393671,
+    "clicks": 19958,
+    "ctr": 0.0507,
+    "startDate": "2026-01-24",
+    "endDate": "2026-02-18",
+    "updatedAt": "2026-01-24T12:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0208",
+    "name": "New Year — Feature launch #208",
+    "status": "completed",
+    "channel": "sms",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 7500,
+    "spent": 6397.56,
+    "impressions": 403429,
+    "clicks": 17154,
+    "ctr": 0.0425,
+    "startDate": "2026-05-02",
+    "endDate": "2026-05-17",
+    "updatedAt": "2026-05-22T05:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0209",
+    "name": "Re-engagement — GA release #209",
+    "status": "completed",
+    "channel": "web",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 10000,
+    "spent": 9023.06,
+    "impressions": 245684,
+    "clicks": 5311,
+    "ctr": 0.0216,
+    "startDate": "2026-05-14",
+    "endDate": "2026-07-12",
+    "updatedAt": "2026-06-02T12:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0210",
+    "name": "Spring — Cart abandonment #210",
+    "status": "archived",
+    "channel": "web",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 10000,
+    "spent": 9976.72,
+    "impressions": 336856,
+    "clicks": 7708,
+    "ctr": 0.0229,
+    "startDate": "2026-03-12",
+    "endDate": "2026-04-04",
+    "updatedAt": "2026-04-01T22:00:00Z",
+    "tags": [
+      "performance",
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0211",
+    "name": "Retention — Beta program #211",
+    "status": "archived",
+    "channel": "push",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 15000,
+    "spent": 14992.41,
+    "impressions": 137014,
+    "clicks": 7519,
+    "ctr": 0.0549,
+    "startDate": "2026-04-14",
+    "endDate": "2026-05-15",
+    "updatedAt": "2026-05-07T01:00:00Z",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0212",
+    "name": "Re-engagement — Lifecycle nudge #212",
+    "status": "archived",
+    "channel": "web",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 10000,
+    "spent": 8362.27,
+    "impressions": 52172,
+    "clicks": 1611,
+    "ctr": 0.0309,
+    "startDate": "2026-03-08",
+    "endDate": "2026-04-30",
+    "updatedAt": "2026-04-02T17:00:00Z",
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "id": "cmp_0213",
+    "name": "Autumn — Beta program #213",
+    "status": "active",
+    "channel": "web",
+    "owner": {
+      "id": "u_jonas",
+      "name": "Jonas Lindqvist"
+    },
+    "budget": 15000,
+    "spent": 6345.14,
+    "impressions": 29142,
+    "clicks": 1534,
+    "ctr": 0.0526,
+    "startDate": "2026-05-30",
+    "endDate": "2026-07-13",
+    "updatedAt": "2026-06-29T19:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0214",
+    "name": "Reactivation — Feature launch #214",
+    "status": "paused",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 10000,
+    "spent": 6483.4,
+    "impressions": 180657,
+    "clicks": 4969,
+    "ctr": 0.0275,
+    "startDate": "2026-05-26",
+    "endDate": "2026-07-01",
+    "updatedAt": "2026-05-30T10:00:00Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "cmp_0215",
+    "name": "Reactivation — Case study drop #215",
+    "status": "completed",
+    "channel": "sms",
+    "owner": {
+      "id": "u_sofia",
+      "name": "Sofia Romero"
+    },
+    "budget": 1000,
+    "spent": 964.18,
+    "impressions": 401809,
+    "clicks": 5510,
+    "ctr": 0.0137,
+    "startDate": "2026-01-23",
+    "endDate": "2026-02-07",
+    "updatedAt": "2026-02-11T13:00:00Z",
+    "tags": [
+      "culture",
+      "performance",
+      "tutorials"
+    ]
+  },
+  {
+    "id": "cmp_0216",
+    "name": "Referral — EU rollout #216",
+    "status": "draft",
+    "channel": "sms",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 15000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-01-05",
+    "endDate": "2026-02-24",
+    "updatedAt": "2026-01-05T20:00:00Z",
+    "tags": [
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0217",
+    "name": "Upgrade — Webinar series #217",
+    "status": "scheduled",
+    "channel": "social",
+    "owner": {
+      "id": "u_priya",
+      "name": "Priya Iyer"
+    },
+    "budget": 10000,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-14",
+    "endDate": "2026-06-28",
+    "updatedAt": "2026-05-30T10:00:00Z",
+    "tags": [
+      "product",
+      "tutorials",
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0218",
+    "name": "Upgrade — Feature launch #218",
+    "status": "scheduled",
+    "channel": "social",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 7500,
+    "spent": 0.0,
+    "impressions": 0,
+    "clicks": 0,
+    "ctr": 0.0,
+    "startDate": "2026-05-10",
+    "endDate": "2026-05-27",
+    "updatedAt": "2026-05-13T11:00:00Z",
+    "tags": []
+  },
+  {
+    "id": "cmp_0219",
+    "name": "Referral — GA release #219",
+    "status": "completed",
+    "channel": "push",
+    "owner": {
+      "id": "u_anna",
+      "name": "Anna Becker"
+    },
+    "budget": 1000,
+    "spent": 852.96,
+    "impressions": 219510,
+    "clicks": 6461,
+    "ctr": 0.0294,
+    "startDate": "2026-02-01",
+    "endDate": "2026-03-15",
+    "updatedAt": "2026-02-09T15:00:00Z",
+    "tags": [
+      "performance"
+    ]
+  },
+  {
+    "id": "cmp_0220",
+    "name": "Spring — Webinar series #220",
+    "status": "active",
+    "channel": "email",
+    "owner": {
+      "id": "u_omar",
+      "name": "Omar Haddad"
+    },
+    "budget": 10000,
+    "spent": 5736.79,
+    "impressions": 269217,
+    "clicks": 11988,
+    "ctr": 0.0445,
+    "startDate": "2026-01-31",
+    "endDate": "2026-02-25",
+    "updatedAt": "2026-02-03T03:00:00Z",
+    "tags": [
+      "performance",
+      "accessibility",
+      "design"
+    ]
+  }
+]
