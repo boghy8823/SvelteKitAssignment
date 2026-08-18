@@ -15,11 +15,14 @@ pnpm dev
 
 ## Scripts
 
-| Command | What it does |
-| --- | --- |
-| `pnpm dev` | Vite dev server |
-| `pnpm build` | Production build |
-| `pnpm preview` | Serve the production build |
-| `pnpm check` | `svelte-check` + TypeScript |
+| Command          | What it does                       |
+| ---------------- | ---------------------------------- |
+| `pnpm dev`       | Vite dev server                    |
+| `pnpm build`     | Production build                   |
+| `pnpm preview`   | Serve the production build         |
+| `pnpm check`     | `svelte-check`                     |
+| `pnpm typecheck` | `svelte-check` then `tsc --noEmit` |
+| `pnpm lint`      | Prettier check + ESLint            |
+| `pnpm format`    | Prettier write                     |
 
-Lint, tests, adapters, and CI land in later commits. Demo credentials live in `mocks/README.md`.
+Pre-commit (Husky + lint-staged) formats and lints staged files, then runs `pnpm check`. Demo credentials live in `mocks/README.md`.

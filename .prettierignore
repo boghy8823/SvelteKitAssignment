@@ -1,0 +1,16 @@
+# Package Managers
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lock
+bun.lockb
+
+# Miscellaneous
+/static/
+
+# Provided assignment data — must stay byte-identical
+/mocks/
+
+# Working notes, not product source
+/PLAN.md
+/take-home-senior-frontend-sveltekit.html
