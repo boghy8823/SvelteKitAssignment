@@ -1,0 +1,554 @@
+[
+  {
+    "id": "post_000",
+    "slug": "sub-second-lcp-on-a-content-site",
+    "translations": {
+      "en": {
+        "title": "Sub-second LCP on a content site",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "LCP unter einer Sekunde auf einer Content-Seite",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "performance",
+      "engineering"
+    ],
+    "author": {
+      "id": "u_omar",
+      "name": "Omar Haddad",
+      "avatarColor": "#a855f7"
+    },
+    "publishedAt": "2026-05-31T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#1e293b"
+  },
+  {
+    "id": "post_001",
+    "slug": "a-pragmatic-design-token-system",
+    "translations": {
+      "en": {
+        "title": "A pragmatic design token system",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Ein pragmatisches Design-Token-System",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "design"
+    ],
+    "author": {
+      "id": "u_anna",
+      "name": "Anna Becker",
+      "avatarColor": "#f59e0b"
+    },
+    "publishedAt": "2026-05-28T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#0ea5e9"
+  },
+  {
+    "id": "post_002",
+    "slug": "why-we-moved-off-the-spa-default",
+    "translations": {
+      "en": {
+        "title": "Why we moved off the SPA default",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Warum wir die SPA-Voreinstellung verlassen haben",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "engineering",
+      "performance"
+    ],
+    "author": {
+      "id": "u_marek",
+      "name": "Marek Dvořák",
+      "avatarColor": "#10b981"
+    },
+    "publishedAt": "2026-05-25T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#7c3aed"
+  },
+  {
+    "id": "post_003",
+    "slug": "accessible-combobox-from-scratch",
+    "translations": {
+      "en": {
+        "title": "Accessible combobox from scratch",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Eine zugängliche Combobox von Grund auf",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "accessibility",
+      "tutorials"
+    ],
+    "author": {
+      "id": "u_marek",
+      "name": "Marek Dvořák",
+      "avatarColor": "#10b981"
+    },
+    "publishedAt": "2026-05-22T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#1e293b"
+  },
+  {
+    "id": "post_004",
+    "slug": "stop-fighting-your-form-library",
+    "translations": {
+      "en": {
+        "title": "Stop fighting your form library",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Hör auf, gegen deine Form-Library zu kämpfen",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "engineering",
+      "tutorials"
+    ],
+    "author": {
+      "id": "u_omar",
+      "name": "Omar Haddad",
+      "avatarColor": "#a855f7"
+    },
+    "publishedAt": "2026-05-19T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#1e293b"
+  },
+  {
+    "id": "post_005",
+    "slug": "streaming-ssr-in-plain-english",
+    "translations": {
+      "en": {
+        "title": "Streaming SSR, in plain English",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Streaming-SSR, einfach erklärt",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "performance",
+      "engineering"
+    ],
+    "author": {
+      "id": "u_priya",
+      "name": "Priya Iyer",
+      "avatarColor": "#0ea5e9"
+    },
+    "publishedAt": "2026-05-16T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#dc2626"
+  },
+  {
+    "id": "post_006",
+    "slug": "what-good-error-states-look-like",
+    "translations": {
+      "en": {
+        "title": "What good error states look like",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Wie gute Fehlerzustände aussehen",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "design",
+      "product"
+    ],
+    "author": {
+      "id": "u_anna",
+      "name": "Anna Becker",
+      "avatarColor": "#f59e0b"
+    },
+    "publishedAt": "2026-05-13T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#0f172a"
+  },
+  {
+    "id": "post_007",
+    "slug": "edge-or-node-a-sober-comparison",
+    "translations": {
+      "en": {
+        "title": "Edge or Node: a sober comparison",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Edge oder Node: ein nüchterner Vergleich",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "engineering",
+      "performance"
+    ],
+    "author": {
+      "id": "u_anna",
+      "name": "Anna Becker",
+      "avatarColor": "#f59e0b"
+    },
+    "publishedAt": "2026-05-10T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#7c3aed"
+  },
+  {
+    "id": "post_008",
+    "slug": "how-we-cut-our-bundle-by-60",
+    "translations": {
+      "en": {
+        "title": "How we cut our bundle by 60%",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Wie wir unser Bundle um 60 % verkleinert haben",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "performance"
+    ],
+    "author": {
+      "id": "u_marek",
+      "name": "Marek Dvořák",
+      "avatarColor": "#10b981"
+    },
+    "publishedAt": "2026-05-07T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#0f172a"
+  },
+  {
+    "id": "post_009",
+    "slug": "designing-for-keyboard-users-first",
+    "translations": {
+      "en": {
+        "title": "Designing for keyboard users first",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Design für Tastaturnutzer zuerst",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "accessibility",
+      "design"
+    ],
+    "author": {
+      "id": "u_priya",
+      "name": "Priya Iyer",
+      "avatarColor": "#0ea5e9"
+    },
+    "publishedAt": "2026-05-04T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#7c3aed"
+  },
+  {
+    "id": "post_010",
+    "slug": "the-cost-of-an-extra-round-trip",
+    "translations": {
+      "en": {
+        "title": "The cost of an extra round-trip",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Die Kosten einer zusätzlichen Anfrage",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "performance",
+      "engineering"
+    ],
+    "author": {
+      "id": "u_omar",
+      "name": "Omar Haddad",
+      "avatarColor": "#a855f7"
+    },
+    "publishedAt": "2026-05-01T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#dc2626"
+  },
+  {
+    "id": "post_011",
+    "slug": "shipping-ai-features-without-the-slop",
+    "translations": {
+      "en": {
+        "title": "Shipping AI features without the slop",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "KI-Features ausliefern ohne den Schrott",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "ai",
+      "product"
+    ],
+    "author": {
+      "id": "u_marek",
+      "name": "Marek Dvořák",
+      "avatarColor": "#10b981"
+    },
+    "publishedAt": "2026-04-28T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#ea580c"
+  },
+  {
+    "id": "post_012",
+    "slug": "type-safe-apis-without-the-ceremony",
+    "translations": {
+      "en": {
+        "title": "Type-safe APIs without the ceremony",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Typsichere APIs ohne Zeremonie",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "engineering"
+    ],
+    "author": {
+      "id": "u_priya",
+      "name": "Priya Iyer",
+      "avatarColor": "#0ea5e9"
+    },
+    "publishedAt": "2026-04-25T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#0ea5e9"
+  },
+  {
+    "id": "post_013",
+    "slug": "a-short-note-on-motion",
+    "translations": {
+      "en": {
+        "title": "A short note on motion",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Eine kurze Notiz zu Animationen",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "design"
+    ],
+    "author": {
+      "id": "u_anna",
+      "name": "Anna Becker",
+      "avatarColor": "#f59e0b"
+    },
+    "publishedAt": "2026-04-22T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#334155"
+  },
+  {
+    "id": "post_014",
+    "slug": "why-we-write-adrs",
+    "translations": {
+      "en": {
+        "title": "Why we write ADRs",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Warum wir ADRs schreiben",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "culture",
+      "engineering"
+    ],
+    "author": {
+      "id": "u_omar",
+      "name": "Omar Haddad",
+      "avatarColor": "#a855f7"
+    },
+    "publishedAt": "2026-04-19T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#dc2626"
+  },
+  {
+    "id": "post_015",
+    "slug": "the-boring-case-for-monorepos",
+    "translations": {
+      "en": {
+        "title": "The boring case for monorepos",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Das langweilige Argument für Monorepos",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "engineering"
+    ],
+    "author": {
+      "id": "u_sofia",
+      "name": "Sofia Romero",
+      "avatarColor": "#6366f1"
+    },
+    "publishedAt": "2026-04-16T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#0ea5e9"
+  },
+  {
+    "id": "post_016",
+    "slug": "refactoring-is-a-team-sport",
+    "translations": {
+      "en": {
+        "title": "Refactoring is a team sport",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Refactoring ist Mannschaftssport",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "culture"
+    ],
+    "author": {
+      "id": "u_marek",
+      "name": "Marek Dvořák",
+      "avatarColor": "#10b981"
+    },
+    "publishedAt": "2026-04-13T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#7c3aed"
+  },
+  {
+    "id": "post_017",
+    "slug": "from-figma-to-tokens-in-one-pass",
+    "translations": {
+      "en": {
+        "title": "From Figma to tokens, in one pass",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Von Figma zu Tokens in einem Schritt",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "design"
+    ],
+    "author": {
+      "id": "u_sofia",
+      "name": "Sofia Romero",
+      "avatarColor": "#6366f1"
+    },
+    "publishedAt": "2026-04-10T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#1e293b"
+  },
+  {
+    "id": "post_018",
+    "slug": "inp-the-metric-that-finally-matters",
+    "translations": {
+      "en": {
+        "title": "INP, the metric that finally matters",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "INP, die Metrik, die endlich zählt",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "performance"
+    ],
+    "author": {
+      "id": "u_anna",
+      "name": "Anna Becker",
+      "avatarColor": "#f59e0b"
+    },
+    "publishedAt": "2026-04-07T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#dc2626"
+  },
+  {
+    "id": "post_019",
+    "slug": "hiring-frontend-engineers-in-2026",
+    "translations": {
+      "en": {
+        "title": "Hiring frontend engineers in 2026",
+        "excerpt": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under ta…",
+        "body": "We've been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nThe first lesson was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWe started keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nIf you're considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWe'll go deeper on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      },
+      "de": {
+        "title": "Frontend-Engineers einstellen 2026",
+        "excerpt": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well unde…",
+        "body": "Wir haben been quietly rebuilding the way our content is delivered, and the change has been more interesting than we expected. The numbers are nice — TTFB is down, LCP is well under target, hydration is barely a blip — but the more useful story is what we had to give up to get there.\n\nDie erste Lektion was that almost everything we used to ship to the client was, in retrospect, decoration. Real interactivity lives in a handful of components. Everything else can be HTML and CSS, served at the edge, and forgotten about.\n\nWir begannen keeping a short list of choices that surprised us. Streaming the heavy data instead of blocking on it. Reaching for a CSS variable before a prop. Letting the URL hold filter state instead of a store. None of these are clever. All of them paid off.\n\nWenn du considering a similar move, the advice we'd give is the same advice we wish someone had pushed harder on us: measure first, set a budget, and put the budget in CI. A goal that isn't enforced is a suggestion.\n\nWir gehen tiefer on the migration mechanics in a follow-up. For now, the headline is that the boring choices were the right ones, and we should have made them sooner."
+      }
+    },
+    "tags": [
+      "culture",
+      "product"
+    ],
+    "author": {
+      "id": "u_anna",
+      "name": "Anna Becker",
+      "avatarColor": "#f59e0b"
+    },
+    "publishedAt": "2026-04-04T00:00:00Z",
+    "readingTimeMinutes": 3,
+    "coverColor": "#059669"
+  }
+]

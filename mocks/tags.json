@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "engineering",
+    "label": {
+      "en": "Engineering",
+      "de": "Entwicklung"
+    }
+  },
+  {
+    "slug": "design",
+    "label": {
+      "en": "Design",
+      "de": "Design"
+    }
+  },
+  {
+    "slug": "product",
+    "label": {
+      "en": "Product",
+      "de": "Produkt"
+    }
+  },
+  {
+    "slug": "performance",
+    "label": {
+      "en": "Performance",
+      "de": "Performance"
+    }
+  },
+  {
+    "slug": "accessibility",
+    "label": {
+      "en": "Accessibility",
+      "de": "Barrierefreiheit"
+    }
+  },
+  {
+    "slug": "ai",
+    "label": {
+      "en": "AI",
+      "de": "KI"
+    }
+  },
+  {
+    "slug": "culture",
+    "label": {
+      "en": "Culture",
+      "de": "Kultur"
+    }
+  },
+  {
+    "slug": "tutorials",
+    "label": {
+      "en": "Tutorials",
+      "de": "Tutorials"
+    }
+  }
+]

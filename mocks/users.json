@@ -1,0 +1,23 @@
+[
+  {
+    "id": "demo_admin",
+    "email": "admin@demo.test",
+    "password": "demo1234",
+    "name": "Demo Admin",
+    "role": "admin"
+  },
+  {
+    "id": "demo_editor",
+    "email": "editor@demo.test",
+    "password": "demo1234",
+    "name": "Demo Editor",
+    "role": "editor"
+  },
+  {
+    "id": "demo_viewer",
+    "email": "viewer@demo.test",
+    "password": "demo1234",
+    "name": "Demo Viewer",
+    "role": "viewer"
+  }
+]
