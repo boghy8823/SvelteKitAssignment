@@ -119,6 +119,11 @@ export type MessageKey =
 	| 'status.draft'
 	| 'status.paused'
 	| 'status.scheduled'
+	| 'table.budget.failed'
+	| 'table.budget.invalid'
+	| 'table.budget.label'
+	| 'table.budget.required'
+	| 'table.budget.saved'
 	| 'table.cancel'
 	| 'table.editBudget'
 	| 'table.save'
@@ -242,6 +247,11 @@ export const messageKeys: readonly MessageKey[] = [
 	'status.draft',
 	'status.paused',
 	'status.scheduled',
+	'table.budget.failed',
+	'table.budget.invalid',
+	'table.budget.label',
+	'table.budget.required',
+	'table.budget.saved',
 	'table.cancel',
 	'table.editBudget',
 	'table.save',

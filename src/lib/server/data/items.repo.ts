@@ -1,10 +1,13 @@
+import { canEdit, type Account } from '$lib/data/account';
 import type { FacetGroup, ItemQuery, ItemSortField } from '$lib/data/item-query';
 import { resolvePage, type Page, type PageMeta } from '$lib/data/pagination';
+import { err, ok, type Result } from '$lib/data/result';
 import { itemChannels, itemStatuses, type Item } from '$lib/data/schemas';
 import type { Locale } from '$lib/i18n/locales';
 
 import { items } from './dataset/items';
 import { tags as taxonomy } from './dataset/tags';
+import { EMPTY_OVERLAY, withEntry, type Overlay } from './overlay';
 
 export interface FacetCount {
 	value: string;
@@ -127,16 +130,97 @@ export async function pageMeta(query: ItemQuery): Promise<PageMeta> {
 	return resolvePage(total, query.page, query.pageSize);
 }
 
-export async function list(query: ItemQuery): Promise<Page<Item>> {
+/** An edited row as it should now read. Returns the original when nothing was
+ * edited, so callers can apply this unconditionally. */
+export function applyOverlay(item: Item, overlay: Overlay): Item {
+	const entry = overlay[item.id];
+
+	return entry ? { ...item, budget: entry.budget, updatedAt: entry.updatedAt } : item;
+}
+
+export async function list(
+	query: ItemQuery,
+	overlay: Overlay = EMPTY_OVERLAY
+): Promise<Page<Item>> {
 	const filtered = items.filter((item) => matches(item, query));
-	const sorted = [...filtered].sort((a, b) => compareForSort(a, b, query));
+
+	// Overlay after filtering and before sorting, which is the only order that is
+	// correct: no filter reads `budget`, and sorting by it must see the edited
+	// value or an edited row would sort by a number nobody can see.
+	const patched = filtered.map((item) => applyOverlay(item, overlay));
+
+	const sorted = [...patched].sort((a, b) => compareForSort(a, b, query));
 	const meta = resolvePage(sorted.length, query.page, query.pageSize);
 
 	return { ...meta, rows: sorted.slice(meta.from, meta.to) };
 }
 
-export async function get(id: string): Promise<Item | null> {
-	return items.find((item) => item.id === id) ?? null;
+export async function get(id: string, overlay: Overlay = EMPTY_OVERLAY): Promise<Item | null> {
+	const item = items.find((candidate) => candidate.id === id);
+
+	return item ? applyOverlay(item, overlay) : null;
+}
+
+export interface UpdateBudgetCommand {
+	id: string;
+	budget: number;
+	/**
+	 * The `updatedAt` the editor was looking at. Sending it back is what turns a
+	 * blind write into a compare-and-set: if the row moved in the meantime, this no
+	 * longer matches and the write is refused instead of silently winning.
+	 */
+	expectedUpdatedAt: string;
+}
+
+export type UpdateBudgetError =
+	| { kind: 'forbidden' }
+	| { kind: 'not-found' }
+	/** Carries the row as it now stands, so the UI can show both values rather
+	 * than telling someone to go and look. */
+	| { kind: 'conflict'; current: Item };
+
+export interface UpdateBudgetResult {
+	item: Item;
+	/** The caller writes this back to the cookie. The repository does not touch
+	 * the response, so it stays testable without a request. */
+	overlay: Overlay;
+}
+
+/**
+ * The one write in the app.
+ *
+ * Authorisation lives here rather than in the component that renders the button.
+ * Hiding a control is a courtesy to the person using it; refusing the request is
+ * the enforcement, and it is the only half that survives a crafted POST.
+ */
+export async function updateBudget(
+	command: UpdateBudgetCommand,
+	account: Account | null,
+	overlay: Overlay = EMPTY_OVERLAY,
+	now = new Date()
+): Promise<Result<UpdateBudgetResult, UpdateBudgetError>> {
+	if (!canEdit(account)) {
+		return err({ kind: 'forbidden' });
+	}
+
+	const stored = items.find((candidate) => candidate.id === command.id);
+
+	if (!stored) {
+		return err({ kind: 'not-found' });
+	}
+
+	const current = applyOverlay(stored, overlay);
+
+	if (current.updatedAt !== command.expectedUpdatedAt) {
+		return err({ kind: 'conflict', current });
+	}
+
+	const entry = { budget: command.budget, updatedAt: now.toISOString() };
+
+	return ok({
+		item: { ...current, ...entry },
+		overlay: withEntry(overlay, command.id, entry)
+	});
 }
 
 function countBy(query: ItemQuery, group: FacetGroup, values: readonly string[]): FacetCount[] {

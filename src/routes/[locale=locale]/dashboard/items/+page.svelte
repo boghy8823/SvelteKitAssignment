@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { goto, invalidate } from '$app/navigation';
 	import { resolve } from '$app/paths';
+	import { canEdit } from '$lib/data/account';
 	import {
 		facetGroups,
 		type FacetGroup,
@@ -8,6 +9,7 @@
 		type ItemSortField
 	} from '$lib/data/item-query';
 	import type { ItemChannel, ItemStatus } from '$lib/data/schemas';
+	import { BudgetEdits } from '$lib/features/items/budget-edits.svelte.ts';
 	import { channelLabels, statusLabels } from '$lib/features/items/columns';
 	import ItemFilters from '$lib/features/items/ItemFilters.svelte';
 	import ItemsTable from '$lib/features/items/ItemsTable.svelte';
@@ -17,11 +19,44 @@
 	import Container from '$lib/ui/Container.svelte';
 	import Heading from '$lib/ui/Heading.svelte';
 	import Pagination from '$lib/ui/Pagination.svelte';
+	import { useToasts } from '$lib/ui/toast.svelte.ts';
 	import { nextItemQuery, serializeItemQuery } from '$lib/url/item-query';
 
-	let { data } = $props();
+	let { data, form } = $props();
 
 	const i18n = useI18n();
+	const toasts = useToasts();
+
+	/** The same predicate the action enforces. Here it decides whether to render a
+	 * control; there it decides whether to honour a request. */
+	const writable = $derived(canEdit(data.user));
+
+	/**
+	 * Owned here rather than inside the table, so an optimistic value survives the
+	 * re-render that arrives when the rows reload.
+	 */
+	const edits = new BudgetEdits();
+
+	/**
+	 * Reacts to whatever the action returned. Scoped invalidation is the point:
+	 * `invalidate('app:items')` re-runs the one load that declared `app:items`,
+	 * while `invalidateAll()` would also re-run the layout's dictionary load and
+	 * the session lookup to refresh a single number.
+	 */
+	$effect(() => {
+		if (!form) {
+			return;
+		}
+
+		if ('reason' in form) {
+			toasts.show(i18n.t('table.budget.failed'), { tone: 'error' });
+
+			return;
+		}
+
+		void invalidate('app:items');
+		toasts.show(i18n.t('table.budget.saved'), { tone: 'success' });
+	});
 
 	const meta = $derived(
 		buildMeta({
@@ -179,7 +214,14 @@
 	</p>
 
 	<div class="mt-6">
-		<ItemsTable query={data.query} meta={data.meta} rows={data.rows} {sortHref}>
+		<ItemsTable
+			query={data.query}
+			meta={data.meta}
+			rows={data.rows}
+			editable={writable}
+			{edits}
+			{sortHref}
+		>
 			{#snippet empty()}
 				<p class="text-center text-sm text-fg-muted">{i18n.t('dashboard.items.empty')}</p>
 			{/snippet}

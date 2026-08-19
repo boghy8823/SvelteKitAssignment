@@ -9,6 +9,8 @@
 	import Badge from '$lib/ui/Badge.svelte';
 	import Skeleton from '$lib/ui/Skeleton.svelte';
 
+	import type { BudgetEdits } from './budget-edits.svelte.ts';
+	import BudgetCell from './BudgetCell.svelte';
 	import { channelLabels, itemColumns, statusLabels, statusVariants } from './columns';
 
 	type Rows = Result<readonly Item[], unknown>;
@@ -16,6 +18,10 @@
 	interface Props {
 		query: ItemQuery;
 		meta: PageMeta;
+		/** Whether this account may edit a budget. */
+		editable: boolean;
+		/** The optimistic layer, owned by the page so it survives a row re-render. */
+		edits: BudgetEdits;
 		/**
 		 * A promise when the rows are streamed, and the value itself when the load
 		 * awaited them. Both are supported because Svelte renders the pending branch
@@ -34,7 +40,7 @@
 		failed: Snippet;
 	}
 
-	let { query, meta, rows, sortHref, empty, failed }: Props = $props();
+	let { query, meta, editable, edits, rows, sortHref, empty, failed }: Props = $props();
 
 	const i18n = useI18n();
 
@@ -153,7 +159,11 @@
 					<!-- Keyed by id, so a row keeps its identity — and its focus — across the
 					     re-render that follows an edit. -->
 					{#each result.data as item (item.id)}
-						<tr class="border-t border-border hover:bg-surface-raised">
+						<!-- The row's identity, in the markup. The keyed each block is what
+						     preserves focus across a re-render; this is what lets a test
+						     address one row without depending on its position, which sorting
+						     and filtering change by design. -->
+						<tr data-item-id={item.id} class="border-t border-border hover:bg-surface-raised">
 							<td class={`${cell} truncate font-medium`} title={item.name}>{item.name}</td>
 
 							<td class={cell}>
@@ -165,7 +175,18 @@
 							<td class={`${cell} text-fg-muted`}>{i18n.t(channelLabels[item.channel])}</td>
 							<td class={`${cell} truncate text-fg-muted`}>{item.owner.name}</td>
 
-							<td class={`${cell} text-end tabular-nums`}>{i18n.format.currency(item.budget)}</td>
+							<td class={`${cell} text-end`}>
+								<BudgetCell
+									id={item.id}
+									name={item.name}
+									budget={item.budget}
+									updatedAt={item.updatedAt}
+									{editable}
+									pending={edits.pending(item.id)}
+									onstart={(id, budget) => edits.start(id, budget)}
+									onsettle={(id) => edits.settle(id)}
+								/>
+							</td>
 
 							<td class={`${cell} text-end text-fg-muted tabular-nums`}>
 								{i18n.format.currencyPrecise(item.spent)}
