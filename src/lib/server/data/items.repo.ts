@@ -96,8 +96,13 @@ function compareField(a: Item, b: Item, field: ItemSortField): number {
  * Stable by construction. Only 8 distinct budgets exist across 220 rows, so
  * without the id tiebreaker a budget sort would reshuffle ties between requests
  * and pagination would show the same row twice while hiding another.
+ *
+ * Exported because the guarantee cannot be observed through `list`: the source
+ * rows happen to be id-ordered and Array.prototype.sort is stable, so ties look
+ * correct even with no tiebreaker at all. Testing the comparator directly holds
+ * the contract instead of the coincidence.
  */
-function compare(a: Item, b: Item, query: ItemQuery): number {
+export function compareForSort(a: Item, b: Item, query: ItemQuery): number {
 	const ordered = compareField(a, b, query.sort);
 	const directed = query.direction === 'desc' ? -ordered : ordered;
 
@@ -106,7 +111,7 @@ function compare(a: Item, b: Item, query: ItemQuery): number {
 
 export async function list(query: ItemQuery): Promise<Page<Item>> {
 	const filtered = items.filter((item) => matches(item, query));
-	const sorted = [...filtered].sort((a, b) => compare(a, b, query));
+	const sorted = [...filtered].sort((a, b) => compareForSort(a, b, query));
 	const meta = resolvePage(sorted.length, query.page, query.pageSize);
 
 	return { ...meta, rows: sorted.slice(meta.from, meta.to) };
