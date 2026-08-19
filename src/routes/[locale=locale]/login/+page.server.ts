@@ -1,9 +1,9 @@
-import { resolve } from '$app/paths';
 import { loginErrors } from '$lib/data/login';
 import type { Locale } from '$lib/i18n/locales';
 import { issueSession } from '$lib/server/auth/session';
 import { authenticate, demoLogins } from '$lib/server/data/users.repo';
 import { isLocalPath, safeLocalPath } from '$lib/url/local-path';
+import { localePath } from '$lib/url/locale-path';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -16,9 +16,15 @@ import type { Actions, PageServerLoad } from './$types';
  * `redirectTo` arrives from a query string or a form field, which makes it
  * attacker-controlled. Validating it as a local path is what stops the login page
  * from becoming an open redirect — the classic hole in exactly this feature.
+ *
+ * The fallback is the dashboard, because that is the only reason this page
+ * exists: someone who signed in without being sent here still asked to get in.
+ * It is built by `localePath` rather than `resolve()` — a route id resolves to a
+ * path relative to the current page, and a relative `Location` would be resolved
+ * against `/{locale}/login` by the browser instead of against the site root.
  */
 function target(value: unknown, locale: Locale): string {
-	return safeLocalPath(value, resolve('/[locale=locale]', { locale }));
+	return safeLocalPath(value, localePath(locale, '/dashboard'));
 }
 
 export const load: PageServerLoad = async ({ locals, url }) => {
