@@ -17,7 +17,11 @@
 	const home = $derived(resolve('/[locale=locale]', { locale: data.locale }));
 
 	const links = $derived([
-		{ href: resolve('/[locale=locale]/blog', { locale: data.locale }), label: i18n.t('nav.blog') }
+		{ href: resolve('/[locale=locale]/blog', { locale: data.locale }), label: i18n.t('nav.blog') },
+		{
+			href: resolve('/[locale=locale]/search', { locale: data.locale }),
+			label: i18n.t('nav.search')
+		}
 	]);
 </script>
 

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { defaultItemQuery, type ItemQuery } from '../../src/lib/data/item-query';
 import type { Item } from '../../src/lib/data/schemas';
-import { items } from '../../src/lib/server/data/dataset';
+import { items } from '../../src/lib/server/data/dataset/items';
 import { compareForSort, facets, get, list } from '../../src/lib/server/data/items.repo';
 
 function query(overrides: Partial<ItemQuery> = {}): ItemQuery {

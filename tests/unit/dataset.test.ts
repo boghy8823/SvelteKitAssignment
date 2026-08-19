@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
-import { dictionaries, items, posts, tags, users } from '../../src/lib/server/data/dataset';
+import { dictionaries } from '../../src/lib/server/data/dataset/dictionaries';
+import { items } from '../../src/lib/server/data/dataset/items';
+import { posts } from '../../src/lib/server/data/dataset/posts';
+import { tags, tagSlugs } from '../../src/lib/server/data/dataset/tags';
+import { users } from '../../src/lib/server/data/dataset/users';
 
 describe('provided dataset', () => {
 	it('parses at import, so malformed data fails the build rather than a request', () => {
@@ -21,10 +25,9 @@ describe('provided dataset', () => {
 	});
 
 	it('only references tags that exist in the taxonomy', () => {
-		const known = new Set(tags.map((tag) => tag.slug));
 		const referenced = new Set([...posts.flatMap((p) => p.tags), ...items.flatMap((i) => i.tags)]);
 
-		expect([...referenced].filter((slug) => !known.has(slug))).toEqual([]);
+		expect([...referenced].filter((slug) => !tagSlugs.has(slug))).toEqual([]);
 	});
 
 	it('keeps the demo accounts the brief relies on', () => {
@@ -33,5 +36,13 @@ describe('provided dataset', () => {
 			'editor@demo.test:editor',
 			'viewer@demo.test:viewer'
 		]);
+	});
+
+	it('splits per entity, so a route bundles only the data it reads', async () => {
+		// Search runs on the edge and reads posts; importing posts must not drag the
+		// campaign dataset along with it.
+		const postsModule = await import('../../src/lib/server/data/dataset/posts');
+
+		expect(Object.keys(postsModule)).toEqual(['posts']);
 	});
 });

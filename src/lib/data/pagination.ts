@@ -7,6 +7,13 @@ export const POSTS_PAGE_SIZE = 6;
  */
 export const ITEMS_PAGE_SIZE = 25;
 
+/**
+ * Search returns every match on one page. Someone searching is looking for a
+ * specific post, and paging through 20 candidates would be a worse answer than
+ * showing them; browsing the archive is what the blog index is for.
+ */
+export const SEARCH_RESULT_LIMIT = 20;
+
 export interface PageMeta {
 	/** Clamped into range, so it is always safe to render. */
 	page: number;

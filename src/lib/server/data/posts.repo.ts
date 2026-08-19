@@ -1,8 +1,10 @@
 import { POSTS_PAGE_SIZE, resolvePage, type Page } from '$lib/data/pagination';
+import type { PostSort } from '$lib/data/post-sorts';
 import type { Post } from '$lib/data/schemas';
 import type { Locale } from '$lib/i18n/locales';
 
-import { posts } from './dataset';
+import { posts } from './dataset/posts';
+import { tags as taxonomy } from './dataset/tags';
 
 export interface PostSummary {
 	id: string;
@@ -20,9 +22,12 @@ export interface PostDetail extends PostSummary {
 	body: string;
 }
 
-export const postSorts = ['newest', 'oldest', 'title'] as const;
-
-export type PostSort = (typeof postSorts)[number];
+export interface TagFacet {
+	slug: string;
+	/** Already resolved to the query's locale, so the route does no lookup. */
+	label: string;
+	count: number;
+}
 
 export interface PostQuery {
 	locale: Locale;
@@ -90,6 +95,46 @@ function compare(a: Post, b: Post, sort: PostSort, locale: Locale): number {
 	return byDate !== 0 ? byDate : a.slug.localeCompare(b.slug);
 }
 
+/**
+ * The query reduced to what filtering needs, normalised once per request rather
+ * than once per post.
+ */
+interface Filter {
+	locale: Locale;
+	needle?: string;
+	tags?: ReadonlySet<string>;
+}
+
+function toFilter(query: PostQuery): Filter {
+	const { locale } = query;
+
+	return {
+		locale,
+		needle: query.q?.trim() ? normalise(query.q.trim(), locale) : undefined,
+		tags: query.tags?.length ? new Set(query.tags) : undefined
+	};
+}
+
+/**
+ * `exclude` drops the tag constraint, which is what lets a facet count answer
+ * "how many would I get if I clicked this" rather than "how many are in the
+ * result I already narrowed".
+ */
+function matches(post: Post, filter: Filter, exclude?: 'tags'): boolean {
+	const { needle, tags } = filter;
+
+	if (needle && !matchesText(post, filter.locale, needle)) {
+		return false;
+	}
+
+	// IN semantics within the tag group: any match qualifies.
+	if (exclude !== 'tags' && tags && !post.tags.some((tag) => tags.has(tag))) {
+		return false;
+	}
+
+	return true;
+}
+
 /*
  * Shaped like an API client rather than an array helper: the routes are written
  * against a seam that a database or CMS could sit behind without anything above
@@ -98,17 +143,9 @@ function compare(a: Post, b: Post, sort: PostSort, locale: Locale): number {
 
 export async function list(query: PostQuery): Promise<Page<PostSummary>> {
 	const { locale, sort = 'newest' } = query;
-	const needle = query.q?.trim() ? normalise(query.q.trim(), locale) : undefined;
-	const wanted = query.tags?.length ? new Set(query.tags) : undefined;
+	const filter = toFilter(query);
 
-	const filtered = posts.filter((post) => {
-		if (needle && !matchesText(post, locale, needle)) {
-			return false;
-		}
-
-		// IN semantics within the tag group: any match qualifies.
-		return !wanted || post.tags.some((tag) => wanted.has(tag));
-	});
+	const filtered = posts.filter((post) => matches(post, filter));
 
 	const sorted = [...filtered].sort((a, b) => compare(a, b, sort, locale));
 	const meta = resolvePage(sorted.length, query.page ?? 1, query.pageSize ?? POSTS_PAGE_SIZE);
@@ -127,6 +164,34 @@ export async function get(slug: string, locale: Locale): Promise<PostDetail | nu
 	}
 
 	return { ...toSummary(post, locale), body: post.translations[locale].body };
+}
+
+/**
+ * Tag options for the search UI, labelled in the reader's locale and counted
+ * against the query minus the tag filter itself.
+ */
+export async function tagFacets(query: PostQuery): Promise<readonly TagFacet[]> {
+	const filter = toFilter(query);
+	const candidates = posts.filter((post) => matches(post, filter, 'tags'));
+	const counts = new Map(taxonomy.map((tag) => [tag.slug, 0]));
+
+	for (const post of candidates) {
+		for (const tag of post.tags) {
+			const current = counts.get(tag);
+
+			if (current !== undefined) {
+				counts.set(tag, current + 1);
+			}
+		}
+	}
+
+	// Zero counts are kept rather than dropped, so an option cannot disappear from
+	// under the pointer as the query narrows.
+	return taxonomy.map((tag) => ({
+		slug: tag.slug,
+		label: tag.label[query.locale],
+		count: counts.get(tag.slug) ?? 0
+	}));
 }
 
 /** Every slug, for prerender entries and sitemap generation. */

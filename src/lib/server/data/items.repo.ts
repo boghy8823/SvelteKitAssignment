@@ -2,7 +2,8 @@ import type { FacetGroup, ItemQuery, ItemSortField } from '$lib/data/item-query'
 import { resolvePage, type Page } from '$lib/data/pagination';
 import { itemChannels, itemStatuses, type Item } from '$lib/data/schemas';
 
-import { items, tags as taxonomy } from './dataset';
+import { items } from './dataset/items';
+import { tags as taxonomy } from './dataset/tags';
 
 export interface FacetCount {
 	value: string;

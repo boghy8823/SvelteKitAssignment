@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { posts } from '../../src/lib/server/data/dataset';
-import { get, list, slugs } from '../../src/lib/server/data/posts.repo';
+import { posts } from '../../src/lib/server/data/dataset/posts';
+import { tags } from '../../src/lib/server/data/dataset/tags';
+import { get, list, slugs, tagFacets } from '../../src/lib/server/data/posts.repo';
 
 describe('posts.repo.list', () => {
 	it('paginates newest first by default', async () => {
@@ -106,6 +107,42 @@ describe('posts.repo.get', () => {
 
 	it('returns null for an unknown slug', async () => {
 		await expect(get('not-a-post', 'en')).resolves.toBeNull();
+	});
+});
+
+describe('posts.repo.tagFacets', () => {
+	it('offers every tag in the taxonomy, labelled in the requested locale', async () => {
+		const facets = await tagFacets({ locale: 'de' });
+
+		expect(facets.map((facet) => facet.slug)).toEqual(tags.map((tag) => tag.slug));
+		expect(facets.find((facet) => facet.slug === 'ai')?.label).toBe('KI');
+	});
+
+	it('counts what selecting the tag would return, not the unfiltered total', async () => {
+		const facets = await tagFacets({ locale: 'en', q: 'streaming' });
+		const matching = await list({ locale: 'en', q: 'streaming', pageSize: 20 });
+
+		for (const facet of facets) {
+			const expected = matching.rows.filter((row) => row.tags.includes(facet.slug)).length;
+
+			expect(facet.count).toBe(expected);
+		}
+	});
+
+	it('ignores the tag filter itself, so a selected tag does not zero its siblings', async () => {
+		const alone = await tagFacets({ locale: 'en' });
+		const selected = await tagFacets({ locale: 'en', tags: ['ai'] });
+
+		// Counting a facet against the query including that facet is the classic
+		// faceted-search bug: every other option collapses to zero.
+		expect(selected).toEqual(alone);
+	});
+
+	it('keeps a zero count rather than dropping the option', async () => {
+		const facets = await tagFacets({ locale: 'en', q: 'no-post-has-this-in-its-title' });
+
+		expect(facets).toHaveLength(tags.length);
+		expect(facets.every((facet) => facet.count === 0)).toBe(true);
 	});
 });
 

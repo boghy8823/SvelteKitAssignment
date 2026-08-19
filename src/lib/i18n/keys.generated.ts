@@ -77,10 +77,18 @@ export type MessageKey =
 	| 'pricing.tier.team'
 	| 'pricing.title'
 	| 'search.filters.clear'
+	| 'search.filters.tagOption'
 	| 'search.filters.tags'
 	| 'search.noResults'
 	| 'search.placeholder'
+	| 'search.prompt'
 	| 'search.results'
+	| 'search.results.filtered'
+	| 'search.sort.label'
+	| 'search.sort.newest'
+	| 'search.sort.oldest'
+	| 'search.sort.title'
+	| 'search.submit'
 	| 'social.subtitle'
 	| 'social.title'
 	| 'status.active'
@@ -170,10 +178,18 @@ export const messageKeys: readonly MessageKey[] = [
 	'pricing.tier.team',
 	'pricing.title',
 	'search.filters.clear',
+	'search.filters.tagOption',
 	'search.filters.tags',
 	'search.noResults',
 	'search.placeholder',
+	'search.prompt',
 	'search.results',
+	'search.results.filtered',
+	'search.sort.label',
+	'search.sort.newest',
+	'search.sort.oldest',
+	'search.sort.title',
+	'search.submit',
 	'social.subtitle',
 	'social.title',
 	'status.active',

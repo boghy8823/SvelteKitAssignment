@@ -1,7 +1,7 @@
 import { messageKeys } from '$lib/i18n/keys.generated';
 import type { Locale } from '$lib/i18n/locales';
 import type { Messages } from '$lib/i18n/translate';
-import { dictionaries } from '$lib/server/data/dataset';
+import { dictionaries } from '$lib/server/data/dataset/dictionaries';
 import extensionsDe from '$lib/i18n/extensions.de.json';
 import extensionsEn from '$lib/i18n/extensions.en.json';
 
