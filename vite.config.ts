@@ -35,6 +35,10 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
+			// The provided dataset stays byte-identical at the repo root. Reaching it
+			// through an alias makes the boundary explicit, and ESLint restricts the
+			// alias to src/lib/server so nothing else can import it.
+			alias: { $mocks: 'mocks' },
 			adapter: resolveAdapter(process.env.BUILD_ADAPTER ?? 'vercel')
 		})
 	],
