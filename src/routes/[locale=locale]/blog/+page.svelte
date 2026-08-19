@@ -53,7 +53,17 @@
 								{/each}
 							</div>
 
-							<Heading level={2} size="md" class="mt-3">{post.title}</Heading>
+							<Heading level={2} size="md" class="mt-3">
+								<a
+									href={resolve('/[locale=locale]/blog/[slug]', {
+										locale: i18n.locale,
+										slug: post.slug
+									})}
+									class="underline-offset-2 hover:underline"
+								>
+									{post.title}
+								</a>
+							</Heading>
 
 							<p class="mt-2 line-clamp-3 text-sm text-fg-muted">{post.excerpt}</p>
 
