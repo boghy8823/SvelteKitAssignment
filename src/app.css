@@ -40,60 +40,48 @@
 }
 
 /*
- * Layer 2 — semantic tokens. Light is the default; dark re-points the same
- * names. Components therefore carry one class list and never a parallel
- * dark: variant.
+ * Layer 2 — semantic tokens. Each name carries both themes in one
+ * declaration, so a component's single class list resolves correctly in
+ * either. No parallel dark: variants, and nothing to keep in sync.
+ *
+ * Which branch applies is decided by the used color-scheme: `light dark`
+ * follows the OS, and an explicit data-theme pins it. That is why a visitor
+ * with no cookie gets their OS preference on the first paint without an
+ * inline script.
  */
 :root {
+	color-scheme: light dark;
+
+	--surface: light-dark(var(--pal-white), var(--pal-ink-950));
+	--surface-raised: light-dark(var(--pal-grey-25), var(--pal-ink-850));
+	--surface-sunken: light-dark(var(--pal-grey-50), var(--pal-ink-800));
+
+	--fg: light-dark(var(--pal-ink-900), var(--pal-slate-100));
+	--fg-muted: light-dark(var(--pal-grey-600), var(--pal-slate-300));
+
+	--border: light-dark(var(--pal-grey-150), var(--pal-ink-700));
+	--border-strong: light-dark(var(--pal-grey-400), var(--pal-slate-500));
+
+	--accent: light-dark(var(--pal-violet-600), var(--pal-violet-400));
+	--accent-fg: light-dark(var(--pal-white), var(--pal-violet-950));
+	--accent-subtle: light-dark(var(--pal-violet-100), var(--pal-ink-800));
+
+	--danger: light-dark(var(--pal-red-700), var(--pal-red-200));
+	--danger-fg: light-dark(var(--pal-white), var(--pal-red-950));
+
+	--success: light-dark(var(--pal-green-700), var(--pal-green-200));
+	--success-fg: light-dark(var(--pal-white), var(--pal-green-950));
+
+	--ring: light-dark(var(--pal-violet-600), var(--pal-violet-400));
+}
+
+/* A stored preference wins over the OS, in both directions. */
+[data-theme='light'] {
 	color-scheme: light;
-
-	--surface: var(--pal-white);
-	--surface-raised: var(--pal-grey-25);
-	--surface-sunken: var(--pal-grey-50);
-
-	--fg: var(--pal-ink-900);
-	--fg-muted: var(--pal-grey-600);
-
-	--border: var(--pal-grey-150);
-	--border-strong: var(--pal-grey-400);
-
-	--accent: var(--pal-violet-600);
-	--accent-fg: var(--pal-white);
-	--accent-subtle: var(--pal-violet-100);
-
-	--danger: var(--pal-red-700);
-	--danger-fg: var(--pal-white);
-
-	--success: var(--pal-green-700);
-	--success-fg: var(--pal-white);
-
-	--ring: var(--pal-violet-600);
 }
 
 [data-theme='dark'] {
 	color-scheme: dark;
-
-	--surface: var(--pal-ink-950);
-	--surface-raised: var(--pal-ink-850);
-	--surface-sunken: var(--pal-ink-800);
-
-	--fg: var(--pal-slate-100);
-	--fg-muted: var(--pal-slate-300);
-
-	--border: var(--pal-ink-700);
-	--border-strong: var(--pal-slate-500);
-
-	--accent: var(--pal-violet-400);
-	--accent-fg: var(--pal-violet-950);
-	--accent-subtle: var(--pal-ink-800);
-
-	--danger: var(--pal-red-200);
-	--danger-fg: var(--pal-red-950);
-
-	--success: var(--pal-green-200);
-	--success-fg: var(--pal-green-950);
-
-	--ring: var(--pal-violet-400);
 }
 
 /*

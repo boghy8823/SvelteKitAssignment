@@ -54,6 +54,16 @@ Contrast is part of the token definition rather than a later audit: `tests/unit/
 resolves every semantic pair in both themes and fails below WCAG AA (4.5:1 for text, 3:1 for control
 boundaries and focus rings).
 
+### Theme resolution
+
+`hooks.server.ts` reads the theme cookie and writes `data-theme` into the document during SSR, so the
+first paint is already correct: no flash, no blocking inline script, and therefore no CSP concession.
+
+Each token declares both themes in one `light-dark()` value, switched by `color-scheme`. A visitor
+with no cookie gets `color-scheme: light dark` and lands on their OS preference; choosing a theme
+pins it. Toggling works without JavaScript through a form POST to `/api/theme` that redirects back to
+a validated local path, and with JavaScript it repaints immediately and persists in the background.
+
 ## Decisions
 
 Non-obvious architectural choices are recorded in [`docs/adr/`](docs/adr/), so the reasoning is

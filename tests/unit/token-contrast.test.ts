@@ -5,6 +5,9 @@ import { describe, expect, it } from 'vitest';
 
 const css = readFileSync(fileURLToPath(new URL('../../src/app.css', import.meta.url)), 'utf8');
 
+const themes = ['light', 'dark'] as const;
+type Theme = (typeof themes)[number];
+
 /** Declarations from every block matching the given selector, in source order. */
 function declarations(selector: string): Map<string, string> {
 	const pattern = new RegExp(`${escapeRegExp(selector)}\\s*\\{([^}]*)\\}`, 'g');
@@ -23,20 +26,31 @@ function escapeRegExp(value: string): string {
 	return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-/** Follows `var(--x)` indirection until a literal value is reached. */
-function resolve(name: string, scope: Map<string, string>): string {
-	let value = scope.get(name);
+const tokens = declarations(':root');
 
-	for (let hops = 0; value?.startsWith('var(') && hops < 5; hops += 1) {
-		const referenced = value.slice(4, -1).trim();
-		value = scope.get(referenced);
+/**
+ * Follows `var()` indirection and picks the requested branch of any
+ * `light-dark()` pair until a literal value is reached.
+ */
+function resolve(name: string, theme: Theme): string {
+	let value = tokens.get(name);
+
+	for (let hops = 0; value !== undefined && hops < 6; hops += 1) {
+		const pair = /^light-dark\(([^,]+),(.+)\)$/.exec(value);
+
+		if (pair) {
+			value = (theme === 'light' ? pair[1] : pair[2]).trim();
+			continue;
+		}
+
+		if (!value.startsWith('var(')) {
+			return value;
+		}
+
+		value = tokens.get(value.slice(4, -1).trim());
 	}
 
-	if (value === undefined) {
-		throw new Error(`Token ${name} does not resolve to a value`);
-	}
-
-	return value;
+	throw new Error(`Token ${name} does not resolve to a literal value`);
 }
 
 function channel(value: number): number {
@@ -52,11 +66,12 @@ function luminance(hex: string): number {
 	}
 
 	const value = Number.parseInt(match[1], 16);
-	const r = channel((value >> 16) & 0xff);
-	const g = channel((value >> 8) & 0xff);
-	const b = channel(value & 0xff);
 
-	return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+	return (
+		0.2126 * channel((value >> 16) & 0xff) +
+		0.7152 * channel((value >> 8) & 0xff) +
+		0.0722 * channel(value & 0xff)
+	);
 }
 
 function contrast(foreground: string, background: string): number {
@@ -66,10 +81,6 @@ function contrast(foreground: string, background: string): number {
 
 	return (lighter + 0.05) / (darker + 0.05);
 }
-
-const light = declarations(':root');
-const dark = new Map([...light, ...declarations("\\[data-theme='dark'\\]")]);
-const themes = { light, dark };
 
 /** WCAG 1.4.3: body text and meaningful icons. */
 const textPairs = [
@@ -92,22 +103,29 @@ const uiPairs = [
 	['--ring', '--surface-raised']
 ] as const;
 
-describe.each(Object.entries(themes))('%s theme', (_name, scope) => {
+describe.each(themes)('%s theme', (theme) => {
 	it.each(textPairs)('renders %s on %s at AA for text', (foreground, background) => {
-		const ratio = contrast(resolve(foreground, scope), resolve(background, scope));
-
-		expect(ratio).toBeGreaterThanOrEqual(4.5);
+		expect(contrast(resolve(foreground, theme), resolve(background, theme))).toBeGreaterThanOrEqual(
+			4.5
+		);
 	});
 
 	it.each(uiPairs)('renders %s on %s at AA for controls', (foreground, background) => {
-		const ratio = contrast(resolve(foreground, scope), resolve(background, scope));
+		expect(contrast(resolve(foreground, theme), resolve(background, theme))).toBeGreaterThanOrEqual(
+			3
+		);
+	});
+});
 
-		expect(ratio).toBeGreaterThanOrEqual(3);
+describe('token layering', () => {
+	it('keeps every semantic token themed for both schemes', () => {
+		const semantic = [...tokens.keys()].filter((name) => !name.startsWith('--pal-'));
+		const unthemed = semantic.filter((name) => !tokens.get(name)?.startsWith('light-dark('));
+
+		expect(unthemed).toEqual([]);
 	});
 
-	it('never lets a component reach past the semantic layer', () => {
-		const componentFacing = [...scope.keys()].filter((name) => name.startsWith('--color-'));
-
-		expect(componentFacing).toEqual([]);
+	it('never exposes a raw --color-* name for components to bypass the semantic layer', () => {
+		expect([...tokens.keys()].filter((name) => name.startsWith('--color-'))).toEqual([]);
 	});
 });
