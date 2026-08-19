@@ -7,9 +7,12 @@
 	import Input from '$lib/ui/Input.svelte';
 	import Select from '$lib/ui/Select.svelte';
 	import Skeleton from '$lib/ui/Skeleton.svelte';
+	import { useToasts } from '$lib/ui/toast.svelte.ts';
 
 	let name = $state('');
 	let channel = $state('email');
+
+	const toasts = useToasts();
 </script>
 
 <Container width="prose" class="py-section">
@@ -54,6 +57,24 @@
 			<option value="sms">SMS</option>
 			<option value="web">Web</option>
 		</Select>
+	</div>
+
+	<Heading level={2} class="mt-12">Notifications</Heading>
+
+	<div class="mt-4 flex flex-wrap items-center gap-3">
+		<Button variant="secondary" onclick={() => toasts.show('Budget updated', { tone: 'success' })}>
+			Success toast
+		</Button>
+		<Button
+			variant="secondary"
+			onclick={() =>
+				toasts.show('Could not update budget', {
+					tone: 'error',
+					action: { label: 'Retry', run: () => toasts.show('Retrying', { tone: 'info' }) }
+				})}
+		>
+			Error toast with retry
+		</Button>
 	</div>
 
 	<Heading level={2} class="mt-12">Surfaces and loading</Heading>

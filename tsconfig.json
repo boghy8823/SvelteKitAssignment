@@ -1,7 +1,12 @@
 {
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
-		"rewriteRelativeImportExtensions": true,
+		// Rune-bearing modules must be named *.svelte.ts, and the extension has to
+		// be written out at the import site: without it the Svelte plugin resolves
+		// the request as a component and the named exports disappear. Vite owns
+		// emit, so allowing the extension costs nothing. `rewriteRelativeImport-
+		// Extensions` is off because it rejects the same extension on $lib paths.
+		"allowImportingTsExtensions": true,
 		"allowJs": true,
 		"checkJs": true,
 		"esModuleInterop": true,
