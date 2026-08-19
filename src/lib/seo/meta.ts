@@ -1,4 +1,5 @@
 import { locales, type Locale } from '$lib/i18n/locales';
+import { localePath } from '$lib/url/locale-path';
 
 import { absolute, siteName } from './site';
 
@@ -37,11 +38,6 @@ export interface Meta {
 	twitter: Record<string, string>;
 }
 
-/** `/en` + `/blog` → `/en/blog`, with `/` collapsing rather than doubling. */
-export function localisedPath(locale: Locale, path: string): string {
-	return `/${locale}${path === '/' ? '' : path}`;
-}
-
 /**
  * The alternates for one locale-less path. Exported because the sitemap emits
  * the same set as `xhtml:link` entries: hreflang and the sitemap are generated
@@ -53,7 +49,7 @@ export function alternatesFor(path: string, search = ''): Alternate[] {
 			hreflang: candidate,
 			// The same page in another language is the same page: the query travels
 			// with it, or German page 2 would point at German page 1.
-			href: absolute(localisedPath(candidate, path) + search)
+			href: absolute(localePath(candidate, path) + search)
 		})),
 		// x-default points at the negotiating root rather than at English: the
 		// root is what decides for a visitor whose language we do not publish.
@@ -67,7 +63,7 @@ export function alternatesFor(path: string, search = ''): Alternate[] {
  */
 export function buildMeta(input: MetaInput): Meta {
 	const { locale, path, type = 'website', search = '' } = input;
-	const canonical = absolute(localisedPath(locale, path) + search);
+	const canonical = absolute(localePath(locale, path) + search);
 	const image = input.image ? absolute(input.image) : undefined;
 
 	const alternates = alternatesFor(path, search);

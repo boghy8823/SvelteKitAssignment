@@ -23,7 +23,17 @@
 		{
 			href: resolve('/[locale=locale]/search', { locale: data.locale }),
 			label: i18n.t('nav.search')
-		}
+		},
+		// Only for someone who can open it. Advertising a guarded route to anonymous
+		// visitors is a link that answers with a redirect, which is not navigation.
+		...(data.user
+			? [
+					{
+						href: resolve('/[locale=locale]/dashboard', { locale: data.locale }),
+						label: i18n.t('nav.dashboard')
+					}
+				]
+			: [])
 	]);
 
 	const loginHref = $derived(resolve('/[locale=locale]/login', { locale: data.locale }));

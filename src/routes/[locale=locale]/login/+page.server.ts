@@ -3,7 +3,7 @@ import { loginErrors } from '$lib/data/login';
 import type { Locale } from '$lib/i18n/locales';
 import { issueSession } from '$lib/server/auth/session';
 import { authenticate, demoLogins } from '$lib/server/data/users.repo';
-import { safeLocalPath } from '$lib/url/local-path';
+import { isLocalPath, safeLocalPath } from '$lib/url/local-path';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -22,7 +22,8 @@ function target(value: unknown, locale: Locale): string {
 }
 
 export const load: PageServerLoad = async ({ locals, url }) => {
-	const redirectTo = target(url.searchParams.get('redirectTo'), locals.locale);
+	const requested = url.searchParams.get('redirectTo');
+	const redirectTo = target(requested, locals.locale);
 
 	// Already signed in: send them where they were going instead of showing a form
 	// that would sign them in as someone they already are.
@@ -30,7 +31,13 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 		redirect(303, redirectTo);
 	}
 
-	return { redirectTo, demo: await demoLogins() };
+	return {
+		redirectTo,
+		// A usable target means the guard sent them here, so the page can say why it
+		// appeared. Arriving by choice shows no such notice.
+		interrupted: isLocalPath(requested),
+		demo: await demoLogins()
+	};
 };
 
 export const actions = {

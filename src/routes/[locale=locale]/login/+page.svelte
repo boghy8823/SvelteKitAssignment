@@ -83,6 +83,14 @@
 	<Heading level={1}>{i18n.t('login.title')}</Heading>
 	<p class="mt-3 text-fg-muted">{i18n.t('login.subtitle')}</p>
 
+	{#if data.interrupted}
+		<!-- The guard bounced them here, so the page explains itself rather than
+		     looking like the site lost their click. -->
+		<p class="mt-6 rounded-md border border-border-strong bg-surface-raised px-3 py-2 text-sm">
+			{i18n.t('login.required')}
+		</p>
+	{/if}
+
 	<Card class="mt-8">
 		<form
 			method="POST"

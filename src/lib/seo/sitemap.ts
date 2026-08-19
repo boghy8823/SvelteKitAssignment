@@ -1,6 +1,8 @@
 import { locales, type Locale } from '$lib/i18n/locales';
 
-import { alternatesFor, localisedPath } from './meta';
+import { localePath } from '$lib/url/locale-path';
+
+import { alternatesFor } from './meta';
 import { marketingRoutes, postRoute, type SitemapRoute } from './routes';
 import { absolute } from './site';
 
@@ -54,7 +56,7 @@ function urlEntry(entry: SitemapEntry, locale: Locale): string {
 
 	return [
 		'\t<url>',
-		`\t\t<loc>${escapeXml(absolute(localisedPath(locale, entry.path)))}</loc>`,
+		`\t\t<loc>${escapeXml(absolute(localePath(locale, entry.path)))}</loc>`,
 		alternates,
 		entry.lastModified ? `\t\t<lastmod>${entry.lastModified}</lastmod>` : undefined,
 		`\t\t<changefreq>${entry.changeFrequency}</changefreq>`,

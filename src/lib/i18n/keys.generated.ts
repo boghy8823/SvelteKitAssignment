@@ -21,6 +21,7 @@ export type MessageKey =
 	| 'common.loading'
 	| 'common.retry'
 	| 'common.save'
+	| 'dashboard.canEdit'
 	| 'dashboard.items.column.budget'
 	| 'dashboard.items.column.channel'
 	| 'dashboard.items.column.ctr'
@@ -36,7 +37,11 @@ export type MessageKey =
 	| 'dashboard.items.new'
 	| 'dashboard.items.search'
 	| 'dashboard.items.title'
+	| 'dashboard.readOnly'
+	| 'dashboard.role'
+	| 'dashboard.subtitle'
 	| 'dashboard.title'
+	| 'dashboard.welcome'
 	| 'error.404.body'
 	| 'error.404.cta'
 	| 'error.404.title'
@@ -62,6 +67,7 @@ export type MessageKey =
 	| 'login.error.email'
 	| 'login.error.password'
 	| 'login.password'
+	| 'login.required'
 	| 'login.signedInAs'
 	| 'login.submit'
 	| 'login.submitting'
@@ -84,6 +90,9 @@ export type MessageKey =
 	| 'pricing.tier.starter'
 	| 'pricing.tier.team'
 	| 'pricing.title'
+	| 'role.admin'
+	| 'role.editor'
+	| 'role.viewer'
 	| 'search.filters.clear'
 	| 'search.filters.tagOption'
 	| 'search.filters.tags'
@@ -130,6 +139,7 @@ export const messageKeys: readonly MessageKey[] = [
 	'common.loading',
 	'common.retry',
 	'common.save',
+	'dashboard.canEdit',
 	'dashboard.items.column.budget',
 	'dashboard.items.column.channel',
 	'dashboard.items.column.ctr',
@@ -145,7 +155,11 @@ export const messageKeys: readonly MessageKey[] = [
 	'dashboard.items.new',
 	'dashboard.items.search',
 	'dashboard.items.title',
+	'dashboard.readOnly',
+	'dashboard.role',
+	'dashboard.subtitle',
 	'dashboard.title',
+	'dashboard.welcome',
 	'error.404.body',
 	'error.404.cta',
 	'error.404.title',
@@ -171,6 +185,7 @@ export const messageKeys: readonly MessageKey[] = [
 	'login.error.email',
 	'login.error.password',
 	'login.password',
+	'login.required',
 	'login.signedInAs',
 	'login.submit',
 	'login.submitting',
@@ -193,6 +208,9 @@ export const messageKeys: readonly MessageKey[] = [
 	'pricing.tier.starter',
 	'pricing.tier.team',
 	'pricing.title',
+	'role.admin',
+	'role.editor',
+	'role.viewer',
 	'search.filters.clear',
 	'search.filters.tagOption',
 	'search.filters.tags',
