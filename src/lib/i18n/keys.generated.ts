@@ -33,13 +33,20 @@ export type MessageKey =
 	| 'dashboard.items.column.status'
 	| 'dashboard.items.column.updated'
 	| 'dashboard.items.empty'
+	| 'dashboard.items.emptyBody'
 	| 'dashboard.items.filters.channel'
 	| 'dashboard.items.filters.options'
 	| 'dashboard.items.filters.placeholder'
 	| 'dashboard.items.filters.status'
 	| 'dashboard.items.filters.tags'
+	| 'dashboard.items.filtersFailed.body'
+	| 'dashboard.items.filtersFailed.title'
 	| 'dashboard.items.new'
+	| 'dashboard.items.noMatches.body'
+	| 'dashboard.items.noMatches.title'
 	| 'dashboard.items.noStream'
+	| 'dashboard.items.rowsFailed.body'
+	| 'dashboard.items.rowsFailed.title'
 	| 'dashboard.items.search'
 	| 'dashboard.items.title'
 	| 'dashboard.readOnly'
@@ -170,13 +177,20 @@ export const messageKeys: readonly MessageKey[] = [
 	'dashboard.items.column.status',
 	'dashboard.items.column.updated',
 	'dashboard.items.empty',
+	'dashboard.items.emptyBody',
 	'dashboard.items.filters.channel',
 	'dashboard.items.filters.options',
 	'dashboard.items.filters.placeholder',
 	'dashboard.items.filters.status',
 	'dashboard.items.filters.tags',
+	'dashboard.items.filtersFailed.body',
+	'dashboard.items.filtersFailed.title',
 	'dashboard.items.new',
+	'dashboard.items.noMatches.body',
+	'dashboard.items.noMatches.title',
 	'dashboard.items.noStream',
+	'dashboard.items.rowsFailed.body',
+	'dashboard.items.rowsFailed.title',
 	'dashboard.items.search',
 	'dashboard.items.title',
 	'dashboard.readOnly',

@@ -14,10 +14,13 @@
 	import { BudgetEdits } from '$lib/features/items/budget-edits.svelte.ts';
 	import { channelLabels, statusLabels } from '$lib/features/items/columns';
 	import ItemFilters from '$lib/features/items/ItemFilters.svelte';
+	import ItemsState from '$lib/features/items/ItemsState.svelte';
 	import ItemsTable from '$lib/features/items/ItemsTable.svelte';
 	import { useI18n } from '$lib/i18n/context.svelte.ts';
 	import { buildMeta } from '$lib/seo/meta';
 	import Seo from '$lib/seo/Seo.svelte';
+	import Button from '$lib/ui/Button.svelte';
+	import { buttonClasses } from '$lib/ui/button-styles';
 	import Container from '$lib/ui/Container.svelte';
 	import Heading from '$lib/ui/Heading.svelte';
 	import Pagination from '$lib/ui/Pagination.svelte';
@@ -232,37 +235,43 @@
 
 	/** Facet options come from the repository's counts, so an option's number
 	 * answers "how many would I get if I clicked this". Labels are translated
-	 * here, because the repository has no business knowing the reader's language. */
-	const facetFields = $derived([
-		{
-			group: 'status' as const,
-			label: i18n.t('dashboard.items.filters.status'),
-			options: data.facets.status.map((facet) => ({
-				value: facet.value,
-				label: i18n.t(statusLabels[facet.value as ItemStatus]),
-				count: facet.count
-			}))
-		},
-		{
-			group: 'channel' as const,
-			label: i18n.t('dashboard.items.filters.channel'),
-			options: data.facets.channel.map((facet) => ({
-				value: facet.value,
-				label: i18n.t(channelLabels[facet.value as ItemChannel]),
-				count: facet.count
-			}))
-		},
-		{
-			group: 'tags' as const,
-			label: i18n.t('dashboard.items.filters.tags'),
-			options: data.facets.tags.map((facet) => ({
-				value: facet.value,
-				// Tag labels live in the taxonomy, not the dictionary: they are data.
-				label: data.tagLabels[facet.value] ?? facet.value,
-				count: facet.count
-			}))
-		}
-	]);
+	 * here, because the repository has no business knowing the reader's language.
+	 * Empty when the facet query failed: the pickers are replaced by a designed
+	 * degraded state rather than a blank grid. */
+	const facetFields = $derived(
+		data.facets.ok
+			? [
+					{
+						group: 'status' as const,
+						label: i18n.t('dashboard.items.filters.status'),
+						options: data.facets.data.status.map((facet) => ({
+							value: facet.value,
+							label: i18n.t(statusLabels[facet.value as ItemStatus]),
+							count: facet.count
+						}))
+					},
+					{
+						group: 'channel' as const,
+						label: i18n.t('dashboard.items.filters.channel'),
+						options: data.facets.data.channel.map((facet) => ({
+							value: facet.value,
+							label: i18n.t(channelLabels[facet.value as ItemChannel]),
+							count: facet.count
+						}))
+					},
+					{
+						group: 'tags' as const,
+						label: i18n.t('dashboard.items.filters.tags'),
+						options: data.facets.data.tags.map((facet) => ({
+							value: facet.value,
+							// Tag labels live in the taxonomy, not the dictionary: they are data.
+							label: data.tagLabels[facet.value] ?? facet.value,
+							count: facet.count
+						}))
+					}
+				]
+			: []
+	);
 
 	/** The same view with the rows awaited on the server. Built from the live query
 	 * so the fallback keeps whatever filters are applied. */
@@ -300,6 +309,26 @@
 
 <Seo {meta} />
 
+{#snippet filtersDegraded()}
+	<!--
+		The other partial failure: rows (and the rest of the page) arrived, the
+		facet counts did not. Search still works; the pickers do not. Saying so,
+		and offering retry, is the difference between a designed state and a blank
+		filter row.
+	-->
+	<ItemsState
+		tone="danger"
+		title={i18n.t('dashboard.items.filtersFailed.title')}
+		body={i18n.t('dashboard.items.filtersFailed.body')}
+	>
+		{#snippet action()}
+			<Button variant="secondary" size="sm" onclick={() => void invalidate('app:items')}>
+				{i18n.t('common.retry')}
+			</Button>
+		{/snippet}
+	</ItemsState>
+{/snippet}
+
 <Container width="wide" class="py-section">
 	<div class="flex flex-wrap items-end justify-between gap-4">
 		<div>
@@ -316,6 +345,7 @@
 			{apply}
 			clearHref={href({ q: '', status: [], channel: [], tags: [] })}
 			filtered={isFiltered}
+			degraded={data.facets.ok ? undefined : filtersDegraded}
 		/>
 	</div>
 
@@ -357,11 +387,57 @@
 			{sortHref}
 		>
 			{#snippet empty()}
-				<p class="text-center text-sm text-fg-muted">{i18n.t('dashboard.items.empty')}</p>
+				<!--
+					Two different empties, because they call for different actions. A
+					filtered view that matches nothing needs the filters cleared; an
+					unfiltered dashboard with no rows is a different situation entirely
+					and pointing at "clear filters" there would be nonsense.
+				-->
+				{#if isFiltered}
+					<ItemsState
+						title={i18n.t('dashboard.items.noMatches.title')}
+						body={i18n.t('dashboard.items.noMatches.body')}
+					>
+						{#snippet action()}
+							<!--
+								eslint-disable svelte/no-navigation-without-resolve --
+								built on a resolved route id; only the query differs
+							-->
+							<a
+								href={href({ q: '', status: [], channel: [], tags: [] })}
+								class={buttonClasses({ variant: 'secondary', size: 'sm' })}
+							>
+								{i18n.t('search.filters.clear')}
+							</a>
+							<!-- eslint-enable svelte/no-navigation-without-resolve -->
+						{/snippet}
+					</ItemsState>
+				{:else}
+					<ItemsState
+						title={i18n.t('dashboard.items.empty')}
+						body={i18n.t('dashboard.items.emptyBody')}
+					/>
+				{/if}
 			{/snippet}
 
 			{#snippet failed()}
-				<p class="text-center text-sm text-danger">{i18n.t('common.error')}</p>
+				<!--
+					The partial failure: the page, its filters, and its counts all
+					arrived, and only the streamed half did not. Saying so — and offering
+					the one action that could fix it — is the difference between a
+					designed state and a blank area.
+				-->
+				<ItemsState
+					tone="danger"
+					title={i18n.t('dashboard.items.rowsFailed.title')}
+					body={i18n.t('dashboard.items.rowsFailed.body')}
+				>
+					{#snippet action()}
+						<Button variant="secondary" size="sm" onclick={() => void invalidate('app:items')}>
+							{i18n.t('common.retry')}
+						</Button>
+					{/snippet}
+				</ItemsState>
 			{/snippet}
 		</ItemsTable>
 	</div>

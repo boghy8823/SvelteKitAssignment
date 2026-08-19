@@ -3,7 +3,14 @@ import type { ItemQuery } from '$lib/data/item-query';
 import { err, ok, type Result } from '$lib/data/result';
 import type { Item } from '$lib/data/schemas';
 import { delay, faultFrom, type Fault } from '$lib/server/data/fault';
-import { facets, list, pageMeta, tagLabels, updateBudget } from '$lib/server/data/items.repo';
+import {
+	facets,
+	list,
+	pageMeta,
+	tagLabels,
+	updateBudget,
+	type ItemFacets
+} from '$lib/server/data/items.repo';
 import { readOverlay, writeOverlay, type Overlay } from '$lib/server/data/overlay';
 import { parseItemQuery } from '$lib/url/item-query';
 import { fail } from '@sveltejs/kit';
@@ -31,9 +38,10 @@ export type BudgetFailure =
  * mistake.
  */
 
-/** What the row load reports when it fails. A union, so the template renders the
+/** What a load reports when it fails. A union, so the template renders the
  * cause rather than one generic apology. */
 export type RowsError = 'unavailable';
+export type FacetsError = 'unavailable';
 
 /**
  * The deferred half. It resolves to a result and never rejects: a rejected promise
@@ -59,6 +67,29 @@ async function loadRows(
 		// Logged where it happened, because the client is told only that the rows
 		// are unavailable. A stack trace in a response body is a gift to no one.
 		console.error('items: row load failed', error);
+
+		return err('unavailable');
+	}
+}
+
+/**
+ * Eager, unlike the rows: the filter panel is how someone decides what to ask
+ * for next, so it cannot be the part that arrives late. It still resolves to a
+ * result, so a facet failure degrades the pickers instead of taking the page
+ * down with it — the other half of the brief's partial-failure state.
+ */
+async function loadFacets(
+	query: ItemQuery,
+	fault: Fault
+): Promise<Result<ItemFacets, FacetsError>> {
+	try {
+		if (fault.facets) {
+			throw new Error('Injected facet failure');
+		}
+
+		return ok(await facets(query));
+	} catch (error) {
+		console.error('items: facet load failed', error);
 
 		return err('unavailable');
 	}
@@ -155,7 +186,7 @@ export const load: PageServerLoad = async ({ cookies, depends, locals, url }) =>
 	// the part that arrives late.
 	const [meta, groups, labels] = await Promise.all([
 		pageMeta(query),
-		facets(query),
+		loadFacets(query, fault),
 		tagLabels(locals.locale)
 	]);
 

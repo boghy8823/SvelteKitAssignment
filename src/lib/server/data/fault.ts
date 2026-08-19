@@ -22,11 +22,13 @@ export interface Fault {
 	latencyMs: number;
 	/** Make the deferred row load resolve to its error branch. */
 	rows: boolean;
+	/** Make the facet query resolve to its error branch. */
+	facets: boolean;
 	/** Make the budget mutation fail as an infrastructure error. */
 	write: boolean;
 }
 
-const NONE: Fault = { latencyMs: 0, rows: false, write: false };
+const NONE: Fault = { latencyMs: 0, rows: false, facets: false, write: false };
 
 /** Long enough to see the skeleton and measure it, short enough to sit through. */
 const SLOW_MS = 1500;
@@ -36,17 +38,13 @@ function honoured(): boolean {
 }
 
 /**
- * Reads `?fault=slow,rows,write`. Unknown directives are ignored rather than
- * rejected: this is a debugging affordance, and a typo in one should not 500 a
- * page someone was trying to inspect.
+ * Turns a `fault` query value into the flags the load and the action honour.
+ * Extracted so the mapping can be tested without a request, and so `faultFrom`
+ * can refuse the whole thing when the hook is not enabled.
  */
-export function faultFrom(url: URL): Fault {
-	if (!honoured()) {
-		return NONE;
-	}
-
+export function parseFault(raw: string): Fault {
 	const directives = new Set(
-		(url.searchParams.get('fault') ?? '')
+		raw
 			.split(',')
 			.map((directive) => directive.trim())
 			.filter(Boolean)
@@ -55,8 +53,22 @@ export function faultFrom(url: URL): Fault {
 	return {
 		latencyMs: directives.has('slow') ? SLOW_MS : 0,
 		rows: directives.has('rows'),
+		facets: directives.has('facets'),
 		write: directives.has('write')
 	};
+}
+
+/**
+ * Reads `?fault=slow,rows,facets,write`. Unknown directives are ignored rather
+ * than rejected: this is a debugging affordance, and a typo in one should not
+ * 500 a page someone was trying to inspect.
+ */
+export function faultFrom(url: URL): Fault {
+	if (!honoured()) {
+		return NONE;
+	}
+
+	return parseFault(url.searchParams.get('fault') ?? '');
 }
 
 export function delay(ms: number): Promise<void> {

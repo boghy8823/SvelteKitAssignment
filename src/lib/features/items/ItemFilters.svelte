@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	import type { FacetGroup, ItemQuery } from '$lib/data/item-query';
 	import { useI18n } from '$lib/i18n/context.svelte.ts';
 	import Button from '$lib/ui/Button.svelte';
@@ -20,9 +22,13 @@
 		apply: (group: FacetGroup, values: readonly string[]) => void;
 		clearHref: string;
 		filtered: boolean;
+		/** Replaces the pickers when the facet query failed. Search still submits,
+		 * and the current selection is kept as hidden fields so a retry of the text
+		 * box cannot wipe filters the pickers can no longer show. */
+		degraded?: Snippet;
 	}
 
-	let { query, facets, action, apply, clearHref, filtered }: Props = $props();
+	let { query, facets, action, apply, clearHref, filtered, degraded }: Props = $props();
 
 	const i18n = useI18n();
 
@@ -67,42 +73,62 @@
 		<Button type="submit">{i18n.t('search.submit')}</Button>
 	</div>
 
-	<div data-enhanced class="grid gap-3 sm:grid-cols-3">
-		{#each facets as facet (facet.group)}
-			<Combobox
-				label={facet.label}
-				options={facet.options}
-				selected={query[facet.group]}
-				onchange={(values) => apply(facet.group, values)}
-				announce={(count) => i18n.t('dashboard.items.filters.options', { count })}
-				placeholder={i18n.t('dashboard.items.filters.placeholder')}
-			/>
+	{#if degraded}
+		<!--
+			The current facets have to travel with a search even when the pickers
+			cannot be drawn. Hidden fields rather than empty selects: an empty
+			multi-select would submit nothing and wipe a filter the reader can still
+			see in the URL.
+		-->
+		{#each query.status as value (value)}
+			<input type="hidden" name="status" {value} />
 		{/each}
-	</div>
-
-	<div data-requires-js class="grid gap-3 sm:grid-cols-3">
-		{#each facets as facet (facet.group)}
-			<div>
-				<label for={`native-${facet.group}`} class="mb-1.5 block text-sm font-medium">
-					{facet.label}
-				</label>
-
-				<select
-					id={`native-${facet.group}`}
-					name={facet.group}
-					multiple
-					size="4"
-					class="w-full rounded-md border border-border-strong bg-surface px-2 py-1.5 text-sm text-fg"
-				>
-					{#each facet.options as option (option.value)}
-						<option value={option.value} selected={selection(facet.group).includes(option.value)}>
-							{option.label}{option.count === undefined ? '' : ` (${option.count})`}
-						</option>
-					{/each}
-				</select>
-			</div>
+		{#each query.channel as value (value)}
+			<input type="hidden" name="channel" {value} />
 		{/each}
-	</div>
+		{#each query.tags as value (value)}
+			<input type="hidden" name="tags" {value} />
+		{/each}
+
+		{@render degraded()}
+	{:else}
+		<div data-enhanced class="grid gap-3 sm:grid-cols-3">
+			{#each facets as facet (facet.group)}
+				<Combobox
+					label={facet.label}
+					options={facet.options}
+					selected={query[facet.group]}
+					onchange={(values) => apply(facet.group, values)}
+					announce={(count) => i18n.t('dashboard.items.filters.options', { count })}
+					placeholder={i18n.t('dashboard.items.filters.placeholder')}
+				/>
+			{/each}
+		</div>
+
+		<div data-requires-js class="grid gap-3 sm:grid-cols-3">
+			{#each facets as facet (facet.group)}
+				<div>
+					<label for={`native-${facet.group}`} class="mb-1.5 block text-sm font-medium">
+						{facet.label}
+					</label>
+
+					<select
+						id={`native-${facet.group}`}
+						name={facet.group}
+						multiple
+						size="4"
+						class="w-full rounded-md border border-border-strong bg-surface px-2 py-1.5 text-sm text-fg"
+					>
+						{#each facet.options as option (option.value)}
+							<option value={option.value} selected={selection(facet.group).includes(option.value)}>
+								{option.label}{option.count === undefined ? '' : ` (${option.count})`}
+							</option>
+						{/each}
+					</select>
+				</div>
+			{/each}
+		</div>
+	{/if}
 
 	{#if filtered}
 		<div>
