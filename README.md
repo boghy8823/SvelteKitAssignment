@@ -38,12 +38,20 @@ Vercel credentials. Unknown values fail the build rather than falling back silen
 On Windows the Vercel build needs symlink privileges, so use `pnpm build:node` locally unless
 Developer Mode is on. CI builds both targets on every push.
 
+## Decisions
+
+Non-obvious architectural choices are recorded in [`docs/adr/`](docs/adr/), so the reasoning is
+reviewable without reading the diff:
+
+- [0001 — Rendering strategy and runtime split per route](docs/adr/0001-rendering-and-runtime-boundaries.md)
+- [0002 — Data layer, validation boundary, and mutation persistence](docs/adr/0002-data-layer-and-mutation-boundary.md)
+
 ## Quality gates
 
 Pre-commit (Husky + lint-staged) formats and lints staged files, then runs `pnpm check`.
 
-CI runs `lint`, `typecheck`, and `test:unit` as parallel jobs on every push and pull request.
-Build, end-to-end, accessibility, Lighthouse, and bundle-budget jobs join the same workflow as
+CI runs `lint`, `typecheck`, `test:unit`, and both adapter builds as parallel jobs on every push and
+pull request. End-to-end, accessibility, Lighthouse, and bundle-budget jobs join the same workflow as
 those surfaces land.
 
 Demo credentials live in `mocks/README.md`.
