@@ -22,6 +22,11 @@ export interface PostDetail extends PostSummary {
 	body: string;
 }
 
+export interface PostRef {
+	slug: string;
+	publishedAt: string;
+}
+
 export interface TagFacet {
 	slug: string;
 	/** Already resolved to the query's locale, so the route does no lookup. */
@@ -194,7 +199,13 @@ export async function tagFacets(query: PostQuery): Promise<readonly TagFacet[]> 
 	}));
 }
 
-/** Every slug, for prerender entries and sitemap generation. */
+/** Every slug, for prerender entries. */
 export async function slugs(): Promise<readonly string[]> {
 	return posts.map((post) => post.slug);
+}
+
+/** Slug and publication date for every post, which is what the sitemap needs to
+ * emit a `lastmod` it can stand behind. Locale-independent by construction. */
+export async function refs(): Promise<readonly PostRef[]> {
+	return posts.map((post) => ({ slug: post.slug, publishedAt: post.publishedAt }));
 }

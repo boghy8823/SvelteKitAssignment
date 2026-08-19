@@ -3,6 +3,8 @@ import { fileURLToPath } from 'node:url';
 
 import { describe, expect, it } from 'vitest';
 
+import { contrastRatio } from '../../src/lib/ui/contrast';
+
 const css = readFileSync(fileURLToPath(new URL('../../src/app.css', import.meta.url)), 'utf8');
 
 const themes = ['light', 'dark'] as const;
@@ -53,35 +55,6 @@ function resolve(name: string, theme: Theme): string {
 	throw new Error(`Token ${name} does not resolve to a literal value`);
 }
 
-function channel(value: number): number {
-	const ratio = value / 255;
-	return ratio <= 0.04045 ? ratio / 12.92 : ((ratio + 0.055) / 1.055) ** 2.4;
-}
-
-function luminance(hex: string): number {
-	const match = /^#([\da-f]{6})$/i.exec(hex);
-
-	if (!match) {
-		throw new Error(`Expected a 6-digit hex colour, received "${hex}"`);
-	}
-
-	const value = Number.parseInt(match[1], 16);
-
-	return (
-		0.2126 * channel((value >> 16) & 0xff) +
-		0.7152 * channel((value >> 8) & 0xff) +
-		0.0722 * channel(value & 0xff)
-	);
-}
-
-function contrast(foreground: string, background: string): number {
-	const a = luminance(foreground);
-	const b = luminance(background);
-	const [lighter, darker] = a > b ? [a, b] : [b, a];
-
-	return (lighter + 0.05) / (darker + 0.05);
-}
-
 /** WCAG 1.4.3: body text and meaningful icons. */
 const textPairs = [
 	['--fg', '--surface'],
@@ -105,15 +78,15 @@ const uiPairs = [
 
 describe.each(themes)('%s theme', (theme) => {
 	it.each(textPairs)('renders %s on %s at AA for text', (foreground, background) => {
-		expect(contrast(resolve(foreground, theme), resolve(background, theme))).toBeGreaterThanOrEqual(
-			4.5
-		);
+		expect(
+			contrastRatio(resolve(foreground, theme), resolve(background, theme))
+		).toBeGreaterThanOrEqual(4.5);
 	});
 
 	it.each(uiPairs)('renders %s on %s at AA for controls', (foreground, background) => {
-		expect(contrast(resolve(foreground, theme), resolve(background, theme))).toBeGreaterThanOrEqual(
-			3
-		);
+		expect(
+			contrastRatio(resolve(foreground, theme), resolve(background, theme))
+		).toBeGreaterThanOrEqual(3);
 	});
 });
 

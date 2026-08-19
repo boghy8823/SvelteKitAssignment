@@ -37,31 +37,40 @@ export interface Meta {
 	twitter: Record<string, string>;
 }
 
-function localised(locale: Locale, path: string): string {
+/** `/en` + `/blog` → `/en/blog`, with `/` collapsing rather than doubling. */
+export function localisedPath(locale: Locale, path: string): string {
 	return `/${locale}${path === '/' ? '' : path}`;
 }
 
 /**
- * One builder for every route, so a page cannot ship without a canonical or an
- * Open Graph tag. Alternates come from the same locale list the router and the
- * sitemap use, which is what stops hreflang from drifting away from reality.
+ * The alternates for one locale-less path. Exported because the sitemap emits
+ * the same set as `xhtml:link` entries: hreflang and the sitemap are generated
+ * from this one function, so they cannot drift apart.
  */
-export function buildMeta(input: MetaInput): Meta {
-	const { locale, path, type = 'website', search = '' } = input;
-	const canonical = absolute(localised(locale, path) + search);
-	const image = input.image ? absolute(input.image) : undefined;
-
-	const alternates: Alternate[] = [
+export function alternatesFor(path: string, search = ''): Alternate[] {
+	return [
 		...locales.map((candidate) => ({
 			hreflang: candidate,
 			// The same page in another language is the same page: the query travels
 			// with it, or German page 2 would point at German page 1.
-			href: absolute(localised(candidate, path) + search)
+			href: absolute(localisedPath(candidate, path) + search)
 		})),
 		// x-default points at the negotiating root rather than at English: the
 		// root is what decides for a visitor whose language we do not publish.
 		{ hreflang: 'x-default', href: absolute('/') }
 	];
+}
+
+/**
+ * One builder for every route, so a page cannot ship without a canonical or an
+ * Open Graph tag.
+ */
+export function buildMeta(input: MetaInput): Meta {
+	const { locale, path, type = 'website', search = '' } = input;
+	const canonical = absolute(localisedPath(locale, path) + search);
+	const image = input.image ? absolute(input.image) : undefined;
+
+	const alternates = alternatesFor(path, search);
 
 	const og: Record<string, string> = {
 		'og:type': type,

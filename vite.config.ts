@@ -44,7 +44,11 @@ export default defineConfig({
 				// The app links to routes that are ISR, per-request, or behind a login,
 				// none of which a build-time crawler can fetch — and the same explicit
 				// inventory is what generates the sitemap.
-				crawl: false
+				crawl: false,
+				// `*` covers every route with no dynamic segment; the two SEO endpoints
+				// are named anyway because nothing in the app links to them, which is
+				// what makes them easy to lose to a refactor.
+				entries: ['*', '/sitemap.xml', '/robots.txt']
 			},
 			adapter: resolveAdapter(process.env.BUILD_ADAPTER ?? 'vercel')
 		})
