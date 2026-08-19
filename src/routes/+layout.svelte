@@ -4,12 +4,14 @@
 	import { onDestroy } from 'svelte';
 
 	import favicon from '$lib/assets/favicon.svg';
-	import ThemeToggle from '$lib/ui/ThemeToggle.svelte';
 	import { provideToasts } from '$lib/ui/toast.svelte.ts';
 	import ToastRegion from '$lib/ui/ToastRegion.svelte';
 
 	let { children } = $props();
 
+	// Toasts are document-level furniture, so they live above the locale segment.
+	// Anything with copy in it belongs inside that segment, where a translator
+	// exists.
 	const toasts = provideToasts();
 
 	onDestroy(() => toasts.destroy());
@@ -19,12 +21,6 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="min-h-dvh bg-surface text-fg">
-	<header class="flex items-center justify-end border-b border-border px-gutter py-3">
-		<ThemeToggle />
-	</header>
-
-	{@render children()}
-</div>
+{@render children()}
 
 <ToastRegion />
