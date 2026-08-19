@@ -15,18 +15,20 @@ pnpm dev
 
 ## Scripts
 
-| Command             | What it does                        |
-| ------------------- | ----------------------------------- |
-| `pnpm dev`          | Vite dev server                     |
-| `pnpm build`        | Production build for Vercel         |
-| `pnpm build:node`   | Production build for `adapter-node` |
-| `pnpm preview`      | Serve the production build via Vite |
-| `pnpm preview:node` | Serve the `adapter-node` build      |
-| `pnpm check`        | `svelte-check`                      |
-| `pnpm typecheck`    | `svelte-check` then `tsc --noEmit`  |
-| `pnpm lint`         | Prettier check + ESLint             |
-| `pnpm format`       | Prettier write                      |
-| `pnpm test:unit`    | Vitest, unit project                |
+| Command               | What it does                        |
+| --------------------- | ----------------------------------- |
+| `pnpm dev`            | Vite dev server                     |
+| `pnpm build`          | Production build for Vercel         |
+| `pnpm build:node`     | Production build for `adapter-node` |
+| `pnpm preview`        | Serve the production build via Vite |
+| `pnpm preview:node`   | Serve the `adapter-node` build      |
+| `pnpm check`          | `svelte-check`                      |
+| `pnpm typecheck`      | `svelte-check` then `tsc --noEmit`  |
+| `pnpm lint`           | Prettier check + ESLint             |
+| `pnpm format`         | Prettier write                      |
+| `pnpm test`           | Vitest, both projects               |
+| `pnpm test:unit`      | Vitest node project, pure logic     |
+| `pnpm test:component` | Vitest browser mode, Chromium       |
 
 ## Deploy targets
 
@@ -76,8 +78,12 @@ reviewable without reading the diff:
 
 Pre-commit (Husky + lint-staged) formats and lints staged files, then runs `pnpm check`.
 
-CI runs `lint`, `typecheck`, `test:unit`, and both adapter builds as parallel jobs on every push and
-pull request. End-to-end, accessibility, Lighthouse, and bundle-budget jobs join the same workflow as
-those surfaces land.
+CI runs `lint`, `typecheck`, `test:unit`, `test:component`, and both adapter builds as parallel jobs
+on every push and pull request. End-to-end, accessibility, Lighthouse, and bundle-budget jobs join the
+same workflow as those surfaces land.
+
+Component tests run in real Chromium rather than jsdom. The behaviour worth testing on a dialog is
+focus order, Escape, and whether the background is genuinely inert — precisely what jsdom only
+approximates, so testing it there would pass without proving anything.
 
 Demo credentials live in `mocks/README.md`.

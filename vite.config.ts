@@ -1,9 +1,11 @@
-import tailwindcss from '@tailwindcss/vite';
 import process from 'node:process';
+
 import node from '@sveltejs/adapter-node';
 import vercel from '@sveltejs/adapter-vercel';
 import type { Adapter } from '@sveltejs/kit';
 import { sveltekit } from '@sveltejs/kit/vite';
+import tailwindcss from '@tailwindcss/vite';
+import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
 
 /**
@@ -45,6 +47,22 @@ export default defineConfig({
 					name: 'unit',
 					environment: 'node',
 					include: ['tests/unit/**/*.test.ts']
+				}
+			},
+
+			{
+				extends: './vite.config.ts',
+				test: {
+					name: 'component',
+					// A real browser, not jsdom: focus order, Escape handling, and
+					// inertness of the background are exactly the things jsdom
+					// approximates, and they are the whole point of these tests.
+					browser: {
+						enabled: true,
+						provider: playwright(),
+						instances: [{ browser: 'chromium', headless: true }]
+					},
+					include: ['tests/component/**/*.test.ts']
 				}
 			}
 		]

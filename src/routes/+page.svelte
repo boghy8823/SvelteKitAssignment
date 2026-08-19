@@ -3,6 +3,7 @@
 	import Button from '$lib/ui/Button.svelte';
 	import Card from '$lib/ui/Card.svelte';
 	import Container from '$lib/ui/Container.svelte';
+	import Dialog from '$lib/ui/Dialog.svelte';
 	import Heading from '$lib/ui/Heading.svelte';
 	import Input from '$lib/ui/Input.svelte';
 	import Select from '$lib/ui/Select.svelte';
@@ -11,6 +12,7 @@
 
 	let name = $state('');
 	let channel = $state('email');
+	let confirmOpen = $state(false);
 
 	const toasts = useToasts();
 </script>
@@ -76,6 +78,29 @@
 			Error toast with retry
 		</Button>
 	</div>
+
+	<Heading level={2} class="mt-12">Dialog</Heading>
+
+	<div class="mt-4">
+		<Button variant="secondary" onclick={() => (confirmOpen = true)}>Open dialog</Button>
+	</div>
+
+	<Dialog bind:open={confirmOpen} title="Archive campaign">
+		<p>Archiving hides the campaign from reporting. You can restore it later.</p>
+
+		{#snippet footer()}
+			<Button variant="secondary" onclick={() => (confirmOpen = false)}>Cancel</Button>
+			<Button
+				variant="danger"
+				onclick={() => {
+					confirmOpen = false;
+					toasts.show('Campaign archived', { tone: 'success' });
+				}}
+			>
+				Archive
+			</Button>
+		{/snippet}
+	</Dialog>
 
 	<Heading level={2} class="mt-12">Surfaces and loading</Heading>
 

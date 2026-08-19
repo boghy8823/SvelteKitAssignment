@@ -1,6 +1,9 @@
 node_modules
 .pnpm-store
 
+# Vitest browser-mode failure screenshots
+tests/component/__screenshots__
+
 # Output
 .output
 .vercel
