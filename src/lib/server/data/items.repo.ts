@@ -1,0 +1,153 @@
+import type { FacetGroup, ItemQuery, ItemSortField } from '$lib/data/item-query';
+import { resolvePage, type Page } from '$lib/data/pagination';
+import { itemChannels, itemStatuses, type Item } from '$lib/data/schemas';
+
+import { items, tags as taxonomy } from './dataset';
+
+export interface FacetCount {
+	value: string;
+	count: number;
+}
+
+export type ItemFacets = Record<FacetGroup, readonly FacetCount[]>;
+
+/*
+ * Filtering, sorting, pagination, and facet counting all happen here, written
+ * the way they would be written against SQL. The point is that the seam is
+ * honest: swap this module for a database client and nothing above it changes.
+ */
+
+function normalise(value: string): string {
+	return value
+		.toLowerCase()
+		.normalize('NFD')
+		.replace(/\p{Diacritic}/gu, '');
+}
+
+/** `IN` semantics inside a group: an empty selection means no constraint. */
+function includedBy(selected: readonly string[], values: readonly string[]): boolean {
+	return selected.length === 0 || values.some((value) => selected.includes(value));
+}
+
+/**
+ * `AND` across facet groups. `exclude` drops one group, which is what makes
+ * facet counts describe the result of clicking an option rather than the result
+ * of the filter already applied.
+ */
+function matches(item: Item, query: ItemQuery, exclude?: FacetGroup): boolean {
+	const needle = normalise(query.q.trim());
+
+	if (needle && !normalise(item.name).includes(needle)) {
+		return false;
+	}
+
+	if (exclude !== 'status' && !includedBy(query.status, [item.status])) {
+		return false;
+	}
+
+	if (exclude !== 'channel' && !includedBy(query.channel, [item.channel])) {
+		return false;
+	}
+
+	if (exclude !== 'tags' && !includedBy(query.tags, item.tags)) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Lifecycle order, not alphabetical: sorting by status should read
+ * draft → scheduled → active → paused → completed → archived, because that is
+ * the sequence the column actually describes.
+ */
+const statusOrder = new Map(itemStatuses.map((status, index) => [status, index]));
+const channelOrder = new Map(itemChannels.map((channel, index) => [channel, index]));
+
+function compareField(a: Item, b: Item, field: ItemSortField): number {
+	switch (field) {
+		case 'name':
+			return a.name.localeCompare(b.name);
+
+		case 'status':
+			return (statusOrder.get(a.status) ?? 0) - (statusOrder.get(b.status) ?? 0);
+
+		case 'channel':
+			return (channelOrder.get(a.channel) ?? 0) - (channelOrder.get(b.channel) ?? 0);
+
+		case 'owner':
+			return a.owner.name.localeCompare(b.owner.name);
+
+		case 'budget':
+			return a.budget - b.budget;
+
+		case 'spent':
+			return a.spent - b.spent;
+
+		case 'ctr':
+			return a.ctr - b.ctr;
+
+		case 'updatedAt':
+			return a.updatedAt.localeCompare(b.updatedAt);
+	}
+}
+
+/**
+ * Stable by construction. Only 8 distinct budgets exist across 220 rows, so
+ * without the id tiebreaker a budget sort would reshuffle ties between requests
+ * and pagination would show the same row twice while hiding another.
+ */
+function compare(a: Item, b: Item, query: ItemQuery): number {
+	const ordered = compareField(a, b, query.sort);
+	const directed = query.direction === 'desc' ? -ordered : ordered;
+
+	return directed !== 0 ? directed : a.id.localeCompare(b.id);
+}
+
+export async function list(query: ItemQuery): Promise<Page<Item>> {
+	const filtered = items.filter((item) => matches(item, query));
+	const sorted = [...filtered].sort((a, b) => compare(a, b, query));
+	const meta = resolvePage(sorted.length, query.page, query.pageSize);
+
+	return { ...meta, rows: sorted.slice(meta.from, meta.to) };
+}
+
+export async function get(id: string): Promise<Item | null> {
+	return items.find((item) => item.id === id) ?? null;
+}
+
+function countBy(query: ItemQuery, group: FacetGroup, values: readonly string[]): FacetCount[] {
+	// Counted against the query minus this group, which is what real faceted
+	// search does: the number next to "paused" answers "how many would I get if
+	// I clicked this", not "how many are in the result I already narrowed".
+	const candidates = items.filter((item) => matches(item, query, group));
+	const counts = new Map(values.map((value) => [value, 0]));
+
+	for (const item of candidates) {
+		const itemValues = group === 'tags' ? item.tags : [item[group]];
+
+		for (const value of itemValues) {
+			const current = counts.get(value);
+
+			if (current !== undefined) {
+				counts.set(value, current + 1);
+			}
+		}
+	}
+
+	// Zero counts are kept rather than dropped, so the filter panel can show an
+	// option as unavailable instead of making it disappear under the cursor.
+	return values.map((value) => ({ value, count: counts.get(value) ?? 0 }));
+}
+
+export async function facets(query: ItemQuery): Promise<ItemFacets> {
+	return {
+		status: countBy(query, 'status', itemStatuses),
+		channel: countBy(query, 'channel', itemChannels),
+		tags: countBy(
+			query,
+			'tags',
+			taxonomy.map((tag) => tag.slug)
+		)
+	};
+}
