@@ -27,6 +27,7 @@
 	import { useToasts } from '$lib/ui/toast.svelte.ts';
 	import { nextItemQuery, serializeItemQuery } from '$lib/url/item-query';
 	import { loginPath } from '$lib/url/locale-path';
+	import { untrack } from 'svelte';
 
 	let { data, form } = $props();
 
@@ -51,10 +52,13 @@
 	 * a value the interface already had. */
 	let lastAttempt = $state<{ id: string; budget: number; expectedUpdatedAt: string } | undefined>();
 
-	/** Identity of the action result already handled. `$effect` re-runs when any
-	 * captured value changes, and without this a dictionary or toast-store update
-	 * would replay the same toast. */
-	let handled = $state<typeof form | undefined>(undefined);
+	/**
+	 * Identity of the action result already handled, and deliberately not `$state`.
+	 * The effect below writes it, and a reactive write to something the same effect
+	 * reads is a cycle — which is how one save turned into four toasts and an
+	 * `effect_update_depth_exceeded`.
+	 */
+	let handled: typeof form | undefined;
 
 	/**
 	 * Re-submits a save without a form, for the retry a toast offers and for the
@@ -100,6 +104,22 @@
 		}
 	}
 
+	/** Runs once per action result, and only for one that has not been seen. */
+	$effect(() => {
+		const result = form;
+
+		if (!result || result === handled) {
+			return;
+		}
+
+		handled = result;
+
+		// Untracked, because everything below reads state it also writes: showing a
+		// toast reads the store's list to append to it, and an effect that tracked
+		// that read would schedule itself again on every toast.
+		untrack(() => announce(result));
+	});
+
 	/**
 	 * One place that decides what each failure looks like, because they are not
 	 * interchangeable: a permission refusal is not a network blip, and a stale write
@@ -109,14 +129,8 @@
 	 * that declared `app:items`. `invalidateAll()` would also re-run the layout's
 	 * dictionary load and the session lookup to refresh a single number.
 	 */
-	$effect(() => {
-		if (!form || form === handled) {
-			return;
-		}
-
-		handled = form;
-
-		if (!('reason' in form)) {
+	function announce(result: NonNullable<typeof form>) {
+		if (!('reason' in result)) {
 			conflict = undefined;
 			void invalidate('app:items');
 			toasts.show(i18n.t('table.budget.saved'), { tone: 'success' });
@@ -124,12 +138,16 @@
 			return;
 		}
 
-		switch (form.reason) {
+		switch (result.reason) {
 			case 'conflict':
 				// Reload so the row shows the value that won, and hand the row the two
 				// numbers so the choice is made where the data is.
 				void invalidate('app:items');
-				conflict = { id: form.id, budget: form.current.budget, updatedAt: form.current.updatedAt };
+				conflict = {
+					id: result.id,
+					budget: result.current.budget,
+					updatedAt: result.current.updatedAt
+				};
 
 				return;
 
@@ -182,7 +200,7 @@
 					}
 				});
 		}
-	});
+	}
 
 	const meta = $derived(
 		buildMeta({
