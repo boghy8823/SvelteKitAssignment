@@ -1,6 +1,6 @@
-import { readFileSync } from 'node:fs';
-import { createRequire } from 'node:module';
-
+import interRegular from '@fontsource/inter/files/inter-latin-400-normal.woff?inline';
+import interSemiBold from '@fontsource/inter/files/inter-latin-600-normal.woff?inline';
+import interBold from '@fontsource/inter/files/inter-latin-700-normal.woff?inline';
 import { Resvg } from '@resvg/resvg-js';
 import satori from 'satori';
 
@@ -15,9 +15,8 @@ import { bestForeground, readableAccent } from '$lib/ui/contrast';
  * across 2 locales and the titles are not user-generated, so 40 files cover
  * every card the site can ever need, at zero runtime cost and zero cold start.
  *
- * Because this module is only ever imported by a prerendered endpoint, reading
- * the font from node_modules is safe: the code runs in the build's Node process
- * and is never shipped to a serverless function.
+ * Because this module is only ever imported by a prerendered endpoint, its cost
+ * is paid by the build and never by a request.
  */
 
 const WIDTH = 1200;
@@ -28,21 +27,25 @@ const INK = '#0b1020';
 const PAPER = '#f8fafc';
 const MUTED = '#94a3b8';
 
-const require = createRequire(import.meta.url);
-
 /**
  * Inter, in `woff` rather than `woff2`: satori parses the former directly, and
  * the latter would need a Brotli decoder for no visual difference. The `latin`
- * subset covers German umlauts, which the titles need.
+ * subset covers the German umlauts the titles need.
+ *
+ * `?inline` hands the file over as a base64 data URL, so the bytes travel inside
+ * the bundle. Resolving them through `node:module` and reading them with
+ * `node:fs` works too, but Rolldown hoists a builtin's side-effect import into
+ * the chunk every route shares — and that chunk is also bundled for the edge,
+ * where `node:module` does not exist. Hence no Node imports in this module.
  */
-function inter(weight: 400 | 600 | 700) {
-	return readFileSync(require.resolve(`@fontsource/inter/files/inter-latin-${weight}-normal.woff`));
+function decode(dataUrl: string): Buffer {
+	return Buffer.from(dataUrl.slice(dataUrl.indexOf(',') + 1), 'base64');
 }
 
 const fonts = [
-	{ name: 'Inter', data: inter(400), weight: 400 as const, style: 'normal' as const },
-	{ name: 'Inter', data: inter(600), weight: 600 as const, style: 'normal' as const },
-	{ name: 'Inter', data: inter(700), weight: 700 as const, style: 'normal' as const }
+	{ name: 'Inter', data: decode(interRegular), weight: 400 as const, style: 'normal' as const },
+	{ name: 'Inter', data: decode(interSemiBold), weight: 600 as const, style: 'normal' as const },
+	{ name: 'Inter', data: decode(interBold), weight: 700 as const, style: 'normal' as const }
 ];
 
 /**
