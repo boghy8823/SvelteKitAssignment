@@ -8,6 +8,11 @@ export interface MetaInput {
 	description: string;
 	/** Locale-less path, e.g. `/blog`. Alternates are derived from it. */
 	path: string;
+	/**
+	 * Query string to keep on the canonical, e.g. `?page=2`. Paginated pages are
+	 * distinct documents, so page 2 must not claim page 1 as its canonical.
+	 */
+	search?: string;
 	/** Absolute or root-relative image URL. */
 	image?: string;
 	/** `article` for posts, `website` for everything else. */
@@ -42,14 +47,16 @@ function localised(locale: Locale, path: string): string {
  * sitemap use, which is what stops hreflang from drifting away from reality.
  */
 export function buildMeta(input: MetaInput): Meta {
-	const { locale, path, type = 'website' } = input;
-	const canonical = absolute(localised(locale, path));
+	const { locale, path, type = 'website', search = '' } = input;
+	const canonical = absolute(localised(locale, path) + search);
 	const image = input.image ? absolute(input.image) : undefined;
 
 	const alternates: Alternate[] = [
 		...locales.map((candidate) => ({
 			hreflang: candidate,
-			href: absolute(localised(candidate, path))
+			// The same page in another language is the same page: the query travels
+			// with it, or German page 2 would point at German page 1.
+			href: absolute(localised(candidate, path) + search)
 		})),
 		// x-default points at the negotiating root rather than at English: the
 		// root is what decides for a visitor whose language we do not publish.
