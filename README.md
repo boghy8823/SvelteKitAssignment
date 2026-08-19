@@ -24,5 +24,14 @@ pnpm dev
 | `pnpm typecheck` | `svelte-check` then `tsc --noEmit` |
 | `pnpm lint`      | Prettier check + ESLint            |
 | `pnpm format`    | Prettier write                     |
+| `pnpm test:unit` | Vitest, unit project               |
 
-Pre-commit (Husky + lint-staged) formats and lints staged files, then runs `pnpm check`. Demo credentials live in `mocks/README.md`.
+## Quality gates
+
+Pre-commit (Husky + lint-staged) formats and lints staged files, then runs `pnpm check`.
+
+CI runs `lint`, `typecheck`, and `test:unit` as parallel jobs on every push and pull request.
+Build, end-to-end, accessibility, Lighthouse, and bundle-budget jobs join the same workflow as
+those surfaces land.
+
+Demo credentials live in `mocks/README.md`.
