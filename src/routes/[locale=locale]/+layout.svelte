@@ -18,32 +18,30 @@
 	// land, which is why this list grows rather than pointing at 404s.
 	const home = $derived(resolve('/[locale=locale]', { locale: data.locale }));
 
-	const links = $derived([
-		// The blog is the marketing surface, so it only earns a nav slot while the
-		// visitor is anonymous. Signed in, the header points at their own work.
-		...(data.user
-			? []
-			: [
-					{
-						href: resolve('/[locale=locale]/blog', { locale: data.locale }),
-						label: i18n.t('nav.blog')
-					}
-				]),
-		{
-			href: resolve('/[locale=locale]/search', { locale: data.locale }),
-			label: i18n.t('nav.search')
-		},
-		// Only for someone who can open it. Advertising a guarded route to anonymous
-		// visitors is a link that answers with a redirect, which is not navigation.
-		...(data.user
+	// Two audiences, two menus. The blog and the search that indexes it are the
+	// marketing surface, so they only earn nav slots while the visitor is
+	// anonymous. Dashboard is the mirror of that: advertising a guarded route to
+	// anonymous visitors is a link that answers with a redirect, which is not
+	// navigation.
+	const links = $derived(
+		data.user
 			? [
 					{
 						href: resolve('/[locale=locale]/dashboard', { locale: data.locale }),
 						label: i18n.t('nav.dashboard')
 					}
 				]
-			: [])
-	]);
+			: [
+					{
+						href: resolve('/[locale=locale]/blog', { locale: data.locale }),
+						label: i18n.t('nav.blog')
+					},
+					{
+						href: resolve('/[locale=locale]/search', { locale: data.locale }),
+						label: i18n.t('nav.search')
+					}
+				]
+	);
 
 	const loginHref = $derived(resolve('/[locale=locale]/login', { locale: data.locale }));
 	const logoutAction = $derived(resolve('/[locale=locale]/logout', { locale: data.locale }));
