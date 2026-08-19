@@ -79,20 +79,24 @@ export const actions = {
 		if (!locals.user) {
 			// Anonymous, so there is nothing to explain — the session expired under
 			// them. The client turns this into a trip back through the login page.
-			return fail(401, { id, reason: 'signed-out' satisfies BudgetFailure });
+			return fail(401, { id, reason: 'signed-out' as const satisfies BudgetFailure });
 		}
 
 		const invalid = budgetError(raw);
 		const budget = parseBudget(raw);
 
 		if (invalid || budget === null) {
-			return fail(422, { id, reason: 'invalid' satisfies BudgetFailure, message: invalid });
+			return fail(422, {
+				id,
+				reason: 'invalid' as const satisfies BudgetFailure,
+				message: invalid
+			});
 		}
 
 		if (faultFrom(url).write) {
 			// The injected infrastructure failure, so the rollback path can be seen
 			// without breaking anything real.
-			return fail(500, { id, reason: 'unavailable' satisfies BudgetFailure });
+			return fail(500, { id, reason: 'unavailable' as const satisfies BudgetFailure });
 		}
 
 		const overlay = await readOverlay(cookies);
@@ -106,17 +110,17 @@ export const actions = {
 		if (!result.ok) {
 			switch (result.error.kind) {
 				case 'forbidden':
-					return fail(403, { id, reason: 'forbidden' satisfies BudgetFailure });
+					return fail(403, { id, reason: 'forbidden' as const satisfies BudgetFailure });
 
 				case 'not-found':
-					return fail(404, { id, reason: 'missing' satisfies BudgetFailure });
+					return fail(404, { id, reason: 'missing' as const satisfies BudgetFailure });
 
 				case 'conflict':
 					// 409 carries the row as it now stands, so the editor can show both
 					// numbers instead of sending someone to look for the difference.
 					return fail(409, {
 						id,
-						reason: 'conflict' satisfies BudgetFailure,
+						reason: 'conflict' as const satisfies BudgetFailure,
 						current: {
 							budget: result.error.current.budget,
 							updatedAt: result.error.current.updatedAt

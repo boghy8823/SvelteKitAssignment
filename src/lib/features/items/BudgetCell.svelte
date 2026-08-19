@@ -18,11 +18,32 @@
 		editable: boolean;
 		/** The optimistic value while a save is in flight, if any. */
 		pending: number | undefined;
-		onstart: (id: string, budget: number) => void;
+		/** Set when this row's last save was refused as stale. `budget` is the value
+		 * that won, and `updatedAt` is the stamp an overwrite has to send. */
+		conflict?: { budget: number; updatedAt: string };
+		/** Reported before the request goes out, so the page can retry the exact
+		 * attempt later without asking anyone to retype it. */
+		onstart: (id: string, budget: number, expectedUpdatedAt: string) => void;
 		onsettle: (id: string) => void;
+		/** Re-submits the rejected value against the stamp that won. */
+		onoverwrite: (id: string, budget: number, updatedAt: string) => void;
+		/** Abandons the rejected value and keeps what the server has. */
+		ondismissconflict: () => void;
 	}
 
-	let { id, name, budget, updatedAt, editable, pending, onstart, onsettle }: Props = $props();
+	let {
+		id,
+		name,
+		budget,
+		updatedAt,
+		editable,
+		pending,
+		conflict,
+		onstart,
+		onsettle,
+		onoverwrite,
+		ondismissconflict
+	}: Props = $props();
 
 	const i18n = useI18n();
 
@@ -34,6 +55,10 @@
 	 */
 	let value = $state('');
 	let error = $state<MessageKey | undefined>();
+
+	/** The number last submitted from this cell, kept so a conflict can offer it
+	 * back rather than making someone retype what they already typed. */
+	let attempted = $state<number | undefined>();
 
 	let editButton = $state<HTMLButtonElement>();
 	let input = $state<HTMLInputElement>();
@@ -87,7 +112,8 @@
 
 			const next = Number(formData.get('budget'));
 
-			onstart(id, next);
+			attempted = next;
+			onstart(id, next, updatedAt);
 			void close();
 
 			return async ({ update }) => {
@@ -143,26 +169,76 @@
 		{/if}
 	</form>
 {:else}
-	<div class="flex items-center justify-end gap-2">
-		<span class={`tabular-nums ${saving ? 'text-fg-muted' : ''}`}>
-			{i18n.format.currency(shown)}
-		</span>
+	<div class="flex flex-col items-end gap-1.5">
+		<div class="flex items-center justify-end gap-2">
+			<span class={`tabular-nums ${saving ? 'text-fg-muted' : ''}`}>
+				{i18n.format.currency(shown)}
+			</span>
 
-		{#if saving}
-			<!-- A word, not a spinner: it says what is happening, it is readable by a
-			     screen reader, and it cannot spin forever. -->
-			<span class="text-xs text-fg-muted">{i18n.t('table.saving')}</span>
-		{:else if editable}
-			<Button
-				bind:element={editButton}
-				type="button"
-				size="sm"
-				variant="ghost"
-				onclick={open}
-				aria-label={i18n.t('table.budget.label', { name })}
+			{#if saving}
+				<!-- A word, not a spinner: it says what is happening, it is readable by a
+				     screen reader, and it cannot spin forever. -->
+				<span class="text-xs text-fg-muted">{i18n.t('table.saving')}</span>
+			{:else if editable}
+				<Button
+					bind:element={editButton}
+					type="button"
+					size="sm"
+					variant="ghost"
+					onclick={open}
+					aria-label={i18n.t('table.budget.label', { name })}
+				>
+					{i18n.t('table.editBudget')}
+				</Button>
+			{/if}
+		</div>
+
+		{#if conflict && attempted !== undefined}
+			<!--
+				A conflict is the one failure that cannot be resolved by a toast, because
+				the choice belongs to this row and needs both numbers side by side.
+				Rendered here rather than announced and forgotten, so nobody has to
+				remember what they typed.
+			-->
+			<div
+				role="alert"
+				class="w-56 rounded-md border border-danger bg-surface p-2 text-start text-xs text-fg"
 			>
-				{i18n.t('table.editBudget')}
-			</Button>
+				<p class="font-medium">{i18n.t('table.conflict.title')}</p>
+
+				<p class="mt-1 text-fg-muted">
+					{i18n.t('table.conflict.theirs', { value: i18n.format.currency(conflict.budget) })}
+				</p>
+				<p class="text-fg-muted">
+					{i18n.t('table.conflict.mine', { value: i18n.format.currency(attempted) })}
+				</p>
+
+				<div class="mt-2 flex flex-wrap gap-1.5">
+					<!-- Overwriting sends the stamp that won, so it is a fresh
+					     compare-and-set rather than a force. -->
+					<Button
+						size="sm"
+						onclick={() => {
+							if (attempted !== undefined) {
+								onoverwrite(id, attempted, conflict.updatedAt);
+							}
+						}}
+					>
+						{i18n.t('table.conflict.overwrite')}
+					</Button>
+
+					<Button
+						size="sm"
+						variant="secondary"
+						onclick={() => {
+							attempted = undefined;
+							ondismissconflict();
+						}}
+					>
+						{i18n.t('table.conflict.dismiss')}
+					</Button>
+				</div>
+			</div>
 		{/if}
 	</div>
 {/if}

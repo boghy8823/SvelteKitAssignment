@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { applyAction, deserialize } from '$app/forms';
 	import { goto, invalidate } from '$app/navigation';
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { canEdit } from '$lib/data/account';
 	import {
 		facetGroups,
@@ -21,6 +23,7 @@
 	import Pagination from '$lib/ui/Pagination.svelte';
 	import { useToasts } from '$lib/ui/toast.svelte.ts';
 	import { nextItemQuery, serializeItemQuery } from '$lib/url/item-query';
+	import { loginPath } from '$lib/url/locale-path';
 
 	let { data, form } = $props();
 
@@ -37,25 +40,145 @@
 	 */
 	const edits = new BudgetEdits();
 
+	/** The row whose last save was refused as stale, if any. Cleared by resolving
+	 * the conflict either way. */
+	let conflict = $state<{ id: string; budget: number; updatedAt: string } | undefined>();
+
+	/** The last save that was attempted, so a retry does not ask anyone to retype
+	 * a value the interface already had. */
+	let lastAttempt = $state<{ id: string; budget: number; expectedUpdatedAt: string } | undefined>();
+
+	/** Identity of the action result already handled. `$effect` re-runs when any
+	 * captured value changes, and without this a dictionary or toast-store update
+	 * would replay the same toast. */
+	let handled = $state<typeof form | undefined>(undefined);
+
 	/**
-	 * Reacts to whatever the action returned. Scoped invalidation is the point:
-	 * `invalidate('app:items')` re-runs the one load that declared `app:items`,
-	 * while `invalidateAll()` would also re-run the layout's dictionary load and
-	 * the session lookup to refresh a single number.
+	 * Re-submits a save without a form, for the retry a toast offers and for the
+	 * overwrite that resolves a conflict. The form path stays on `use:enhance` so it
+	 * works without JavaScript; this is the same request by hand, and it goes
+	 * through `applyAction` so both paths end in the same place.
+	 */
+	async function save(id: string, budget: number, expectedUpdatedAt: string) {
+		lastAttempt = { id, budget, expectedUpdatedAt };
+
+		const body = new FormData();
+
+		body.set('id', id);
+		body.set('budget', String(budget));
+		body.set('expectedUpdatedAt', expectedUpdatedAt);
+
+		edits.start(id, budget);
+
+		try {
+			const response = await fetch(`${page.url.pathname}?/budget`, {
+				method: 'POST',
+				body,
+				headers: {
+					accept: 'application/json',
+					'x-sveltekit-action': 'true'
+				}
+			});
+
+			// Settled before the result is applied, so authoritative data is never
+			// covered by an optimistic value that already had its answer.
+			edits.settle(id);
+			await applyAction(deserialize(await response.text()));
+		} catch {
+			// The network never got there. Same rollback as any other failure.
+			edits.settle(id);
+			toasts.show(i18n.t('table.budget.unavailable'), {
+				tone: 'error',
+				action: {
+					label: i18n.t('common.retry'),
+					run: () => void save(id, budget, expectedUpdatedAt)
+				}
+			});
+		}
+	}
+
+	/**
+	 * One place that decides what each failure looks like, because they are not
+	 * interchangeable: a permission refusal is not a network blip, and a stale write
+	 * is a decision rather than an apology.
+	 *
+	 * Scoped invalidation throughout: `invalidate('app:items')` re-runs the one load
+	 * that declared `app:items`. `invalidateAll()` would also re-run the layout's
+	 * dictionary load and the session lookup to refresh a single number.
 	 */
 	$effect(() => {
-		if (!form) {
+		if (!form || form === handled) {
 			return;
 		}
 
-		if ('reason' in form) {
-			toasts.show(i18n.t('table.budget.failed'), { tone: 'error' });
+		handled = form;
+
+		if (!('reason' in form)) {
+			conflict = undefined;
+			void invalidate('app:items');
+			toasts.show(i18n.t('table.budget.saved'), { tone: 'success' });
 
 			return;
 		}
 
-		void invalidate('app:items');
-		toasts.show(i18n.t('table.budget.saved'), { tone: 'success' });
+		switch (form.reason) {
+			case 'conflict':
+				// Reload so the row shows the value that won, and hand the row the two
+				// numbers so the choice is made where the data is.
+				void invalidate('app:items');
+				conflict = { id: form.id, budget: form.current.budget, updatedAt: form.current.updatedAt };
+
+				return;
+
+			case 'forbidden':
+				// No optimistic value was ever started for a role that cannot edit, so
+				// there is nothing to roll back and no flicker to hide. Reload anyway:
+				// the role may have changed under this session.
+				void invalidate('app:items');
+				toasts.show(i18n.t('table.budget.forbidden'), { tone: 'error' });
+
+				return;
+
+			case 'signed-out':
+				toasts.show(i18n.t('table.budget.signedOut'), { tone: 'error' });
+				// Sent to the login page carrying this URL, so signing in returns to the
+				// table with its filters rather than to the dashboard root. `loginPath`
+				// is already an absolute locale path; resolve() would return a relative
+				// one, which is the wrong shape for a redirect target.
+				// eslint-disable-next-line svelte/no-navigation-without-resolve -- loginPath is the absolute /{locale}/login URL, with a validated redirectTo
+				void goto(loginPath(i18n.locale, page.url));
+
+				return;
+
+			case 'missing':
+				void invalidate('app:items');
+				toasts.show(i18n.t('table.budget.missing'), { tone: 'error' });
+
+				return;
+
+			case 'invalid':
+				// The editor validates first, so reaching this means a crafted body or a
+				// rule that moved. Nothing was saved and nothing is inline to point at.
+				toasts.show(i18n.t('table.budget.invalidToast'), { tone: 'error' });
+
+				return;
+
+			case 'unavailable':
+				// The rollback already happened when the optimistic entry settled. The
+				// toast persists — it is an error tone — and carries the retry, because
+				// the value someone typed is still known here.
+				toasts.show(i18n.t('table.budget.unavailable'), {
+					tone: 'error',
+					action: {
+						label: i18n.t('common.retry'),
+						run: () => {
+							if (lastAttempt) {
+								void save(lastAttempt.id, lastAttempt.budget, lastAttempt.expectedUpdatedAt);
+							}
+						}
+					}
+				});
+		}
 	});
 
 	const meta = $derived(
@@ -71,10 +194,10 @@
 	const basePath = $derived(resolve('/[locale=locale]/dashboard/items', { locale: i18n.locale }));
 
 	/**
-	 * Every control on this page is a link to a URL, so the whole view is
-	 * shareable and the back button works. `nextItemQuery` owns the one rule that
-	 * is easy to get wrong: narrowing the results resets to page 1, re-sorting
-	 * keeps the page you were on.
+	 * Every control on this page is a URL, so the whole view is shareable and the
+	 * back button works. `nextItemQuery` owns the one rule that is easy to get
+	 * wrong: narrowing the results resets to page 1, re-sorting keeps the page you
+	 * were on.
 	 */
 	function href(patch: Partial<ItemQuery>): string {
 		const search = serializeItemQuery(nextItemQuery(data.query, patch));
@@ -220,6 +343,17 @@
 			rows={data.rows}
 			editable={writable}
 			{edits}
+			{conflict}
+			onstart={(id, budget, expectedUpdatedAt) => {
+				lastAttempt = { id, budget, expectedUpdatedAt };
+				edits.start(id, budget);
+			}}
+			onsettle={(id) => edits.settle(id)}
+			onoverwrite={(id, budget, updatedAt) => {
+				conflict = undefined;
+				void save(id, budget, updatedAt);
+			}}
+			ondismissconflict={() => (conflict = undefined)}
 			{sortHref}
 		>
 			{#snippet empty()}

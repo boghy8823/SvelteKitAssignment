@@ -22,6 +22,17 @@
 		editable: boolean;
 		/** The optimistic layer, owned by the page so it survives a row re-render. */
 		edits: BudgetEdits;
+		/** The row whose last save was refused as stale, if any. */
+		conflict?: { id: string; budget: number; updatedAt: string };
+		/*
+		 * Forwarded to the cell rather than handled here. This component renders a
+		 * table; what a save means, and what each way of failing looks like, is the
+		 * page's decision.
+		 */
+		onstart: (id: string, budget: number, expectedUpdatedAt: string) => void;
+		onsettle: (id: string) => void;
+		onoverwrite: (id: string, budget: number, updatedAt: string) => void;
+		ondismissconflict: () => void;
 		/**
 		 * A promise when the rows are streamed, and the value itself when the load
 		 * awaited them. Both are supported because Svelte renders the pending branch
@@ -40,7 +51,21 @@
 		failed: Snippet;
 	}
 
-	let { query, meta, editable, edits, rows, sortHref, empty, failed }: Props = $props();
+	let {
+		query,
+		meta,
+		editable,
+		edits,
+		conflict,
+		onstart,
+		onsettle,
+		onoverwrite,
+		ondismissconflict,
+		rows,
+		sortHref,
+		empty,
+		failed
+	}: Props = $props();
 
 	const i18n = useI18n();
 
@@ -183,8 +208,11 @@
 									updatedAt={item.updatedAt}
 									{editable}
 									pending={edits.pending(item.id)}
-									onstart={(id, budget) => edits.start(id, budget)}
-									onsettle={(id) => edits.settle(id)}
+									conflict={conflict?.id === item.id ? conflict : undefined}
+									{onstart}
+									{onsettle}
+									{onoverwrite}
+									{ondismissconflict}
 								/>
 							</td>
 
