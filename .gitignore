@@ -1,8 +1,10 @@
 node_modules
 .pnpm-store
 
-# Vitest browser-mode failure screenshots
+# Vitest browser-mode failure artefacts. Screenshots of a red test are debugging
+# output, not a fixture: the run that produced them has already been fixed.
 tests/component/__screenshots__
+.vitest-attachments
 
 # Output
 .output
