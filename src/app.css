@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+
+/*
+ * Layer 1 — primitive palette.
+ *
+ * Raw values with no meaning attached. Components must never reference a
+ * --pal-* variable: only the semantic layer below may, which is what makes
+ * re-theming a change in one place.
+ */
+:root {
+	--pal-white: #ffffff;
+	--pal-grey-25: #f7f8fb;
+	--pal-grey-50: #f1f3f8;
+	--pal-grey-150: #e3e7ef;
+	--pal-grey-400: #8b94a9;
+	--pal-grey-600: #4c5670;
+
+	--pal-ink-700: #2c344a;
+	--pal-ink-800: #1b2233;
+	--pal-ink-850: #151b2a;
+	--pal-ink-900: #101728;
+	--pal-ink-950: #0a0f1c;
+
+	--pal-slate-500: #606d8c;
+	--pal-slate-300: #a5b0c8;
+	--pal-slate-100: #f2f5fb;
+
+	--pal-violet-100: #ede9fe;
+	--pal-violet-400: #a78bfa;
+	--pal-violet-600: #6d28d9;
+	--pal-violet-950: #14102a;
+
+	--pal-red-200: #fca5a5;
+	--pal-red-700: #b3261e;
+	--pal-red-950: #2a0f0f;
+
+	--pal-green-200: #5fd8a4;
+	--pal-green-700: #10683f;
+	--pal-green-950: #06231a;
+}
+
+/*
+ * Layer 2 — semantic tokens. Light is the default; dark re-points the same
+ * names. Components therefore carry one class list and never a parallel
+ * dark: variant.
+ */
+:root {
+	color-scheme: light;
+
+	--surface: var(--pal-white);
+	--surface-raised: var(--pal-grey-25);
+	--surface-sunken: var(--pal-grey-50);
+
+	--fg: var(--pal-ink-900);
+	--fg-muted: var(--pal-grey-600);
+
+	--border: var(--pal-grey-150);
+	--border-strong: var(--pal-grey-400);
+
+	--accent: var(--pal-violet-600);
+	--accent-fg: var(--pal-white);
+	--accent-subtle: var(--pal-violet-100);
+
+	--danger: var(--pal-red-700);
+	--danger-fg: var(--pal-white);
+
+	--success: var(--pal-green-700);
+	--success-fg: var(--pal-white);
+
+	--ring: var(--pal-violet-600);
+}
+
+[data-theme='dark'] {
+	color-scheme: dark;
+
+	--surface: var(--pal-ink-950);
+	--surface-raised: var(--pal-ink-850);
+	--surface-sunken: var(--pal-ink-800);
+
+	--fg: var(--pal-slate-100);
+	--fg-muted: var(--pal-slate-300);
+
+	--border: var(--pal-ink-700);
+	--border-strong: var(--pal-slate-500);
+
+	--accent: var(--pal-violet-400);
+	--accent-fg: var(--pal-violet-950);
+	--accent-subtle: var(--pal-ink-800);
+
+	--danger: var(--pal-red-200);
+	--danger-fg: var(--pal-red-950);
+
+	--success: var(--pal-green-200);
+	--success-fg: var(--pal-green-950);
+
+	--ring: var(--pal-violet-400);
+}
+
+/*
+ * Layer 3 — expose the semantic layer to Tailwind so bg-surface and
+ * text-fg-muted are real utilities. `inline` keeps the utility referencing
+ * var(--surface), which is what lets [data-theme] swap it at runtime.
+ */
+@theme inline {
+	--color-surface: var(--surface);
+	--color-surface-raised: var(--surface-raised);
+	--color-surface-sunken: var(--surface-sunken);
+
+	--color-fg: var(--fg);
+	--color-fg-muted: var(--fg-muted);
+
+	--color-border: var(--border);
+	--color-border-strong: var(--border-strong);
+
+	--color-accent: var(--accent);
+	--color-accent-fg: var(--accent-fg);
+	--color-accent-subtle: var(--accent-subtle);
+
+	--color-danger: var(--danger);
+	--color-danger-fg: var(--danger-fg);
+
+	--color-success: var(--success);
+	--color-success-fg: var(--success-fg);
+
+	--color-ring: var(--ring);
+
+	--font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+	--radius-sm: 0.375rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 0.75rem;
+	--radius-xl: 1.125rem;
+
+	--text-display: 2.75rem;
+	--text-display--line-height: 1.1;
+	--text-display--letter-spacing: -0.02em;
+
+	--spacing-gutter: 1.25rem;
+	--spacing-section: 4.5rem;
+}
+
+@layer base {
+	html {
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		background-color: var(--color-surface);
+		color: var(--color-fg);
+		font-family: var(--font-sans);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-ring);
+		outline-offset: 2px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+}

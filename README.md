@@ -38,6 +38,22 @@ Vercel credentials. Unknown values fail the build rather than falling back silen
 On Windows the Vercel build needs symlink privileges, so use `pnpm build:node` locally unless
 Developer Mode is on. CI builds both targets on every push.
 
+## Design tokens
+
+`src/app.css` holds three layers: a primitive palette (`--pal-*`) that components never touch, a
+semantic layer (`--surface`, `--fg-muted`, `--accent-fg`, …) that they do, and an `@theme inline`
+block exposing the semantic layer to Tailwind so `bg-surface` and `text-fg-muted` are real
+utilities. Dark mode re-points the semantic layer under `[data-theme='dark']`, so every component
+carries one class list instead of a parallel set of `dark:` variants.
+
+The brief asks for tokens in `tailwind.config`. Tailwind 4 removed that file, and `@theme` with CSS
+variables serves the same intent — tokens in one place, themable at runtime — so that is what this
+uses.
+
+Contrast is part of the token definition rather than a later audit: `tests/unit/token-contrast.test.ts`
+resolves every semantic pair in both themes and fails below WCAG AA (4.5:1 for text, 3:1 for control
+boundaries and focus rings).
+
 ## Decisions
 
 Non-obvious architectural choices are recorded in [`docs/adr/`](docs/adr/), so the reasoning is

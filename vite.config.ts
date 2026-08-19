@@ -1,5 +1,5 @@
+import tailwindcss from '@tailwindcss/vite';
 import process from 'node:process';
-
 import node from '@sveltejs/adapter-node';
 import vercel from '@sveltejs/adapter-vercel';
 import type { Adapter } from '@sveltejs/kit';
@@ -15,8 +15,10 @@ function resolveAdapter(target: string): Adapter {
 	switch (target) {
 		case 'vercel':
 			return vercel();
+
 		case 'node':
 			return node();
+
 		default:
 			throw new Error(`Unknown BUILD_ADAPTER "${target}". Expected "vercel" or "node".`);
 	}
@@ -24,13 +26,13 @@ function resolveAdapter(target: string): Adapter {
 
 export default defineConfig({
 	plugins: [
+		tailwindcss(),
 		sveltekit({
 			compilerOptions: {
 				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-
 			adapter: resolveAdapter(process.env.BUILD_ADAPTER ?? 'vercel')
 		})
 	],
