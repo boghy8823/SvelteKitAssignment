@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 
-	import type { FacetGroup, ItemQuery } from '$lib/data/item-query';
+	import { facetGroups, type FacetGroup, type ItemQuery } from '$lib/data/item-query';
 	import { useI18n } from '$lib/i18n/context.svelte.ts';
 	import Button from '$lib/ui/Button.svelte';
 	import Combobox from '$lib/ui/Combobox.svelte';
@@ -23,7 +23,7 @@
 		clearHref: string;
 		filtered: boolean;
 		/** Replaces the pickers when the facet query failed. Search still submits,
-		 * and the current selection is kept as hidden fields so a retry of the text
+		 * and the hidden fields keep the current selection so a retry of the text
 		 * box cannot wipe filters the pickers can no longer show. */
 		degraded?: Snippet;
 	}
@@ -44,11 +44,10 @@
 	One GET form around everything, so the free-text field works with scripting
 	disabled and a filtered view is always a URL.
 
-	The facets appear twice, and deliberately. The native multi-selects are the
-	no-JavaScript path; they stay in the DOM when scripting is available — hidden,
-	but still submitting — which is what carries the current facets when someone
-	submits the text search. The comboboxes are the enhancement, and they navigate
-	on toggle rather than waiting for a submit.
+	The comboboxes navigate on toggle rather than waiting for a submit, so they
+	contribute nothing to this form. The current facets ride along as hidden
+	fields instead, which is what keeps a text search from wiping the filters
+	already in the URL.
 -->
 <form method="GET" {action} class="flex flex-col gap-4">
 	<div class="flex flex-wrap items-end gap-3">
@@ -73,23 +72,19 @@
 		<Button type="submit">{i18n.t('search.submit')}</Button>
 	</div>
 
-	{#if degraded}
-		<!--
-			The current facets have to travel with a search even when the pickers
-			cannot be drawn. Hidden fields rather than empty selects: an empty
-			multi-select would submit nothing and wipe a filter the reader can still
-			see in the URL.
-		-->
-		{#each query.status as value (value)}
-			<input type="hidden" name="status" {value} />
+	<!--
+		The current facets have to travel with a search, whether the pickers are
+		drawn or not: the comboboxes commit by navigating, so nothing in this form
+		would otherwise carry them and a submit would wipe filters the reader can
+		still see in the URL.
+	-->
+	{#each facetGroups as group (group)}
+		{#each selection(group) as value (value)}
+			<input type="hidden" name={group} {value} />
 		{/each}
-		{#each query.channel as value (value)}
-			<input type="hidden" name="channel" {value} />
-		{/each}
-		{#each query.tags as value (value)}
-			<input type="hidden" name="tags" {value} />
-		{/each}
+	{/each}
 
+	{#if degraded}
 		{@render degraded()}
 	{:else}
 		<div data-enhanced class="grid gap-3 sm:grid-cols-3">
@@ -102,30 +97,6 @@
 					announce={(count) => i18n.t('dashboard.items.filters.options', { count })}
 					placeholder={i18n.t('dashboard.items.filters.placeholder')}
 				/>
-			{/each}
-		</div>
-
-		<div data-requires-js class="grid gap-3 sm:grid-cols-3">
-			{#each facets as facet (facet.group)}
-				<div>
-					<label for={`native-${facet.group}`} class="mb-1.5 block text-sm font-medium">
-						{facet.label}
-					</label>
-
-					<select
-						id={`native-${facet.group}`}
-						name={facet.group}
-						multiple
-						size="4"
-						class="w-full rounded-md border border-border-strong bg-surface px-2 py-1.5 text-sm text-fg"
-					>
-						{#each facet.options as option (option.value)}
-							<option value={option.value} selected={selection(facet.group).includes(option.value)}>
-								{option.label}{option.count === undefined ? '' : ` (${option.count})`}
-							</option>
-						{/each}
-					</select>
-				</div>
 			{/each}
 		</div>
 	{/if}

@@ -143,25 +143,6 @@
 		outline-offset: 2px;
 	}
 
-	/*
-	 * Two halves of the same idea. `data-requires-js` marks the fallback for a
-	 * reader without scripting — the streamed table's server-rendered escape
-	 * hatch, the native multi-selects behind the facet comboboxes — and
-	 * `data-enhanced` marks the version that needs a script to work at all.
-	 *
-	 * `display: none` rather than a visually-hidden class on purpose: the hidden
-	 * half must leave the tab order and the accessibility tree, not merely the
-	 * screen. The native selects are hidden this way and still submit with their
-	 * form, which is what carries the current facets through a text search.
-	 */
-	html.js [data-requires-js] {
-		display: none;
-	}
-
-	html:not(.js) [data-enhanced] {
-		display: none;
-	}
-
 	@media (prefers-reduced-motion: reduce) {
 		*,
 		*::before,
@@ -172,4 +153,26 @@
 			scroll-behavior: auto !important;
 		}
 	}
+}
+
+/*
+ * Two halves of the same idea. `data-requires-js` marks the fallback for a
+ * reader without scripting — the streamed table's server-rendered escape
+ * hatch — and `data-enhanced` marks the version that needs a script to work at
+ * all.
+ *
+ * `display: none` rather than a visually-hidden class on purpose: the hidden
+ * half must leave the tab order and the accessibility tree, not merely the
+ * screen.
+ *
+ * Unlayered, so it outranks every `@layer utilities` rule no matter the
+ * specificity. Inside `@layer base` a `grid` or `flex` class on the same
+ * element wins on layer order alone and the fallback stays on screen.
+ */
+html.js [data-requires-js] {
+	display: none;
+}
+
+html:not(.js) [data-enhanced] {
+	display: none;
 }
