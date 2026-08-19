@@ -57,6 +57,8 @@
 	"dashboard.items.filters.status": "Status",
 	"dashboard.items.filters.channel": "Kanal",
 	"dashboard.items.filters.tags": "Themen",
+	"dashboard.items.filters.placeholder": "Tippen zum Filtern",
+	"dashboard.items.filters.options": "{count} Optionen",
 	"table.editBudget": "Budget bearbeiten",
 	"table.save": "Budget speichern",
 	"table.cancel": "Bearbeitung abbrechen",

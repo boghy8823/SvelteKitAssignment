@@ -1,11 +1,19 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
-	import type { ItemQuery, ItemSortField } from '$lib/data/item-query';
+	import {
+		facetGroups,
+		type FacetGroup,
+		type ItemQuery,
+		type ItemSortField
+	} from '$lib/data/item-query';
+	import type { ItemChannel, ItemStatus } from '$lib/data/schemas';
+	import { channelLabels, statusLabels } from '$lib/features/items/columns';
+	import ItemFilters from '$lib/features/items/ItemFilters.svelte';
 	import ItemsTable from '$lib/features/items/ItemsTable.svelte';
 	import { useI18n } from '$lib/i18n/context.svelte.ts';
 	import { buildMeta } from '$lib/seo/meta';
 	import Seo from '$lib/seo/Seo.svelte';
-	import Button from '$lib/ui/Button.svelte';
 	import Container from '$lib/ui/Container.svelte';
 	import Heading from '$lib/ui/Heading.svelte';
 	import Pagination from '$lib/ui/Pagination.svelte';
@@ -49,6 +57,54 @@
 			direction: active && data.query.direction === 'desc' ? 'asc' : 'desc'
 		});
 	}
+
+	/**
+	 * A facet toggle is a committed decision, so it pushes a history entry and Back
+	 * undoes exactly that one filter. Keystrokes are the opposite and belong to the
+	 * form's submit; that split is the same one the blog search makes.
+	 */
+	function apply(group: FacetGroup, values: readonly string[]) {
+		// eslint-disable-next-line svelte/no-navigation-without-resolve -- href() builds on basePath, which came from resolve()
+		void goto(href({ [group]: [...values] }), { keepFocus: true, noScroll: true });
+	}
+
+	const isFiltered = $derived(
+		data.query.q !== '' || facetGroups.some((group) => data.query[group].length > 0)
+	);
+
+	/** Facet options come from the repository's counts, so an option's number
+	 * answers "how many would I get if I clicked this". Labels are translated
+	 * here, because the repository has no business knowing the reader's language. */
+	const facetFields = $derived([
+		{
+			group: 'status' as const,
+			label: i18n.t('dashboard.items.filters.status'),
+			options: data.facets.status.map((facet) => ({
+				value: facet.value,
+				label: i18n.t(statusLabels[facet.value as ItemStatus]),
+				count: facet.count
+			}))
+		},
+		{
+			group: 'channel' as const,
+			label: i18n.t('dashboard.items.filters.channel'),
+			options: data.facets.channel.map((facet) => ({
+				value: facet.value,
+				label: i18n.t(channelLabels[facet.value as ItemChannel]),
+				count: facet.count
+			}))
+		},
+		{
+			group: 'tags' as const,
+			label: i18n.t('dashboard.items.filters.tags'),
+			options: data.facets.tags.map((facet) => ({
+				value: facet.value,
+				// Tag labels live in the taxonomy, not the dictionary: they are data.
+				label: data.tagLabels[facet.value] ?? facet.value,
+				count: facet.count
+			}))
+		}
+	]);
 
 	/** The same view with the rows awaited on the server. Built from the live query
 	 * so the fallback keeps whatever filters are applied. */
@@ -94,30 +150,16 @@
 		</div>
 	</div>
 
-	<!-- GET, so a filtered view is a URL. The field keeps its name so it works
-	     with scripting disabled, exactly like the blog search. -->
-	<form method="GET" action={basePath} class="mt-8 flex flex-wrap items-end gap-3">
-		<div class="min-w-64 flex-1">
-			<label for="items-q" class="mb-1.5 block text-sm font-medium">
-				{i18n.t('dashboard.items.search')}
-			</label>
-			<input
-				id="items-q"
-				name="q"
-				type="search"
-				value={data.query.q}
-				class="h-10 w-full rounded-md border border-border-strong bg-surface px-3 text-sm text-fg placeholder:text-fg-muted"
-			/>
-		</div>
-
-		<!-- Sort and direction travel with the search so submitting the form keeps
-		     the column someone chose. Page deliberately does not: a narrower result
-		     invalidates the page they were on. -->
-		<input type="hidden" name="sort" value={data.query.sort} />
-		<input type="hidden" name="direction" value={data.query.direction} />
-
-		<Button type="submit">{i18n.t('search.submit')}</Button>
-	</form>
+	<div class="mt-8">
+		<ItemFilters
+			query={data.query}
+			facets={facetFields}
+			action={basePath}
+			{apply}
+			clearHref={href({ q: '', status: [], channel: [], tags: [] })}
+			filtered={isFiltered}
+		/>
+	</div>
 
 	<p aria-live="polite" class="sr-only">{summary}</p>
 

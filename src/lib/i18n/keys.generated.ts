@@ -34,6 +34,8 @@ export type MessageKey =
 	| 'dashboard.items.column.updated'
 	| 'dashboard.items.empty'
 	| 'dashboard.items.filters.channel'
+	| 'dashboard.items.filters.options'
+	| 'dashboard.items.filters.placeholder'
 	| 'dashboard.items.filters.status'
 	| 'dashboard.items.filters.tags'
 	| 'dashboard.items.new'
@@ -155,6 +157,8 @@ export const messageKeys: readonly MessageKey[] = [
 	'dashboard.items.column.updated',
 	'dashboard.items.empty',
 	'dashboard.items.filters.channel',
+	'dashboard.items.filters.options',
+	'dashboard.items.filters.placeholder',
 	'dashboard.items.filters.status',
 	'dashboard.items.filters.tags',
 	'dashboard.items.new',

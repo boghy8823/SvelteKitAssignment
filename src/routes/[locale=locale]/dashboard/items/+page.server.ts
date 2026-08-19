@@ -2,7 +2,7 @@ import { err, ok, type Result } from '$lib/data/result';
 import type { Item } from '$lib/data/schemas';
 import type { ItemQuery } from '$lib/data/item-query';
 import { delay, faultFrom, type Fault } from '$lib/server/data/fault';
-import { list, pageMeta } from '$lib/server/data/items.repo';
+import { facets, list, pageMeta, tagLabels } from '$lib/server/data/items.repo';
 import { parseItemQuery } from '$lib/url/item-query';
 import type { PageServerLoad } from './$types';
 
@@ -45,7 +45,7 @@ async function loadRows(
 	}
 }
 
-export const load: PageServerLoad = async ({ depends, url }) => {
+export const load: PageServerLoad = async ({ depends, locals, url }) => {
 	// The one thing a budget edit invalidates. `invalidateAll()` would re-run the
 	// layout's dictionary load and the session lookup to refresh one number.
 	depends('app:items');
@@ -55,8 +55,15 @@ export const load: PageServerLoad = async ({ depends, url }) => {
 
 	// Awaited, so the table can size itself before the rows exist: the skeleton
 	// renders exactly as many rows as are coming and the summary line does not
-	// change when they land.
-	const meta = await pageMeta(query);
+	// change when they land. The facet counts are eager for the same reason — the
+	// filter panel is how someone decides what to ask for next, so it cannot be
+	// the part that arrives late.
+	const [meta, groups, labels] = await Promise.all([
+		pageMeta(query),
+		facets(query),
+		tagLabels(locals.locale)
+	]);
+
 	const rows = loadRows(query, fault);
 
 	/*
@@ -70,9 +77,9 @@ export const load: PageServerLoad = async ({ depends, url }) => {
 	 * would keep the skeleton no matter how quickly it settled.
 	 */
 	if (url.searchParams.get('stream') === 'off') {
-		return { query, meta, rows: await rows };
+		return { query, meta, facets: groups, tagLabels: labels, rows: await rows };
 	}
 
 	// Not awaited. This is the streamed half.
-	return { query, meta, rows };
+	return { query, meta, facets: groups, tagLabels: labels, rows };
 };

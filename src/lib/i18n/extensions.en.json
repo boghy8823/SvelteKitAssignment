@@ -57,6 +57,8 @@
 	"dashboard.items.filters.status": "Status",
 	"dashboard.items.filters.channel": "Channel",
 	"dashboard.items.filters.tags": "Tags",
+	"dashboard.items.filters.placeholder": "Type to filter",
+	"dashboard.items.filters.options": "{count} options",
 	"table.editBudget": "Edit budget",
 	"table.save": "Save budget",
 	"table.cancel": "Cancel edit",

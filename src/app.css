@@ -143,10 +143,22 @@
 		outline-offset: 2px;
 	}
 
-	/* Streamed data resolves through a script, so a streamed table stays a
-	   skeleton without one. Anything marked this way is the route around that,
-	   and it disappears the moment scripting is available. */
+	/*
+	 * Two halves of the same idea. `data-requires-js` marks the fallback for a
+	 * reader without scripting — the streamed table's server-rendered escape
+	 * hatch, the native multi-selects behind the facet comboboxes — and
+	 * `data-enhanced` marks the version that needs a script to work at all.
+	 *
+	 * `display: none` rather than a visually-hidden class on purpose: the hidden
+	 * half must leave the tab order and the accessibility tree, not merely the
+	 * screen. The native selects are hidden this way and still submit with their
+	 * form, which is what carries the current facets through a text search.
+	 */
 	html.js [data-requires-js] {
+		display: none;
+	}
+
+	html:not(.js) [data-enhanced] {
 		display: none;
 	}
 

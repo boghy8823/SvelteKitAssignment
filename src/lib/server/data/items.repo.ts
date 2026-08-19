@@ -1,6 +1,7 @@
 import type { FacetGroup, ItemQuery, ItemSortField } from '$lib/data/item-query';
 import { resolvePage, type Page, type PageMeta } from '$lib/data/pagination';
 import { itemChannels, itemStatuses, type Item } from '$lib/data/schemas';
+import type { Locale } from '$lib/i18n/locales';
 
 import { items } from './dataset/items';
 import { tags as taxonomy } from './dataset/tags';
@@ -160,6 +161,15 @@ function countBy(query: ItemQuery, group: FacetGroup, values: readonly string[])
 	// Zero counts are kept rather than dropped, so the filter panel can show an
 	// option as unavailable instead of making it disappear under the cursor.
 	return values.map((value) => ({ value, count: counts.get(value) ?? 0 }));
+}
+
+/**
+ * Tag slug to label in one locale. Tag names are data, not copy — they come from
+ * the provided taxonomy rather than the dictionary — so the filter panel needs
+ * this to render a facet as something other than a slug.
+ */
+export async function tagLabels(locale: Locale): Promise<Record<string, string>> {
+	return Object.fromEntries(taxonomy.map((tag) => [tag.slug, tag.label[locale]]));
 }
 
 export async function facets(query: ItemQuery): Promise<ItemFacets> {
