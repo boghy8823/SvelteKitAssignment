@@ -11,6 +11,10 @@
 		error?: string;
 		/** Wrapper class. The input itself is sized by the design system. */
 		class?: string;
+		/** The element itself, so a caller can move focus to the field it just
+		 * reported an error on. Exposed deliberately: focus management belongs to
+		 * whoever owns the form's error state, not to the primitive. */
+		element?: HTMLInputElement;
 	}
 
 	let {
@@ -20,6 +24,7 @@
 		error,
 		id,
 		class: className = '',
+		element = $bindable(),
 		...rest
 	}: Props = $props();
 
@@ -31,6 +36,7 @@
 	{#snippet control({ describedBy, invalid })}
 		<input
 			id={inputId}
+			bind:this={element}
 			bind:value
 			aria-describedby={describedBy}
 			aria-invalid={invalid || undefined}

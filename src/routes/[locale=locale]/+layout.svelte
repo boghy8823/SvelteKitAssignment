@@ -3,6 +3,8 @@
 	import { page } from '$app/state';
 	import { provideI18n } from '$lib/i18n/context.svelte.ts';
 	import { siteName } from '$lib/seo/site';
+	import Button from '$lib/ui/Button.svelte';
+	import { buttonClasses } from '$lib/ui/button-styles';
 	import Container from '$lib/ui/Container.svelte';
 	import LocaleSwitcher from '$lib/ui/LocaleSwitcher.svelte';
 	import ThemeToggle from '$lib/ui/ThemeToggle.svelte';
@@ -23,6 +25,9 @@
 			label: i18n.t('nav.search')
 		}
 	]);
+
+	const loginHref = $derived(resolve('/[locale=locale]/login', { locale: data.locale }));
+	const logoutAction = $derived(resolve('/[locale=locale]/logout', { locale: data.locale }));
 </script>
 
 <div class="flex min-h-dvh flex-col bg-surface text-fg">
@@ -50,6 +55,26 @@
 			</nav>
 
 			<div class="flex items-center gap-2">
+				{#if data.user}
+					<span class="hidden text-sm text-fg-muted sm:inline">
+						{i18n.t('login.signedInAs', { name: data.user.name })}
+					</span>
+
+					<!--
+						A form, not a link: signing out changes state, and the endpoint only
+						answers POST. `redirectTo` carries the page they are on, which the
+						server validates as a local path before honouring.
+					-->
+					<form method="POST" action={logoutAction}>
+						<input type="hidden" name="redirectTo" value={page.url.pathname} />
+						<Button type="submit" variant="ghost" size="sm">{i18n.t('nav.logout')}</Button>
+					</form>
+				{:else}
+					<a href={loginHref} class={buttonClasses({ variant: 'secondary', size: 'sm' })}>
+						{i18n.t('nav.login')}
+					</a>
+				{/if}
+
 				<LocaleSwitcher current={data.locale} label={i18n.t('a11y.localeSwitcher')} />
 				<ThemeToggle label={i18n.t('a11y.themeToggle')} />
 			</div>

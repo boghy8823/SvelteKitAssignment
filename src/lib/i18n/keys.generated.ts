@@ -54,10 +54,18 @@ export type MessageKey =
 	| 'home.hero.cta'
 	| 'home.hero.subtitle'
 	| 'home.hero.title'
+	| 'login.demo.password'
+	| 'login.demo.title'
+	| 'login.demo.use'
 	| 'login.email'
 	| 'login.error'
+	| 'login.error.email'
+	| 'login.error.password'
 	| 'login.password'
+	| 'login.signedInAs'
 	| 'login.submit'
+	| 'login.submitting'
+	| 'login.subtitle'
 	| 'login.title'
 	| 'nav.blog'
 	| 'nav.dashboard'
@@ -155,10 +163,18 @@ export const messageKeys: readonly MessageKey[] = [
 	'home.hero.cta',
 	'home.hero.subtitle',
 	'home.hero.title',
+	'login.demo.password',
+	'login.demo.title',
+	'login.demo.use',
 	'login.email',
 	'login.error',
+	'login.error.email',
+	'login.error.password',
 	'login.password',
+	'login.signedInAs',
 	'login.submit',
+	'login.submitting',
+	'login.subtitle',
 	'login.title',
 	'nav.blog',
 	'nav.dashboard',

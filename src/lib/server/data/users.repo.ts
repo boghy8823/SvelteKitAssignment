@@ -38,3 +38,20 @@ export async function byId(id: string): Promise<Account | null> {
 
 	return user ? toAccount(user) : null;
 }
+
+export interface DemoLogin {
+	email: string;
+	password: string;
+	role: Account['role'];
+}
+
+/**
+ * Credentials for the login page's demo panel. A separate function on purpose:
+ * `Account` omits `password` so no ordinary code path can leak one, and the one
+ * place that deliberately publishes them says so out loud. It exists because the
+ * brief ships these accounts as public reviewer credentials — with real users
+ * this function would not.
+ */
+export async function demoLogins(): Promise<readonly DemoLogin[]> {
+	return users.map((user) => ({ email: user.email, password: user.password, role: user.role }));
+}
