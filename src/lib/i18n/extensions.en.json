@@ -66,7 +66,7 @@
 	"dashboard.items.filters.tags": "Tags",
 	"dashboard.items.filters.placeholder": "Type to filter",
 	"dashboard.items.filters.options": "{count} options",
-	"table.editBudget": "Edit budget",
+	"table.budget.edit": "Edit budget for {name}",
 	"table.save": "Save budget",
 	"table.cancel": "Cancel edit",
 	"table.saving": "Saving…",

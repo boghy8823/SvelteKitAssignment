@@ -180,15 +180,35 @@
 				     screen reader, and it cannot spin forever. -->
 				<span class="text-xs text-fg-muted">{i18n.t('table.saving')}</span>
 			{:else if editable}
+				<!--
+					Icon-only, so eight columns of numbers are not competing with a word in
+					every row. The accessible name says which row it belongs to, because
+					"Edit budget" repeated 20 times is a list a screen-reader user cannot
+					navigate; `title` gives a sighted pointer user the same sentence.
+				-->
 				<Button
 					bind:element={editButton}
 					type="button"
 					size="sm"
 					variant="ghost"
+					class="px-2"
 					onclick={open}
-					aria-label={i18n.t('table.budget.label', { name })}
+					aria-label={i18n.t('table.budget.edit', { name })}
+					title={i18n.t('table.budget.edit', { name })}
 				>
-					{i18n.t('table.editBudget')}
+					<svg
+						viewBox="0 0 24 24"
+						class="size-4"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<path d="M4 20h4L19 9a2.5 2.5 0 0 0-3.5-3.5L4.5 16.5Z" />
+						<path d="M14.5 6.5 17.5 9.5" />
+					</svg>
 				</Button>
 			{/if}
 		</div>

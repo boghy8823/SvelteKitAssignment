@@ -126,6 +126,7 @@ export type MessageKey =
 	| 'status.draft'
 	| 'status.paused'
 	| 'status.scheduled'
+	| 'table.budget.edit'
 	| 'table.budget.forbidden'
 	| 'table.budget.invalid'
 	| 'table.budget.invalidToast'
@@ -141,7 +142,6 @@ export type MessageKey =
 	| 'table.conflict.overwrite'
 	| 'table.conflict.theirs'
 	| 'table.conflict.title'
-	| 'table.editBudget'
 	| 'table.save'
 	| 'table.saving';
 
@@ -270,6 +270,7 @@ export const messageKeys: readonly MessageKey[] = [
 	'status.draft',
 	'status.paused',
 	'status.scheduled',
+	'table.budget.edit',
 	'table.budget.forbidden',
 	'table.budget.invalid',
 	'table.budget.invalidToast',
@@ -285,7 +286,6 @@ export const messageKeys: readonly MessageKey[] = [
 	'table.conflict.overwrite',
 	'table.conflict.theirs',
 	'table.conflict.title',
-	'table.editBudget',
 	'table.save',
 	'table.saving'
 ];

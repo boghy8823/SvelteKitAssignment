@@ -66,7 +66,7 @@
 	"dashboard.items.filters.tags": "Themen",
 	"dashboard.items.filters.placeholder": "Tippen zum Filtern",
 	"dashboard.items.filters.options": "{count} Optionen",
-	"table.editBudget": "Budget bearbeiten",
+	"table.budget.edit": "Budget für {name} bearbeiten",
 	"table.save": "Budget speichern",
 	"table.cancel": "Bearbeitung abbrechen",
 	"table.saving": "Wird gespeichert…",
