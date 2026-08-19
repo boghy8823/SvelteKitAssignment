@@ -39,6 +39,13 @@ export default defineConfig({
 			// through an alias makes the boundary explicit, and ESLint restricts the
 			// alias to src/lib/server so nothing else can import it.
 			alias: { $mocks: 'mocks' },
+			prerender: {
+				// Prerendering is driven by explicit `entries`, not by following links.
+				// The app links to routes that are ISR, per-request, or behind a login,
+				// none of which a build-time crawler can fetch — and the same explicit
+				// inventory is what generates the sitemap.
+				crawl: false
+			},
 			adapter: resolveAdapter(process.env.BUILD_ADAPTER ?? 'vercel')
 		})
 	],

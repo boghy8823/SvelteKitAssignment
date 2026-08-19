@@ -1,121 +1,104 @@
 <script lang="ts">
-	import Badge from '$lib/ui/Badge.svelte';
-	import Button from '$lib/ui/Button.svelte';
+	import { useI18n } from '$lib/i18n/context.svelte.ts';
+	import { organization } from '$lib/seo/jsonld';
+	import { buildMeta } from '$lib/seo/meta';
+	import Seo from '$lib/seo/Seo.svelte';
+	import { buttonClasses } from '$lib/ui/button-styles';
 	import Card from '$lib/ui/Card.svelte';
 	import Container from '$lib/ui/Container.svelte';
-	import Dialog from '$lib/ui/Dialog.svelte';
 	import Heading from '$lib/ui/Heading.svelte';
-	import Input from '$lib/ui/Input.svelte';
-	import Select from '$lib/ui/Select.svelte';
-	import Skeleton from '$lib/ui/Skeleton.svelte';
-	import { useToasts } from '$lib/ui/toast.svelte.ts';
 
-	let name = $state('');
-	let channel = $state('email');
-	let confirmOpen = $state(false);
+	const i18n = useI18n();
 
-	const toasts = useToasts();
+	const meta = $derived(
+		buildMeta({
+			locale: i18n.locale,
+			title: i18n.t('home.hero.title'),
+			description: i18n.t('home.hero.subtitle'),
+			path: '/'
+		})
+	);
+
+	const features = $derived([
+		{
+			title: i18n.t('home.features.performance.title'),
+			body: i18n.t('home.features.performance.body')
+		},
+		{ title: i18n.t('home.features.dx.title'), body: i18n.t('home.features.dx.body') },
+		{
+			title: i18n.t('home.features.accessibility.title'),
+			body: i18n.t('home.features.accessibility.body')
+		}
+	]);
+
+	const tiers = $derived([
+		{ name: i18n.t('pricing.tier.starter'), price: 0 },
+		{ name: i18n.t('pricing.tier.team'), price: 49 },
+		{ name: i18n.t('pricing.tier.scale'), price: 199 }
+	]);
 </script>
 
-<Container width="prose" class="py-section">
-	<Heading level={1}>Design system</Heading>
+<Seo {meta} jsonLd={[organization()]} />
 
-	<p class="mt-4 text-fg-muted">
-		Primitives take their colours from semantic tokens, so one class list covers both themes. The
-		active theme resolves during SSR from a cookie, and both themes are contrast-checked in tests.
-	</p>
+<Container width="wide" class="py-section">
+	<div class="max-w-2xl">
+		<Heading level={1}>{i18n.t('home.hero.title')}</Heading>
 
-	<Heading level={2} class="mt-12">Actions</Heading>
+		<p class="mt-5 text-lg text-fg-muted">{i18n.t('home.hero.subtitle')}</p>
 
-	<div class="mt-4 flex flex-wrap items-center gap-3">
-		<Button>Primary</Button>
-		<Button variant="secondary">Secondary</Button>
-		<Button variant="ghost">Ghost</Button>
-		<Button variant="danger">Danger</Button>
-		<Button size="sm" variant="secondary">Small</Button>
-		<Button disabled>Disabled</Button>
-	</div>
-
-	<div class="mt-4 flex flex-wrap items-center gap-2">
-		<Badge>draft</Badge>
-		<Badge variant="accent">active</Badge>
-		<Badge variant="success">completed</Badge>
-		<Badge variant="danger">over budget</Badge>
-	</div>
-
-	<Heading level={2} class="mt-12">Forms</Heading>
-
-	<div class="mt-4 grid gap-5 sm:grid-cols-2">
-		<Input label="Campaign name" bind:value={name} placeholder="Spring launch" />
-		<Input
-			label="Budget"
-			type="number"
-			value="1200"
-			error="Budget must be a positive number"
-			min="0"
-		/>
-		<Select label="Channel" bind:value={channel} hint="Where the campaign runs">
-			<option value="email">Email</option>
-			<option value="sms">SMS</option>
-			<option value="web">Web</option>
-		</Select>
-	</div>
-
-	<Heading level={2} class="mt-12">Notifications</Heading>
-
-	<div class="mt-4 flex flex-wrap items-center gap-3">
-		<Button variant="secondary" onclick={() => toasts.show('Budget updated', { tone: 'success' })}>
-			Success toast
-		</Button>
-		<Button
-			variant="secondary"
-			onclick={() =>
-				toasts.show('Could not update budget', {
-					tone: 'error',
-					action: { label: 'Retry', run: () => toasts.show('Retrying', { tone: 'info' }) }
-				})}
-		>
-			Error toast with retry
-		</Button>
-	</div>
-
-	<Heading level={2} class="mt-12">Dialog</Heading>
-
-	<div class="mt-4">
-		<Button variant="secondary" onclick={() => (confirmOpen = true)}>Open dialog</Button>
-	</div>
-
-	<Dialog bind:open={confirmOpen} title="Archive campaign">
-		<p>Archiving hides the campaign from reporting. You can restore it later.</p>
-
-		{#snippet footer()}
-			<Button variant="secondary" onclick={() => (confirmOpen = false)}>Cancel</Button>
-			<Button
-				variant="danger"
-				onclick={() => {
-					confirmOpen = false;
-					toasts.show('Campaign archived', { tone: 'success' });
-				}}
-			>
-				Archive
-			</Button>
-		{/snippet}
-	</Dialog>
-
-	<Heading level={2} class="mt-12">Surfaces and loading</Heading>
-
-	<div class="mt-4 grid gap-4 sm:grid-cols-2">
-		<Card>
-			<Heading level={3}>Loaded</Heading>
-			<p class="mt-2 text-sm text-fg-muted">A card holds content on a raised surface.</p>
-		</Card>
-
-		<Card>
-			<div aria-busy="true" aria-live="polite" class="space-y-2">
-				<Skeleton class="h-5 w-32" />
-				<Skeleton class="h-4 w-full" />
-				<Skeleton class="h-4 w-2/3" />
-			</div>
-		</Card>
+		<div class="mt-8 flex flex-wrap items-center gap-3">
+			<a href="#pricing" class={buttonClasses({ variant: 'primary' })}>
+				{i18n.t('home.hero.cta')}
+			</a>
+		</div>
 	</div>
 </Container>
+
+<section class="border-t border-border bg-surface-raised">
+	<Container width="wide" class="py-section">
+		<Heading level={2}>{i18n.t('home.features.title')}</Heading>
+
+		<div class="mt-8 grid gap-4 md:grid-cols-3">
+			{#each features as feature (feature.title)}
+				<Card class="bg-surface">
+					<Heading level={3}>{feature.title}</Heading>
+					<p class="mt-2 text-sm text-fg-muted">{feature.body}</p>
+				</Card>
+			{/each}
+		</div>
+	</Container>
+</section>
+
+<section id="pricing" class="border-t border-border">
+	<Container width="wide" class="py-section">
+		<Heading level={2}>{i18n.t('pricing.title')}</Heading>
+		<p class="mt-3 text-fg-muted">{i18n.t('pricing.subtitle')}</p>
+
+		<div class="mt-8 grid gap-4 md:grid-cols-3">
+			{#each tiers as tier (tier.name)}
+				<Card>
+					<Heading level={3}>{tier.name}</Heading>
+
+					<p class="mt-3 text-2xl font-semibold">
+						{i18n.format.currency(tier.price)}
+						<span class="text-sm font-normal text-fg-muted">{i18n.t('pricing.perMonth')}</span>
+					</p>
+
+					<button
+						type="button"
+						class={buttonClasses({ variant: 'secondary', class: 'mt-5 w-full' })}
+					>
+						{i18n.t('pricing.cta')}
+					</button>
+				</Card>
+			{/each}
+		</div>
+	</Container>
+</section>
+
+<section class="border-t border-border bg-surface-raised">
+	<Container width="wide" class="py-section">
+		<Heading level={2}>{i18n.t('social.title')}</Heading>
+		<p class="mt-3 max-w-xl text-fg-muted">{i18n.t('social.subtitle')}</p>
+	</Container>
+</section>

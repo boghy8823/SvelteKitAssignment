@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { currentSearch } from '$lib/url/current-search.svelte.ts';
 
 	import { isTheme, nextTheme, type Theme } from './theme';
 
@@ -18,6 +19,8 @@
 	}: Props = $props();
 
 	let announcement = $state('');
+
+	const returnTo = $derived(page.url.pathname + currentSearch());
 
 	/** What the user is actually looking at, whether that came from a cookie or the OS. */
 	function currentTheme(): Theme {
@@ -49,7 +52,7 @@
 </script>
 
 <form method="POST" action="/api/theme" onsubmit={toggle} class={className}>
-	<input type="hidden" name="redirectTo" value={page.url.pathname + page.url.search} />
+	<input type="hidden" name="redirectTo" value={returnTo} />
 
 	<button
 		type="submit"

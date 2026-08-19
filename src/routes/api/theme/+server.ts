@@ -15,9 +15,15 @@ export const POST: RequestHandler = async ({ request, cookies, locals }) => {
 	// localhost. Deriving it from `dev` instead would mark the cookie Secure on
 	// the production build that Playwright and Lighthouse serve over http, and
 	// the browser would then drop it.
+	//
+	// Deliberately not httpOnly. Prerendered pages have no request to read the
+	// cookie during render, so the pre-paint script in app.html has to read it
+	// instead. A colour preference is not a credential, and hiding it from
+	// scripting buys nothing while costing a correct first paint on every cached
+	// page.
 	cookies.set(THEME_COOKIE, target, {
 		path: '/',
-		httpOnly: true,
+		httpOnly: false,
 		sameSite: 'lax',
 		maxAge: THEME_COOKIE_MAX_AGE
 	});

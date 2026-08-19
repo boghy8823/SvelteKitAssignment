@@ -4,6 +4,19 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
+		<script>
+			// Server-rendered pages arrive with data-theme already set and this does
+			// nothing. Prerendered pages are built without a request, so they cannot
+			// know this visitor's stored choice — reading it here, before first paint,
+			// is what keeps a cached page from flashing the wrong theme.
+			if (!document.documentElement.dataset.theme) {
+				const stored = /(?:^|;\s*)theme=(light|dark)/.exec(document.cookie);
+
+				if (stored) {
+					document.documentElement.dataset.theme = stored[1];
+				}
+			}
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
