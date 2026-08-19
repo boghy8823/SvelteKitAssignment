@@ -143,6 +143,13 @@
 		outline-offset: 2px;
 	}
 
+	/* Streamed data resolves through a script, so a streamed table stays a
+	   skeleton without one. Anything marked this way is the route around that,
+	   and it disappears the moment scripting is available. */
+	html.js [data-requires-js] {
+		display: none;
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		*,
 		*::before,

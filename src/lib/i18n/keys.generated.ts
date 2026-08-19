@@ -2,6 +2,8 @@
 // Run `pnpm i18n:types` after changing a dictionary.
 
 export type MessageKey =
+	| 'a11y.direction.asc'
+	| 'a11y.direction.desc'
 	| 'a11y.localeSwitcher'
 	| 'a11y.skipToContent'
 	| 'a11y.sortColumn'
@@ -35,6 +37,7 @@ export type MessageKey =
 	| 'dashboard.items.filters.status'
 	| 'dashboard.items.filters.tags'
 	| 'dashboard.items.new'
+	| 'dashboard.items.noStream'
 	| 'dashboard.items.search'
 	| 'dashboard.items.title'
 	| 'dashboard.readOnly'
@@ -120,6 +123,8 @@ export type MessageKey =
 	| 'table.saving';
 
 export const messageKeys: readonly MessageKey[] = [
+	'a11y.direction.asc',
+	'a11y.direction.desc',
 	'a11y.localeSwitcher',
 	'a11y.skipToContent',
 	'a11y.sortColumn',
@@ -153,6 +158,7 @@ export const messageKeys: readonly MessageKey[] = [
 	'dashboard.items.filters.status',
 	'dashboard.items.filters.tags',
 	'dashboard.items.new',
+	'dashboard.items.noStream',
 	'dashboard.items.search',
 	'dashboard.items.title',
 	'dashboard.readOnly',

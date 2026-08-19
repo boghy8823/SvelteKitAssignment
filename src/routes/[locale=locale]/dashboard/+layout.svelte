@@ -17,6 +17,10 @@
 		{
 			href: resolve('/[locale=locale]/dashboard', { locale: i18n.locale }),
 			label: i18n.t('dashboard.title')
+		},
+		{
+			href: resolve('/[locale=locale]/dashboard/items', { locale: i18n.locale }),
+			label: i18n.t('dashboard.items.title')
 		}
 	]);
 </script>

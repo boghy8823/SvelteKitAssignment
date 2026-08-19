@@ -16,6 +16,12 @@
 					document.documentElement.dataset.theme = stored[1];
 				}
 			}
+
+			// Lets CSS hide the fallbacks that only matter without scripting. A
+			// <noscript> element would be the obvious tool, but its children are raw
+			// text to a browser that has JavaScript, which is a hydration mismatch
+			// waiting to happen.
+			document.documentElement.classList.add('js');
 		</script>
 		%sveltekit.head%
 	</head>

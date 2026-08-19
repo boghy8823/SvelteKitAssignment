@@ -1,5 +1,5 @@
 import type { FacetGroup, ItemQuery, ItemSortField } from '$lib/data/item-query';
-import { resolvePage, type Page } from '$lib/data/pagination';
+import { resolvePage, type Page, type PageMeta } from '$lib/data/pagination';
 import { itemChannels, itemStatuses, type Item } from '$lib/data/schemas';
 
 import { items } from './dataset/items';
@@ -108,6 +108,22 @@ export function compareForSort(a: Item, b: Item, query: ItemQuery): number {
 	const directed = query.direction === 'desc' ? -ordered : ordered;
 
 	return directed !== 0 ? directed : a.id.localeCompare(b.id);
+}
+
+/**
+ * Pagination bounds without the rows, so the table can size itself before the
+ * data arrives: the skeleton renders exactly as many rows as are coming, and the
+ * summary line does not change once they do.
+ *
+ * Deliberately a second pass over the data rather than a by-product of `list`.
+ * Behind a database this is `SELECT COUNT(*)` next to `SELECT ... LIMIT`, which
+ * is the same two queries — and the whole point of the repository seam is that
+ * the routes above it are written for that shape.
+ */
+export async function pageMeta(query: ItemQuery): Promise<PageMeta> {
+	const total = items.filter((item) => matches(item, query)).length;
+
+	return resolvePage(total, query.page, query.pageSize);
 }
 
 export async function list(query: ItemQuery): Promise<Page<Item>> {
