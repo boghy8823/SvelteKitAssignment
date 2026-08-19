@@ -19,7 +19,16 @@
 	const home = $derived(resolve('/[locale=locale]', { locale: data.locale }));
 
 	const links = $derived([
-		{ href: resolve('/[locale=locale]/blog', { locale: data.locale }), label: i18n.t('nav.blog') },
+		// The blog is the marketing surface, so it only earns a nav slot while the
+		// visitor is anonymous. Signed in, the header points at their own work.
+		...(data.user
+			? []
+			: [
+					{
+						href: resolve('/[locale=locale]/blog', { locale: data.locale }),
+						label: i18n.t('nav.blog')
+					}
+				]),
 		{
 			href: resolve('/[locale=locale]/search', { locale: data.locale }),
 			label: i18n.t('nav.search')
