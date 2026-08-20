@@ -13,6 +13,21 @@
 
 	const i18n = provideI18n(() => ({ locale: data.locale, messages: data.messages }));
 
+	/**
+	 * The hook writes `lang` into the shell during SSR, which covers the first
+	 * page and nothing after it: a client-side navigation swaps the content
+	 * without touching the document element. Left alone, switching language
+	 * leaves a German page announcing itself as English, which is the one thing
+	 * the attribute exists to prevent.
+	 *
+	 * `<svelte:head>` cannot reach an attribute on <html>, so this is a direct
+	 * write. It re-runs whenever the locale changes and is a no-op on the first
+	 * load, where the server already put the same value there.
+	 */
+	$effect(() => {
+		document.documentElement.lang = data.locale;
+	});
+
 	// resolve() type-checks the route id against the router, so a link cannot
 	// outlive the route it points at. Nav entries are added here as their routes
 	// land, which is why this list grows rather than pointing at 404s.
