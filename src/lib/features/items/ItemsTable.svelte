@@ -7,7 +7,6 @@
 	import type { Item } from '$lib/data/schemas';
 	import { useI18n } from '$lib/i18n/context.svelte.ts';
 	import Badge from '$lib/ui/Badge.svelte';
-	import Skeleton from '$lib/ui/Skeleton.svelte';
 
 	import type { BudgetEdits } from './budget-edits.svelte.ts';
 	import BudgetCell from './BudgetCell.svelte';
@@ -156,24 +155,22 @@
 
 		{#snippet skeleton()}
 			<!--
-				One placeholder per cell, no extra wrapper: 25×8 nodes is already
-				the first HTML on Slow 4G, and a wrapping flex div per cell was
-				layout the colgroup already expresses. Height still matches the
-				body row (`cell` + `h-5`) so swapping in the streamed rows is not
-				a layout shift.
+				One reserved block, not 25×8 cells. The first HTML is the LCP
+				document on Slow 4G; 200 placeholder nodes delayed the heading
+				for nothing — they have no text, so they cannot be LCP. Height
+				still matches the body rows (`cell` padding + `text-sm` line +
+				the 1px border) so swapping them in is not a layout shift.
 			-->
 			<tbody aria-busy="true">
-				{#each placeholders as placeholder (placeholder)}
-					<tr class="border-t border-border">
-						{#each itemColumns as column (column.field)}
-							<td class={cell}>
-								<Skeleton
-									class={`h-5 ${column.placeholder} ${column.align === 'end' ? 'ml-auto' : ''}`}
-								/>
-							</td>
-						{/each}
-					</tr>
-				{/each}
+				<tr>
+					<td colspan={itemColumns.length} class="p-0">
+						<div
+							aria-hidden="true"
+							class="animate-pulse bg-surface-sunken"
+							style={`height: calc(${placeholders.length} * (2.5rem + 1px))`}
+						></div>
+					</td>
+				</tr>
 			</tbody>
 		{/snippet}
 

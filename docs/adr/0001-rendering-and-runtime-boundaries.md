@@ -28,16 +28,17 @@ on Node" a fiction rather than a boundary.
 | `/[locale]/search`            | SSR, uncached         | Edge    | URL-driven, per-request, no session; `noindex, follow`                                      |
 | `/[locale]/login`             | SSR + form action     | Node    | Signs the session cookie                                                                    |
 | `/[locale]/dashboard`         | SSR, guarded          | Node    | Reads the session, redirects anonymous traffic                                              |
-| `/[locale]/dashboard/items`   | SSR; stream when slow | Node    | Owns mutable state; awaits in-memory rows so names are in the LCP HTML                      |
+| `/[locale]/dashboard/items`   | SSR + streamed rows   | Node    | Owns mutable state; heading is LCP, so the 220-row table is not in the first HTML           |
 | `/og/[locale]/[slug].png`     | Prerendered endpoint  | Static  | 40 fixed images; generating them per request would be a cold-start tax for nothing          |
 | `/sitemap.xml`, `/robots.txt` | Prerendered endpoints | Static  | Generated from the same route table as `hreflang`, so the two cannot drift                  |
 | `/api/beacon`                 | POST                  | Edge    | Fire-and-forget telemetry that should not compete with app compute                          |
 
-Streaming is used only where the deferred payload is _not_ the LCP element, and only when waiting
-would actually delay TTFB. Dashboard rows are in-memory, so the default path awaits them into the
-first HTML — empty skeleton cells are not LCP candidates, campaign names are. `?fault=slow` still
-streams, which is the case where the backend is late and flushing the shell first is the point.
-Post bodies do not qualify for streaming at all, because the body is what LCP measures.
+Streaming is used only where the deferred payload is _not_ the LCP element. Dashboard rows qualify:
+the heading is first paint, and empty skeleton cells cannot be LCP. Awaiting those rows into the
+first HTML was tried and raised Slow 4G LCP from ~2.17s to ~2.34s — TTFB waited on 25 `BudgetCell`s,
+and the names in that fat document became the element being measured. `?stream=off` still awaits, for
+readers without JavaScript. Post bodies do not qualify for streaming at all, because the body is what
+LCP measures.
 
 The app stylesheet is inlined (`inlineStyleThreshold`) so a Slow 4G first visit does not spend an
 extra RTT on render-blocking CSS before LCP. Repeat navigations lose a cached `.css` file; Lighthouse

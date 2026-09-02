@@ -370,9 +370,9 @@
 	<p aria-live="polite" class="sr-only">{summary}</p>
 
 	<!--
-		Hidden by CSS as soon as scripting is available. Only rendered when the
-		rows are actually a promise: the default path awaits them, so the table
-		is already in the HTML and this link would be a lie.
+		Hidden by CSS as soon as scripting is available. The streamed rows resolve
+		through a script, so this is the way to the same table with the rows already
+		in the HTML.
 	-->
 	{#if data.rows instanceof Promise}
 		<p

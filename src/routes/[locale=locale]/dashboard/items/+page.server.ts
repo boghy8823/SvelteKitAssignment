@@ -195,25 +195,21 @@ export const load: PageServerLoad = async ({ cookies, depends, locals, url }) =>
 	]);
 
 	/*
-	 * Two reasons to await the rows into the first HTML.
+	 * Streamed by default. Awaiting the 25-row table into the first HTML
+	 * made Slow 4G LCP *worse* (~2340ms vs ~2170ms): TTFB waited on 25
+	 * BudgetCells, and campaign names in a fat document became the LCP
+	 * element. Empty skeleton cells are not LCP candidates; the heading
+	 * is. Flush that first, and let the rows follow.
 	 *
-	 * `?stream=off` is the no-JavaScript escape hatch: streaming resolves
-	 * through a script, so a reader without one would sit in front of a
-	 * skeleton forever.
-	 *
-	 * The other is the default path. The dataset is in-process, so the query
-	 * is already done by the time the shell would flush. Returning a promise
-	 * anyway would paint empty skeleton cells (not LCP candidates) and then
-	 * paint the campaign names after a later chunk — which *are* LCP, and
-	 * which is how a Slow 4G gather misses 2s. Streaming is kept for
-	 * `?fault=slow`, where the backend is actually late and TTFB would
-	 * otherwise wait on it.
+	 * `?stream=off` still awaits, because streaming resolves through a
+	 * script and a reader without JavaScript would sit on the skeleton.
 	 *
 	 * Returning a value rather than a promise is what switches the mode:
-	 * Svelte renders the pending branch of `{#await}` during SSR, so keeping
-	 * the promise would keep the skeleton no matter how quickly it settled.
+	 * Svelte renders the pending branch of `{#await}` during SSR, so
+	 * keeping the promise would keep the skeleton no matter how quickly
+	 * it settled.
 	 */
-	if (url.searchParams.get('stream') === 'off' || fault.latencyMs === 0) {
+	if (url.searchParams.get('stream') === 'off') {
 		return { query, meta, facets: groups, tagLabels: labels, rows: await rows };
 	}
 
