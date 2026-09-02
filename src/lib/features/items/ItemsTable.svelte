@@ -155,14 +155,21 @@
 		</thead>
 
 		{#snippet skeleton()}
+			<!--
+				One placeholder per cell, no extra wrapper: 25×8 nodes is already
+				the first HTML on Slow 4G, and a wrapping flex div per cell was
+				layout the colgroup already expresses. Height still matches the
+				body row (`cell` + `h-5`) so swapping in the streamed rows is not
+				a layout shift.
+			-->
 			<tbody aria-busy="true">
 				{#each placeholders as placeholder (placeholder)}
 					<tr class="border-t border-border">
 						{#each itemColumns as column (column.field)}
 							<td class={cell}>
-								<div class={column.align === 'end' ? 'flex justify-end' : ''}>
-									<Skeleton class={`h-5 ${column.placeholder}`} />
-								</div>
+								<Skeleton
+									class={`h-5 ${column.placeholder} ${column.align === 'end' ? 'ml-auto' : ''}`}
+								/>
 							</td>
 						{/each}
 					</tr>

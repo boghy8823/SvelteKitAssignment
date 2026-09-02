@@ -35,6 +35,12 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
+			// The app stylesheet is ~24kB. On Slow 4G that file is a second
+			// round trip on the LCP critical path (~150ms RTT). Inlining it
+			// makes the first HTML self-sufficient for first paint. Cache
+			// sharing across navigations is the thing given up, and Lighthouse
+			// (and a first visit) never had that cache anyway.
+			inlineStyleThreshold: 32_768,
 			// The provided dataset stays byte-identical at the repo root. Reaching it
 			// through an alias makes the boundary explicit, and ESLint restricts the
 			// alias to src/lib/server so nothing else can import it.

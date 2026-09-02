@@ -90,9 +90,10 @@ a production preview — `.env.example` documents it. CI supplies its own.
 
 Lighthouse uses the default mobile profile (Moto G Power, simulated Slow 4G) on `/en`,
 `/en/blog/sub-second-lcp-on-a-content-site`, and `/en/dashboard/items`. Category scores must stay at
-or above 95, with LCP under 2s, CLS under 0.1, and INP under 200ms. The dashboard ships
-`noindex, follow`, so that URL waives the crawlable SEO category and still asserts title, description,
-lang, hreflang, and canonical.
+or above 95, with LCP under 2s and CLS under 0.1. INP is a field metric — a navigation-only gather
+never produces it — so CI does not assert it; the 200ms budget is the interaction target the dashboard
+edit is built around. The dashboard ships `noindex, follow`, so that URL waives the crawlable SEO
+category and still asserts title, description, lang, hreflang, and canonical.
 
 Visual snapshots for the login page are recorded on Linux CI, where font rasterisation matches the
 runner. A missing snapshot fails the Playwright job; copy it from the `playwright-report` artifact

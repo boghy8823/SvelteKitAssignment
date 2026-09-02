@@ -370,19 +370,24 @@
 	<p aria-live="polite" class="sr-only">{summary}</p>
 
 	<!--
-		Hidden by CSS as soon as scripting is available. The streamed rows resolve
-		through a script, so this is the way to the same table with the rows already
-		in the HTML.
+		Hidden by CSS as soon as scripting is available. Only rendered when the
+		rows are actually a promise: the default path awaits them, so the table
+		is already in the HTML and this link would be a lie.
 	-->
-	<p
-		data-requires-js
-		class="mt-6 rounded-md border border-border-strong bg-surface-raised p-3 text-sm"
-	>
-		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- basePath came from resolve(); this appends a query string -->
-		<a href={`${basePath}?${noStreamQuery}`} class="text-accent underline-offset-2 hover:underline">
-			{i18n.t('dashboard.items.noStream')}
-		</a>
-	</p>
+	{#if data.rows instanceof Promise}
+		<p
+			data-requires-js
+			class="mt-6 rounded-md border border-border-strong bg-surface-raised p-3 text-sm"
+		>
+			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- basePath came from resolve(); this appends a query string -->
+			<a
+				href={`${basePath}?${noStreamQuery}`}
+				class="text-accent underline-offset-2 hover:underline"
+			>
+				{i18n.t('dashboard.items.noStream')}
+			</a>
+		</p>
+	{/if}
 
 	<div class="mt-6">
 		<ItemsTable

@@ -10,14 +10,16 @@ const categories = {
 
 /**
  * Lab budgets from the brief, on Lighthouse's default mobile profile
- * (Moto G Power, simulated Slow 4G). INP is the lab estimate — there is no
- * real user interaction in a gather — but the budget is still enforced so a
- * regression cannot hide behind "we only measure LCP".
+ * (Moto G Power, simulated Slow 4G).
+ *
+ * INP is a field metric. A navigation-only gather never produces it
+ * (`auditRan` is 0), so asserting `maxNumericValue` fails CI without
+ * measuring a click. The 200ms budget stays the interaction target;
+ * Playwright covers the actual edit. CLS and LCP *are* lab-collectable.
  */
 const webVitals = {
 	'largest-contentful-paint': ['error', { maxNumericValue: 2000 }],
-	'cumulative-layout-shift': ['error', { maxNumericValue: 0.1 }],
-	'interaction-to-next-paint': ['error', { maxNumericValue: 200 }]
+	'cumulative-layout-shift': ['error', { maxNumericValue: 0.1 }]
 };
 
 /**
@@ -63,9 +65,13 @@ module.exports = {
 			}
 		},
 		assert: {
+			// Matrix rows are additive, not overrides: a URL that matches two
+			// patterns is scored against both. Patterns here are mutually
+			// exclusive so the dashboard's `noindex` cannot inherit the public
+			// SEO category floor.
 			assertMatrix: [
 				{
-					matchingUrlPattern: '.*',
+					matchingUrlPattern: '^(?!.*\\/dashboard\\/)',
 					assertions: {
 						...categories,
 						...webVitals,
@@ -73,11 +79,11 @@ module.exports = {
 					}
 				},
 				{
-					// The dashboard is session-gated and ships `noindex, follow`.
-					// `is-crawlable` would fail a correct robots tag and drag the
-					// SEO category under 95, so the category is waived here and the
-					// remaining SEO audits are still required.
-					matchingUrlPattern: '.*/dashboard/.*',
+					// Session-gated, so `noindex, follow` is correct. The SEO
+					// category would fail `is-crawlable`; the remaining audits
+					// still require a title, description, lang, hreflang, and
+					// canonical.
+					matchingUrlPattern: '\\/dashboard\\/',
 					assertions: {
 						...categories,
 						...webVitals,

@@ -179,6 +179,10 @@ export const load: PageServerLoad = async ({ cookies, depends, locals, url }) =>
 	// keeps it testable without a request.
 	const overlay = await readOverlay(cookies);
 
+	// Started before the eager awaits, so injected latency overlaps the facet
+	// and count work instead of starting after it.
+	const rows = loadRows(query, fault, overlay);
+
 	// Awaited, so the table can size itself before the rows exist: the skeleton
 	// renders exactly as many rows as are coming and the summary line does not
 	// change when they land. The facet counts are eager for the same reason — the
@@ -190,22 +194,28 @@ export const load: PageServerLoad = async ({ cookies, depends, locals, url }) =>
 		tagLabels(locals.locale)
 	]);
 
-	const rows = loadRows(query, fault, overlay);
-
 	/*
-	 * Streaming resolves the deferred half through a script, which means a reader
-	 * without JavaScript would sit in front of a skeleton forever. `?stream=off`
-	 * awaits the rows instead and returns them as plain data, so the table is fully
-	 * server-rendered — the page links to it for exactly that case.
+	 * Two reasons to await the rows into the first HTML.
 	 *
-	 * Returning a value rather than a promise is what switches the mode: Svelte
-	 * renders the pending branch of `{#await}` during SSR, so keeping the promise
-	 * would keep the skeleton no matter how quickly it settled.
+	 * `?stream=off` is the no-JavaScript escape hatch: streaming resolves
+	 * through a script, so a reader without one would sit in front of a
+	 * skeleton forever.
+	 *
+	 * The other is the default path. The dataset is in-process, so the query
+	 * is already done by the time the shell would flush. Returning a promise
+	 * anyway would paint empty skeleton cells (not LCP candidates) and then
+	 * paint the campaign names after a later chunk — which *are* LCP, and
+	 * which is how a Slow 4G gather misses 2s. Streaming is kept for
+	 * `?fault=slow`, where the backend is actually late and TTFB would
+	 * otherwise wait on it.
+	 *
+	 * Returning a value rather than a promise is what switches the mode:
+	 * Svelte renders the pending branch of `{#await}` during SSR, so keeping
+	 * the promise would keep the skeleton no matter how quickly it settled.
 	 */
-	if (url.searchParams.get('stream') === 'off') {
+	if (url.searchParams.get('stream') === 'off' || fault.latencyMs === 0) {
 		return { query, meta, facets: groups, tagLabels: labels, rows: await rows };
 	}
 
-	// Not awaited. This is the streamed half.
 	return { query, meta, facets: groups, tagLabels: labels, rows };
 };
