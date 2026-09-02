@@ -57,7 +57,9 @@
 	 * `aria-activedescendant` pointing at an option that is gone. */
 	const activeIndex = $derived(visible.length === 0 ? -1 : Math.min(active, visible.length - 1));
 
-	const activeId = $derived(activeIndex >= 0 ? `${id}-option-${activeIndex}` : undefined);
+	/** Only while the list exists. A closed popup has no option nodes, so an
+	 * `aria-activedescendant` pointing at one is an invalid ID reference. */
+	const activeId = $derived(open && activeIndex >= 0 ? `${id}-option-${activeIndex}` : undefined);
 
 	const summary = $derived(selected.length > 0 ? `${label} (${selected.length})` : label);
 

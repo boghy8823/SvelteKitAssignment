@@ -6,6 +6,14 @@ node_modules
 tests/component/__screenshots__
 .vitest-attachments
 
+# Playwright HTML report and failure traces. Snapshots stay in tests/e2e.
+playwright-report
+test-results
+blob-report
+
+# Lighthouse CI gather output. Assertions live in lighthouserc.cjs.
+.lighthouseci
+
 # Output
 .output
 .vercel

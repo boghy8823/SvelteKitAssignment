@@ -15,20 +15,22 @@ pnpm dev
 
 ## Scripts
 
-| Command               | What it does                        |
-| --------------------- | ----------------------------------- |
-| `pnpm dev`            | Vite dev server                     |
-| `pnpm build`          | Production build for Vercel         |
-| `pnpm build:node`     | Production build for `adapter-node` |
-| `pnpm preview`        | Serve the production build via Vite |
-| `pnpm preview:node`   | Serve the `adapter-node` build      |
-| `pnpm check`          | `svelte-check`                      |
-| `pnpm typecheck`      | `svelte-check` then `tsc --noEmit`  |
-| `pnpm lint`           | Prettier check + ESLint             |
-| `pnpm format`         | Prettier write                      |
-| `pnpm test`           | Vitest, both projects               |
-| `pnpm test:unit`      | Vitest node project, pure logic     |
-| `pnpm test:component` | Vitest browser mode, Chromium       |
+| Command               | What it does                         |
+| --------------------- | ------------------------------------ |
+| `pnpm dev`            | Vite dev server                      |
+| `pnpm build`          | Production build for Vercel          |
+| `pnpm build:node`     | Production build for `adapter-node`  |
+| `pnpm preview`        | Serve the production build via Vite  |
+| `pnpm preview:node`   | Serve the `adapter-node` build       |
+| `pnpm check`          | `svelte-check`                       |
+| `pnpm typecheck`      | `svelte-check` then `tsc --noEmit`   |
+| `pnpm lint`           | Prettier check + ESLint              |
+| `pnpm format`         | Prettier write                       |
+| `pnpm test`           | Vitest, both projects                |
+| `pnpm test:unit`      | Vitest node project, pure logic      |
+| `pnpm test:component` | Vitest browser mode, Chromium        |
+| `pnpm test:e2e`       | Playwright against `adapter-node`    |
+| `pnpm lighthouse`     | Lighthouse CI against `adapter-node` |
 
 ## Deploy targets
 
@@ -78,9 +80,24 @@ reviewable without reading the diff:
 
 Pre-commit (Husky + lint-staged) formats and lints staged files, then runs `pnpm check`.
 
-CI runs `lint`, `typecheck`, `test:unit`, `test:component`, and both adapter builds as parallel jobs
-on every push and pull request. End-to-end, accessibility, Lighthouse, and bundle-budget jobs join the
-same workflow as those surfaces land.
+CI runs `lint`, `typecheck`, `test:unit`, `test:component`, both adapter builds, Playwright, and
+Lighthouse CI on every push and pull request. Bundle-budget jobs join the same workflow when that
+surface lands.
+
+`pnpm test:e2e` and `pnpm lighthouse` serve the Node production build (`pnpm build:node`). Playwright
+builds it on the first local run; Lighthouse expects `build/` to already exist. Set `AUTH_SECRET` for
+a production preview — `.env.example` documents it. CI supplies its own.
+
+Lighthouse uses the default mobile profile (Moto G Power, simulated Slow 4G) on `/en`,
+`/en/blog/sub-second-lcp-on-a-content-site`, and `/en/dashboard/items`. Category scores must stay at
+or above 95, with LCP under 2s, CLS under 0.1, and INP under 200ms. The dashboard ships
+`noindex, follow`, so that URL waives the crawlable SEO category and still asserts title, description,
+lang, hreflang, and canonical.
+
+Visual snapshots for the login page are recorded on Linux CI, where font rasterisation matches the
+runner. A missing snapshot fails the Playwright job; copy it from the `playwright-report` artifact
+into `tests/e2e/` and commit it. Local Lighthouse needs a Chrome that is not already listening on a
+remote-debugging port — CI installs its own.
 
 Component tests run in real Chromium rather than jsdom. The behaviour worth testing on a dialog is
 focus order, Escape, and whether the background is genuinely inert — precisely what jsdom only

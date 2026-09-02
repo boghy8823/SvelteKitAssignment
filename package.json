@@ -24,12 +24,17 @@
 		"format": "prettier --write .",
 		"test:unit": "vitest run --project unit",
 		"test:component": "vitest run --project component",
+		"test:e2e": "playwright test",
 		"test:watch": "vitest",
-		"test": "vitest run"
+		"test": "vitest run",
+		"lighthouse": "lhci autorun"
 	},
 	"devDependencies": {
+		"@axe-core/playwright": "^4.11.1",
 		"@eslint/js": "^10.0.1",
 		"@fontsource/inter": "^5.3.0",
+		"@lhci/cli": "^0.15.1",
+		"@playwright/test": "^1.60.0",
 		"@resvg/resvg-js": "^2.6.2",
 		"@sveltejs/adapter-node": "^5.5.7",
 		"@sveltejs/adapter-vercel": "^6.3.4",
@@ -49,6 +54,7 @@
 		"prettier": "^3.8.3",
 		"prettier-plugin-svelte": "^4.1.0",
 		"prettier-plugin-tailwindcss": "^0.8.0",
+		"puppeteer-core": "^24.37.5",
 		"satori": "^0.29.0",
 		"svelte": "^5.56.1",
 		"svelte-check": "^4.6.0",

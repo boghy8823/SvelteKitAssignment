@@ -66,3 +66,61 @@ jobs:
       # at deploy time.
       - run: pnpm build
       - run: pnpm build:node
+      # The Node output is what Playwright and Lighthouse serve. Uploading it
+      # keeps those jobs from rebuilding the same tree.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: node-build
+          path: build
+          retention-days: 1
+
+  e2e:
+    name: Playwright
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+      - uses: actions/download-artifact@v4
+        with:
+          name: node-build
+          path: build
+      - run: pnpm exec playwright install chromium
+      - run: pnpm test:e2e
+        env:
+          AUTH_SECRET: ci-e2e-secret
+          E2E_SKIP_BUILD: '1'
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report
+            test-results
+          retention-days: 7
+
+  lighthouse:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+      - uses: actions/download-artifact@v4
+        with:
+          name: node-build
+          path: build
+      - uses: browser-actions/setup-chrome@v2
+        id: chrome
+      - run: pnpm lighthouse
+        env:
+          AUTH_SECRET: ci-lighthouse-secret
+          CHROME_PATH: ${{ steps.chrome.outputs.chrome-path }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci
+          retention-days: 7

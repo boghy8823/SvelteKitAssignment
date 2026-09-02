@@ -14,3 +14,8 @@ bun.lockb
 # Working notes, not product source
 /PLAN.md
 /take-home-senior-frontend-sveltekit.html
+
+# Generated test and audit output
+/playwright-report/
+/test-results/
+/.lighthouseci/
