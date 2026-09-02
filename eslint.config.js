@@ -84,6 +84,15 @@ export default defineConfig(
 		}
 	},
 	{
+		// `.cjs` exists so a `"type": "module"` package can still be `require()`d
+		// (LHCI loads the puppeteer auth script that way). Forbidding require
+		// here would make the extension a lie.
+		files: ['**/*.cjs'],
+		rules: {
+			'@typescript-eslint/no-require-imports': 'off'
+		}
+	},
+	{
 		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
 		languageOptions: {
 			parserOptions: {

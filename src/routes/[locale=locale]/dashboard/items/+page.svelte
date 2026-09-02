@@ -379,13 +379,17 @@
 			data-requires-js
 			class="mt-6 rounded-md border border-border-strong bg-surface-raised p-3 text-sm"
 		>
-			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- basePath came from resolve(); this appends a query string -->
+			<!--
+				eslint-disable svelte/no-navigation-without-resolve --
+				basePath came from resolve(); this only appends a query string
+			-->
 			<a
 				href={`${basePath}?${noStreamQuery}`}
 				class="text-accent underline-offset-2 hover:underline"
 			>
 				{i18n.t('dashboard.items.noStream')}
 			</a>
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 		</p>
 	{/if}
 
